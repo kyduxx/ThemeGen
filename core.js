@@ -1,4 +1,4 @@
-const VERSION = "0.22";
+const VERSION = "0.3";
 
 var CONFIG = {
     EDITOR: {
@@ -27,6 +27,7 @@ var CONFIG = {
         16: ["Chatbox", "", "Chatbox"],
         17: ["Sidebar", "", "Sidebar"],
         18: ["SendMessage", "", "SendMessage"],
+        19: ["Logo", "", "logo"],
     },
 };
 
@@ -43,13 +44,17 @@ function Edit(target) {
 
 function GetValue(STYLE) {
     var bodyStyles = window.getComputedStyle(document.body);
-    var value = bodyStyles.getPropertyValue('--' + STYLE);
+    var value = bodyStyles.getPropertyValue('--' + CONFIG.THEME[STYLE][2]);
 
     return value;
 }
 
 function SetValue(STYLE) {
     document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
+    if(STYLE === 3 || STYLE === 4) {
+        document.body.style.setProperty('--temp', GetValue(3));
+        document.body.style.setProperty('--animation', CONFIG.THEME[5][1]);
+    }
 }
 
 setInterval(function () {
