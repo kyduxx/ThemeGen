@@ -23,6 +23,7 @@
     --Chatbox: var(--darkgrey5);
     --SendMessage: var(--darkgrey);
     --Sidebar: var(--darkgrey5);
+    --HoverMessage: var(--darkgrey5);
     --temp: var(--rgb1);
     --temp1: rgb(128, 0, 0);
     --temp2: rgb(0, 128, 0);
@@ -87,6 +88,10 @@
 
 #Message {
     background-color: var(--SendMessage);
+}
+
+#HoverMessage {
+    background-color: var(--HoverMessage);
 }
 
 #Logo {

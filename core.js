@@ -1,4 +1,4 @@
-const VERSION = "0.3";
+const VERSION = "0.32";
 
 var CONFIG = {
     EDITOR: {
@@ -28,6 +28,7 @@ var CONFIG = {
         17: ["Sidebar", "", "Sidebar"],
         18: ["SendMessage", "", "SendMessage"],
         19: ["Logo", "", "logo"],
+        20: ["HoverMessage", "", "HoverMessage"],
     },
 };
 
@@ -55,6 +56,11 @@ function SetValue(STYLE) {
         document.body.style.setProperty('--temp', GetValue(3));
         document.body.style.setProperty('--animation', CONFIG.THEME[5][1]);
     }
+    if(STYLE === 16 || STYLE === 17 || STYLE === 18 || STYLE === 20) {
+        document.body.style.setProperty('--' + CONFIG.THEME[14][2], CONFIG.THEME[14][1]);
+        document.body.style.setProperty('--' + CONFIG.THEME[15][2], CONFIG.THEME[15][1]);
+    }
+    document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
 }
 
 setInterval(function () {
