@@ -2,7 +2,7 @@
 
 <head>
     <link rel="icon" href="fav.gif" type="image/gif">
-    <link rel="stylesheet" href="styles.css?v=0.32">
+    <link rel="stylesheet" href="styles.css?v=0.4">
 </head>
 
 <body>
@@ -14,76 +14,121 @@
             </div>
             <div class="divider"></div>
             <div class="menu" id="menu">
-                <div data-id="1" id="btn1" class="RGBbutton">General</div>
-                <div data-id="2" id="btn2" class="RGBbutton">RGB</div>
-                <div data-id="3" id="btn3" class="RGBbutton">Status</div>
-                <div data-id="4" id="btn4" class="RGBbutton">Profile</div>
-                <div data-id="5" id="btn5" class="RGBbutton">Menus</div>
-                <div data-id="6" id="btn6" class="RGBbutton">Plugins</div>
+                <div data-id="1" id="btn1" class="RGBbutton"></div>
+                <div data-id="2" id="btn2" class="RGBbutton"></div>
+                <div data-id="3" id="btn3" class="RGBbutton"></div>
+                <div data-id="4" id="btn4" class="RGBbutton"></div>
+                <div data-id="5" id="btn5" class="RGBbutton"></div>
+                <div data-id="6" id="btn6" class="RGBbutton"></div>
+                <div data-id="7" id="btn7" class="RGBbutton"></div>
             </div>
             <div id="config1" class="form">
-                <div class="value">Title <input id="Theme-title" data-id="0" type="text" value="ÆroSpace"></div>
+                <div class="value">Title <div class="no square"></div>
+                    <input id="Theme-title" data-id="0" type="text" value="ÆroSpace">
+                    <div class="desc">Theme title (TEXT <span class="green">✔</span> / EMOJIS <span class="green">✔</span> only)</div>
+                </div>
                 <div class="value">Logo <div class="square" id="Logo"></div>
                     <input id="Theme-logo" data-id="19" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)">
+                    <div class="desc">PM button / logo (COLOR NAME ❌ / RGB ❌ / VARS ❌ / URL square with whatever size <span class="green">✔</span>)</div>
                 </div>
-                <div class="value">Background <input id="Theme-background" data-id="1" type="text"
+                <div class="value">Background <div class="no square"></div>
+                    <input id="Theme-background" data-id="1" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)">
+                    <div class="desc">Theme background (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL <span class="green">✔</span>)</div>
                 </div>
-                <div class="value">Font <input id="Theme-font" data-id="2" type="text" value="Quicksand"></div>
+                <div class="value">Font <div class="no square"></div>
+                    <input id="Theme-font" data-id="2" type="text" value="Quicksand">
+                    <div class="desc">Font used for the theme (TEXT <span class="green">✔</span> only)</div>
+                </div>
             </div>
             <div id="config2" class="form" style="display: none;">
                 <div class="value">RGB 1 <div class="square" id="RGB1"></div>
-                    <input id="Theme-rgb1" data-id="3" type="text" value="rgb(130, 0, 216)"></div>
+                    <input id="Theme-rgb1" data-id="3" type="text" value="rgb(130, 0, 216)">
+                    <div class="desc">RGB Color 1 (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
                 <div class="value">RGB 2 <div class="square" id="RGB2"></div>
-                    <input id="Theme-rgb2" data-id="4" type="text" value="rgb(0, 225, 255)"></div>
+                    <input id="Theme-rgb2" data-id="4" type="text" value="rgb(0, 225, 255)">
+                    <div class="desc">RGB Color 2 (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
                 <div class="value">RGB Animation <div class="square" id="RGB3"></div>
-                    <input id="Theme-animation" data-id="5" type="text" value="var(--rgb1), var(--rgb2)"></div>
+                    <input id="Theme-animation" data-id="5" type="text" value="var(--rgb1), var(--rgb2)">
+                    <div class="desc">Colors used for the RGB animation (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL ❌)</div>
+                </div>
+                <div class="value">Animation Time <div class="no square"></div>
+                    <input id="Theme-time" data-id="21" type="text" value="5s">
+                    <div class="desc">Duration for the animation (TEXT <span class="green">✔</span> only. Example: 10s = 10 seconds) </div>
+                </div>
             </div>
 
             <div id="config3" class="form" style="display: none;">
                 <div class="value">Online <div class="square" id="Status1"></div>
-                    <input id="Theme-Online" data-id="6" type="text" value="rgb(0, 255, 136)"></div>
+                    <input id="Theme-Online" data-id="6" type="text" value="rgb(0, 255, 136)">
+                    <div class="desc">Online status (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
                 <div class="value">Idle <div class="square" id="Status2"></div>
-                    <input id="Theme-Idle" data-id="7" type="text" value="rgb(0, 99, 156)"></div>
+                    <input id="Theme-Idle" data-id="7" type="text" value="rgb(0, 99, 156)">
+                    <div class="desc">Idle status (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
                 <div class="value">Unavailable <div class="square" id="Status3"></div>
-                    <input id="Theme-Unavailable" data-id="8" type="text" value="rgb(228, 15, 0)"></div>
+                    <input id="Theme-Unavailable" data-id="8" type="text" value="rgb(228, 15, 0)">
+                    <div class="desc">Unavailable status (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
                 <div class="value">Offline <div class="square" id="Status4"></div>
-                    <input id="Theme-Offline" data-id="9" type="text" value="rgb(90, 95, 100)"></div>
+                    <input id="Theme-Offline" data-id="9" type="text" value="rgb(90, 95, 100)">
+                    <div class="desc">Offline status (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
             </div>
             <div id="config4" class="form" style="display: none;">
                 <div class="value">Playing <div class="square" id="Profile1"></div>
                     <input id="Theme-Playing" data-id="10" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg)">
+                    <div class="desc">Playing profile (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL <span class="green">✔</span>)</div>
                 </div>
                 <div class="value">Xbox <div class="square" id="Profile2"></div>
                     <input id="Theme-Xbox" data-id="11" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg)">
+                    <div class="desc">Xbox profile (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL <span class="green">✔</span>)</div>
                 </div>
                 <div class="value">Spotify <div class="square" id="Profile3"></div>
                     <input id="Theme-Spotify" data-id="12" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg)">
+                    <div class="desc">Spotify profile (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL <span class="green">✔</span>)</div>
                 </div>
                 <div class="value">Streaming <div class="square" id="Profile4"></div>
                     <input id="Theme-Streaming" data-id="13" type="text"
                         value="url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg)">
+                    <div class="desc">Streaming profile (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS ❌ / URL <span class="green">✔</span>)</div>
                 </div>
             </div>
             <div id="config5" class="form" style="display: none;">
-                <div class="value">Light Grey <div class="square" id="Grey"></div>
-                    <input id="Theme-grey" data-id="14" type="text" value="rgb(77, 70, 85)"></div>
                 <div class="value">Dark Grey <div class="square" id="Darkgrey"></div>
-                    <input id="Theme-darkgrey" data-id="15" type="text" value="rgb(18, 18, 18)"></div>
-                <div class="value">Chatbox <div class="square" id="Chatbox"></div>
-                    <input id="Theme-Chatbox" data-id="16" type="text" value="var(--darkgrey5)"></div>
+                    <input id="Theme-darkgrey" data-id="15" type="text" value="rgb(18, 18, 18)">
+                    <div class="desc">Main color for menus, not dark theme. (COLOR NAME ❌ / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
+                <div class="value">Light Grey <div class="square" id="Grey"></div>
+                    <input id="Theme-grey" data-id="14" type="text" value="rgb(77, 70, 85)">
+                    <div class="desc">Secondary color for menus, not light theme. (COLOR NAME ❌ / RGB <span class="green">✔</span> / VARS ❌ / URL ❌)</div>
+                </div>
+                <div class="value">ChatBox <div class="square" id="ChatBox"></div>
+                    <input id="Theme-ChatBox" data-id="16" type="text" value="var(--darkgrey5)">
+                    <div class="desc">Chat and PM background (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL ❌) </div>
+                </div>
                 <div class="value">Sidebar <div class="square" id="Sidebar"></div>
-                    <input id="Theme-Sidebar" data-id="17" type="text" value="var(--darkgrey5)"></div>
+                    <input id="Theme-Sidebar" data-id="17" type="text" value="var(--darkgrey5)">
+                    <div class="desc">Sidebar background (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL ❌)</div>
+                </div>
                 <div class="value">Send Message <div class="square" id="Message"></div>
-                    <input id="Theme-SendMessage" data-id="18" type="text" value="var(--darkgrey)"></div>
+                    <input id="Theme-SendMessage" data-id="18" type="text" value="var(--darkgrey)">
+                    <div class="desc">Send Message bar (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL ❌)</div>
+                </div>
                 <div class="value">Hovered Message <div class="square" id="HoverMessage"></div>
-                    <input id="Theme-HoverMessage" data-id="20" type="text" value="var(--darkgrey5)"></div>
+                    <input id="Theme-HoverMessage" data-id="20" type="text" value="var(--darkgrey5)">
+                    <div class="desc">Hovered Message background (COLOR NAME <span class="green">✔</span> / RGB <span class="green">✔</span> / VARS <span class="green">✔</span> / URL ❌)</div>
+                </div>
             </div>
-            <div id="config6" class="form" style="display: none;">6</div>
+            <div id="config6" class="form" style="display: none;"></div>
+            <div id="config7" class="form" style="display: none;"></div>
             <div id="NewResult" class="RGBbutton">Generate</div>
         </div>
 
@@ -122,7 +167,10 @@
                     </div>
                 </div>
             </div>
-            <div id="SaveEdition" class="RGBbutton">Save</div>
+            <div class="menu">
+                <div id="CancelEdition" class="RGBbutton">Cancel</div>
+                <div id="SaveEdition" class="RGBbutton">Save</div>
+            </div>
         </div>
 
         <div class="column" id="output">
@@ -130,7 +178,7 @@
                 <p>Result</p>
             </div>
             <div class="divider"></div>
-            <div id="ResultText" class="content"></div><br />
+            <code id="ResultText" class="content"></code><br />
             <div class="menu">
                 <div id="Download" class="RGBbutton">Download Theme</div>
                 <div id="NewConfig" class="RGBbutton">New Theme</div>
@@ -142,7 +190,7 @@
     <div id="copyright"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="core.js?v=0.32" async></script>
+    <script src="core.js?v=0.4" async></script>
 </body>
 
 </html>
