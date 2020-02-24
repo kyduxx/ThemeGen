@@ -1,4 +1,4 @@
-const VERSION = "0.2";
+const VERSION = "0.22";
 
 var CONFIG = {
     EDITOR: {
@@ -138,14 +138,18 @@ function Result() {
     $("#ResultText").append(':root {\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        $("#ResultText").append('--' + CONFIG.THEME[keys][2] + ": " + CONFIG.THEME[keys][1] + ';\n<br>');
+        if( keys === 0 || keys === 2 ) {
+            $("#ResultText").append('--' + CONFIG.THEME[keys][2] + ': "' + CONFIG.THEME[keys][1] + '";\n<br>');
+        } else {
+            $("#ResultText").append('--' + CONFIG.THEME[keys][2] + ': ' + CONFIG.THEME[keys][1] + ';\n<br>');
+    }
     }
 
     var grey5 = CONFIG.THEME[14][1].split(")").join(", .5)");
-    $("#ResultText").append('--grey5: "' + grey5 + ';\n<br>');
+    $("#ResultText").append('--grey5: ' + grey5 + ';\n<br>');
 
     var darkgrey5 = CONFIG.THEME[15][1].split(")").join(", .75)");
-    $("#ResultText").append('--darkgrey5: "' + darkgrey5 + ';\n<br>');
+    $("#ResultText").append('--darkgrey5: ' + darkgrey5 + ';\n<br>');
 
     $("#ResultText").append('} /* Made with Purple Wizard theme generator v' + VERSION + ', have fun ! */');
 }
@@ -178,14 +182,3 @@ function UpdateVars() {
     }
     CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
 }
-
-function rgbToHex(rgb) {
-    var hex = Number(rgb).toString(16);
-    if (hex.length < 2) {
-        hex = "0" + hex;
-    }
-    if (hex == 0) {
-        hex = "00";
-    }
-    return hex;
-}  
