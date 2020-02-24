@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+:root {
+    --white: white;
+    --title: "ÆroSpace";
+    --background: url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg);
+    --font: 'Quicksand';
+    --rgb1: rgb(130, 0, 216);
+    --rgb2: rgb(0, 225, 255);
+    --animation: var(--rgb1), var(--rgb2);
+    --Online: rgb(0, 255, 136);
+    --Idle: rgb(0, 99, 156);
+    --Unavailable: rgb(228, 15, 0);
+    --Offline: rgb(90, 95, 100);
+    --Playing: url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg);
+    --Xbox: url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg);
+    --Spotify: url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg);
+    --Streaming: url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg);
+    --grey: rgb(77, 70, 85);
+    --grey5: rgba(77, 70, 85, 0.5);
+    --darkgrey: rgb(18, 18, 18);
+    --darkgrey5: rgba(18, 18, 18, 0.75);
+    --Chatbox: var(--darkgrey5);
+    --SendMessage: var(--darkgrey);
+    --Sidebar: var(--darkgrey5);
+    --temp: var(--rgb1);
+    --temp1: rgb(128, 0, 0);
+    --temp2: rgb(0, 128, 0);
+    --temp3: rgb(0, 0, 128);
+}
+
+#RGB1 {
+    background-color: var(--rgb1);
+}
+
+#RGB2 {
+    background-color: var(--rgb2);
+}
+
+#Status1 {
+    background-color: var(--Online);
+}
+
+#Status2 {
+    background-color: var(--Idle);
+}
+
+#Status3 {
+    background-color: var(--Unavailable);
+}
+
+#Status4 {
+    background-color: var(--Offline);
+}
+
+#Profile1 {
+    background: center / cover no-repeat var(--Playing);
+}
+
+#Profile2 {
+    background: center / cover no-repeat var(--Xbox);
+}
+
+#Profile3 {
+    background: center / cover no-repeat var(--Spotify);
+}
+
+#Profile4 {
+    background: center / cover no-repeat var(--Streaming);
+}
+
+#Grey {
+    background-color: var(--grey);
+}
+
+#Darkgrey {
+    background-color: var(--darkgrey);
+}
+
+#Chatbox {
+    background-color: var(--Chatbox);
+}
+
+#Sidebar {
+    background-color: var(--Sidebar);
+}
+
+#Message {
+    background-color: var(--SendMessage);
+}
+
+body {
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    background: center / cover repeat var(--background);
+    width: 100%;
+    height: 100%;
+    color: var(--white);
+    font-family: var(--font), sans-serif;
+    ;
+    font-size: 15px;
+    line-height: 16px;
+}
+
+.startCircle {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    width: 1%;
+    height: 1%;
+    background: center / cover no-repeat var(--rgb1);
+    animation: startAnim 2.5s;
+    -webkit-animation: startAnim 2.5s;
+}
+
+@keyframes startAnim {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+    25% {
+        border-radius: 50%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transform: scale(.0);
+    }
+}
+
+@keyframes K2KBG {
+    0% {
+            opacity: .75;
+            background-position: 0% 0%;
+            --temp: var(--rgb1);
+    }
+    25% {
+            opacity: .5;
+            background-position: 50% 50%;
+    }
+    50% {
+            opacity: .75;
+            background-position: 100% 100%;
+            --temp: var(--rgb2);
+    }
+    75% {
+            background-position: 50% 50%;
+    }
+}
+
+*::selection {
+    opacity: 0;
+}
+
+input::selection, #ResultText::selection {
+    opacity: 1!important;
+    background: var(--rgb1)!important;
+}
+
+#ResultText {
+    position: relative;
+    background: var(--grey);
+    padding: 1em .5em;
+    border-radius: .25em;
+}
+
+#ResultText:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    content: "";
+    height: 4px;
+    border-radius: 0 0 .5em .5em;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+}
+
+#TextPreview {
+    text-shadow: 0 0 13px;
+    background: var(--darkgrey5);
+    border-radius: .5em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+.text {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.form {
+    padding: 1em 2em;
+    border-radius: .25em;
+}
+
+.centered.columns, .centered.columns .column {
+    text-align: center;
+}
+
+.columns {
+    position: relative;
+    padding: 5px;
+    display: grid;
+    width: calc(100% - 10px);
+}
+
+.column {
+    padding-top: 30px!important;
+    text-align: left;
+    position: relative;
+    display: block;
+    margin: 2px 10%;
+    border-radius: .5em;
+    padding: 5px;
+    width: calc(80% - 10px);
+    background: var(--darkgrey5);
+}
+
+.value:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+.value {
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
+    padding: 5px 0;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu .RGBbutton:first-child {
+    border-radius: .25em 0 0 .25em;
+    border: none;
+}
+
+.menu .RGBbutton {
+    border-radius: 0;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    border: none;
+    border-left: 1px solid var(--darkgrey);
+}
+
+.menu .RGBbutton:last-child {
+    border-radius: 0 .25em .25em 0;
+}
+
+input[type=text] {
+    background: var(--darkgrey5);
+    padding: 5px 0 5px 10px;
+    outline: none;
+    float: right;
+    border: none;
+    border-radius: .15em;
+    box-shadow: 0 0 5px 1px var(--darkgrey);
+    height: 30px;
+    color: white;
+    transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+    font-size: 20px;
+    width: calc(50% - 10px);
+}
+
+input[type=text]:focus {
+    width: 75%;
+    color: var(--purple);
+    border-bottom: 1px solid var(--purple);
+}
+
+.title {
+    margin: 5px;
+    width: 100%;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.title p {
+    margin: 0;
+}
+
+#copyright {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.RGBbutton, #RGB3, #ResultText:after {
+    background: -webkit-linear-gradient(90deg, var(--animation))!important;
+    background: linear-gradient(90deg, var(--animation))!important;
+    background-size: 500% 500%!important;
+    -webkit-animation: bganim 5s ease infinite !important;
+    animation: bganim 5s ease infinite !important;
+}
+
+#copyright strong, .title p {
+    background: -webkit-linear-gradient(90deg, var(--animation))!important;
+    background: linear-gradient(90deg, var(--animation))!important;
+    font-weight: bold!important;
+    color: var(--white)!important;
+    -webkit-background-clip: text!important;
+    background-clip: text!important;
+    -webkit-text-fill-color: transparent!important;
+    background-size: 300% 300%!important;
+    -webkit-animation: bganim 5s ease infinite !important;
+    animation: bganim 5s ease infinite !important;
+    text-shadow: none!important;
+}
+
+@keyframes bganim {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.RGBbutton {
+    width: 100%;
+    height: 3em;
+    font-size: 1.25em;
+    line-height: 3em;
+    margin: 0em;
+    border-radius: .25em;
+    text-align: center;
+}
+
+.RGBbutton:hover {
+    transform: scale(.98);
+    border-radius: .25em!important;
+    text-shadow: 0 0 13px;
+    font-weight: bold;
+}
+
+.square {
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-right: -30px;
+    margin-left: 10px;
+    background-color: var(--darkgrey);
+    box-shadow: 0 0 5px 1px var(--grey);
+    border-radius: .15em;
+}
+
+#config4 .value>.square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: .5em;
+    margin: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+#config4 .value {
+    z-index: 100;
+    margin: 10px 0;
+    height: 100px;
+    position: relative;
+    line-height: 100px;
+    padding: 0 0 0 30px;
+}
+
+#config4 input[type=text] {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#config4 input[type=text]:focus {
+    width: 100%;
+}
+
+.custom {
+    -webkit-appearance: none;
+    width: 69%;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 5px;
+    height: 30px;
+    background: var(--grey5);
+    border-radius: .25em;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.custom:hover {
+    opacity: 1;
+}
+
+.custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: .25em;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.inline {
+    display: flex
+}
+
+#colorpicker {
+    display: inline;
+    background-color: transparent!important;
+    padding-top: 0!important;
+}
+
+#colorpicker .inline.column .title {
+    width: 100px!important;
+}
+
+#colorpicker .inline.column {
+    padding: 0!important;
+    margin: 2px 0px;
+    width: 100%;
+}
+
+#red.custom::-webkit-slider-thumb {
+    background-color: var(--temp1);
+}
+
+#green.custom::-webkit-slider-thumb {
+    background-color: var(--temp2);
+}
+
+#blue.custom::-webkit-slider-thumb {
+    background-color: var(--temp3);
+}
+
+input[type=number] {
+    background: var(--darkgrey5);
+    font-size: 20px;
+    line-height: 30px;
+    margin: 5px;
+    outline: none;
+    float: right;
+    border: none;
+    border-radius: .15em;
+    box-shadow: 0 0 5px 1px var(--darkgrey);
+    color: white;
+    transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+    width: calc(11% - 10px);
+    height: 30px;
+}
+
+.column:not(.inline)>.title {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.divider {
+    background: radial-gradient(circle, var(--temp), transparent 65%)!important;
+    background-size: 200% 300%!important;
+    -webkit-animation: K2KBG 2s ease infinite !important;
+    animation: K2KBG 2s ease infinite !important;
+    border: none!important;
+    opacity: .65;
+    border-radius: .1em;
+    margin: 1em 0;
+    padding-top: .5em;
+    width: 100%;
+}
+
+.noedit {
+    background: var(--darkgrey5);
+    outline: none;
+    float: right;
+    border: none;
+    border-radius: .15em;
+    box-shadow: 0 0 5px 1px var(--darkgrey);
+    height: 30px;
+    color: white;
+    transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+    font-size: 20px;
+    width: calc(50% - 10px);
+}
