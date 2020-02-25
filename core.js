@@ -47,10 +47,8 @@ var CONFIG = {
 function Edit(target) {
     $("#settings").hide();
     $("#edition").show();
-
     CONFIG.EDITOR.id = target;
     CONFIG.EDITOR.old = CONFIG.THEME[target][1];
-
     $("#red").val(0);
     $("#green").val(0);
     $("#blue").val(0);
@@ -58,7 +56,6 @@ function Edit(target) {
     $("#greenNum").val(0);
     $("#blueNum").val(0);
     CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
-
     $("#EditorSelection").html("Editing <div class='noedit'>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "</div>");
     $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
     $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
