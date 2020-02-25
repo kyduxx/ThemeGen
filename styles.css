@@ -259,6 +259,10 @@ code:after {
     margin-bottom: 3px;
 }
 
+#edition .value {
+    text-align: center;
+}
+
 .value {
     position: relative;
     font-size: 20px;
@@ -553,6 +557,12 @@ input[type=number] {
     -webkit-transition-duration: 300ms;
     font-size: 20px;
     width: calc(50% - 10px);
+}
+
+#edition .noedit {
+    background: none;
+    box-shadow: none;
+    text-align: left;
 }
 
 code .meta {
