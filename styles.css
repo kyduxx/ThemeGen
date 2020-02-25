@@ -29,6 +29,21 @@
     --temp2: rgb(0, 128, 0);
     --temp3: rgb(0, 0, 128);
     --time: 5s;
+    --JoinUs: 'Hey! Wanna have some fun.. Join US !';
+    --AddNewServer: '➕ Add a new server';
+    --Close: '❌';
+    --Resize: '🔵';
+    --Hide: '➖';
+    --ProfilePic: 'Watch me';
+    --Unread: '✨';
+    --Options: '🔧';
+    --Channel: '💬';
+    --Emoji: '🙂';
+    --EmojiHover: '😜';
+    --Community: 'purpies';
+    --WelcomeMessage: 'Theme base designed by Purple Wizard.';
+    --Watermark: 'Made with 💖 by Purple Wizard';
+    --EditStatus: 'Put another status';
 }
 
 #RGB1 {
@@ -143,25 +158,21 @@ body {
 
 @keyframes K2KBG {
     0% {
-            opacity: .75;
-            background-position: 0% 0%;
-            --temp: var(--rgb1);
+        background-position: 0% 0%;
+        --temp: var(--rgb1);
     }
     25% {
-            opacity: .5;
-            background-position: 50% 50%;
+        background-position: 50% 50%;
     }
     50% {
-            opacity: .75;
-            background-position: 100% 100%;
-            --temp: var(--rgb2);
+        background-position: 100% 100%;
+        --temp: var(--rgb2);
     }
     75% {
-            background-position: 50% 50%;
-            --temp: var(--rgb2);
+        background-position: 50% 50%;
+        --temp: var(--rgb2);
     }
-    100% {
-    }
+    100% {}
 }
 
 *::selection {
@@ -251,8 +262,8 @@ code:after {
 .value {
     position: relative;
     font-size: 20px;
-    line-height: 30px;
-    height: 65px;
+    line-height: 70px;
+    height: 100px;
     background-color: var(--grey5);
     padding: 10px 5px 0;
     border-radius: .5em;
@@ -283,6 +294,7 @@ code:after {
 input[type=text] {
     background: var(--darkgrey5);
     padding: 5px 0 5px 10px;
+    margin-top: 20px;
     outline: none;
     float: right;
     border: none;
@@ -362,6 +374,7 @@ input[type=text]:focus {
     float: left;
     height: 30px;
     width: 30px;
+    margin-top: 20px;
     margin-right: 10px;
     box-shadow: 0 0 5px 1px var(--grey);
     border-radius: .15em;
@@ -397,6 +410,7 @@ input[type=text]:focus {
 }
 
 #config4 input[type=text] {
+    margin-top: 0px;
     position: absolute;
     right: 0;
     top: 0;
@@ -505,25 +519,23 @@ input[type=number] {
     width: 100%;
 }
 
-.RGBbutton, #RGB3, code:after {
-    background: -webkit-linear-gradient(90deg, var(--animation))!important;
-    background: linear-gradient(90deg, var(--animation))!important;
-    background-size: 500% 500%!important;
-    -webkit-animation: bganim var(--time) ease infinite !important;
-    animation: bganim var(--time) ease infinite !important;
+.RGBbutton, #RGB3, code:after, input[type=checkbox]:checked {
+    background: radial-gradient(circle, var(--animation))!important;
+    background-size: 1000% 500%!important;
+    -webkit-animation: K2KBG var(--time) ease infinite !important;
+    animation: K2KBG var(--time) ease infinite !important;
 }
 
 #copyright strong, .title p {
-    background: -webkit-linear-gradient(90deg, var(--animation))!important;
-    background: linear-gradient(90deg, var(--animation))!important;
+    background: radial-gradient(circle, var(--animation))!important;
+    background-size: 1000% 500%!important;
+    -webkit-animation: K2KBG var(--time) ease infinite !important;
+    animation: K2KBG var(--time) ease infinite !important;
     font-weight: bold!important;
     color: var(--white)!important;
     -webkit-background-clip: text!important;
     background-clip: text!important;
     -webkit-text-fill-color: transparent!important;
-    background-size: 500% 500%!important;
-    -webkit-animation: bganim var(--time) ease infinite !important;
-    animation: bganim var(--time) ease infinite !important;
     text-shadow: none!important;
 }
 
@@ -570,10 +582,11 @@ code .val {
     top: 0;
     left: 0;
     right: 0;
-    border-radius: .25em .25em .5em .5em;
+    border-radius: 0 0 .5em .5em;
     background: var(--grey5);
     font-size: 14px;
-    margin-top: 45px;
+    line-height: 30px;
+    margin-top: 80px;
 }
 
 #config4 .desc {
@@ -585,4 +598,52 @@ code .val {
 
 .green {
     color: #52fd0e;
+}
+
+input[type="checkbox"]:focus{
+    outline:0;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    height: 30px;
+    width: 30px;
+    border-radius: .25em;
+    background: var(--darkgrey);
+}
+
+input[type=checkbox]:checked {
+    background: yellow;
+    position: relative;
+}
+
+input[type=checkbox]:not(:checked)::before {
+    content: 'X';
+    display: block;
+    font-size: 25px;
+    text-align: center;
+    width: 30px;
+    margin: 0;
+    line-height: 30px;
+    position: absolute;
+    z-index: 1;
+}
+input[type=checkbox]:checked::before {
+    content: '✔';
+    display: block;
+    color: rgb(72, 255, 0);
+    font-size: 25px;
+    text-align: center;
+    width: 30px;
+    line-height: 30px;
+    position: absolute;
+    margin: 0;
+    z-index: 1;
+}
+
+#settings>.form {
+    max-height: 75vh;
+    overflow: auto;
 }

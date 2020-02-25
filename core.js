@@ -1,35 +1,46 @@
-const VERSION = "0.4";
+const VERSION = "0.5";
 
 var CONFIG = {
-    EDITOR: {
-        id: 0,
-        old: "",
-        new: "",
-    },
+    EDITOR: { id: 0, old: "", new: "" },
     PLUGINS: [1, 1],
     THEME: {
-        0: ["Title", "", "title"],
-        1: ["Background", "", "background"],
-        2: ["Font", "", "font"],
-        3: ["RGB 1", "", "rgb1"],
-        4: ["RGB 2", "", "rgb2"],
-        5: ["Animation", "", "animation"],
-        6: ["Online", "", "Online"],
-        7: ["Idle", "", "Idle"],
-        8: ["Unavailable", "", "Unavailable"],
-        9: ["Offline", "", "Offline"],
-        10: ["Playing", "", "Playing"],
-        11: ["Xbox", "", "Xbox"],
-        12: ["Spotify", "", "Spotify"],
-        13: ["Streaming", "", "Streaming"],
-        14: ["Grey", "", "grey"],
-        15: ["Darkgrey", "", "darkgrey"],
-        16: ["ChatBox", "", "ChatBox"],
-        17: ["Sidebar", "", "Sidebar"],
-        18: ["SendMessage", "", "SendMessage"],
-        19: ["Logo", "", "logo"],
-        20: ["HoverMessage", "", "HoverMessage"],
-        21: ["Animation Time", "", "time"],
+        0: ["Title", "ÆroSpace", "title"],
+        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background"],
+        2: ["Font", "Quicksand", "font"],
+        3: ["RGB 1", "rgb(130, 0, 216)", "rgb1"],
+        4: ["RGB 2", "rgb(0, 225, 255)", "rgb2"],
+        5: ["Animation", "var(--rgb1), var(--rgb2)", "animation"],
+        6: ["Online", "rgb(0, 255, 136)", "Online"],
+        7: ["Idle", "rgb(0, 99, 156)", "Idle"],
+        8: ["Unavailable", "rgb(228, 15, 0)", "Unavailable"],
+        9: ["Offline", "rgb(90, 95, 100)", "Offline"],
+        10: ["Playing", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg)", "Playing"],
+        11: ["Xbox", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg)", "Xbox"],
+        12: ["Spotify", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg)", "Spotify"],
+        13: ["Streaming", "url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg)", "Streaming"],
+        14: ["Grey", "rgb(77, 70, 85)", "grey"],
+        15: ["Darkgrey", "rgb(18, 18, 18)", "darkgrey"],
+        16: ["ChatBox", "var(--darkgrey5)", "ChatBox"],
+        17: ["Sidebar", "var(--darkgrey5)", "Sidebar"],
+        18: ["Send Message", "var(--darkgrey)", "SendMessage"],
+        19: ["Logo", "url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)", "logo"],
+        20: ["Hover Message", "var(--darkgrey5)", "HoverMessage"],
+        21: ["Animation Time", "5s", "time"],
+        22: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs"],
+        23: ["Add New Server", "➕ Add a new server", "AddNewServer"],
+        24: ["Close Window Button", "❌", "Close"],
+        25: ["Resize Window Button", "🔵", "Resize"],
+        26: ["Hide Window Button", "➖", "Hide"],
+        27: ["Profile Picture Hovered", "Watch me", "ProfilePic"],
+        28: ["Unread Icon", "✨", "Unread"],
+        29: ["Options Icon", "🔧", "Options"],
+        30: ["Channel Icon", "💬", "Channel"],
+        31: ["Emoji Icon", "🙂", "Emoji"],
+        32: ["Emoji Icon Hovered", "😜", "EmojiHover"],
+        33: ["Community Name", "purpies", "Community"],
+        34: ["Welcome Message", "Theme base designed by Purple Wizard.", "WelcomeMessage"],
+        35: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark"],
+        36: ["Edit Custom Status", "Put another status", "EditStatus"],
     },
 };
 
@@ -94,7 +105,7 @@ setInterval(function () {
 
 setInterval(function () {
     document.title = CONFIG.THEME[0][1] + " Theme Generator";
-    $('input').on("focusout", function () {
+    $('input:text').on("focusout", function () {
         SetValue($(this).data("id"));
         UpdateVars();
     });
@@ -110,11 +121,19 @@ setInterval(function () {
 
 (function () {
     ShowMenu(1);
-    UpdateVars();
+    InitVars();
     $("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
     $("input[type='text'], textarea").attr('spellcheck', false);
     $("#NewResult").on("click", function () { Result(); });
     $("#menu").on("click", ".RGBbutton", function () { ShowMenu($(this).attr("data-id")); });
+
+    $("#ToggleHover").on("click", function () {
+        UpdatePlugins();
+    });
+
+    $("#ToggleOffline").on("click", function () {
+        UpdatePlugins();
+    });
 
     $("#redNum").change(function () {
         if ($("#redNum").val() < 0) $("#redNum").val("0");
@@ -220,11 +239,11 @@ function download(filename, text) {
 }
 
 function ShowMenu(ID) {
-    var MENUS = ["General", "RGB", "Status", "Profile", "Menus", "Plugins (WIP)", "Texts (WIP)"];
+    var MENUS = ["General", "RGB", "Status", "Profile", "Menus", "Plugins", "Texts"];
     for (var i = 0; i < $('#menu').children('div').length; i++) {
         $("#config" + (i + 1)).hide();
         $("#btn" + (i + 1)).removeClass("active");
-        $("#btn" + (i+1)).html(MENUS[i]);
+        $("#btn" + (i + 1)).html(MENUS[i]);
     }
 
     $("#ConfigName").html("Config - " + MENUS[ID - 1]);
@@ -232,8 +251,19 @@ function ShowMenu(ID) {
     $("#config" + ID).show();
 }
 
+function InitVars() {
+    for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
+        $("#Theme-" + CONFIG.THEME[keys][2]).val(CONFIG.THEME[keys][1]);
+    }
+}
+
 function UpdateVars() {
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
         CONFIG.THEME[keys][1] = $("#Theme-" + CONFIG.THEME[keys][2]).val();
     }
+}
+
+function UpdatePlugins() {
+    if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1; else CONFIG.PLUGINS[0] = 0;
+    if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
 }
