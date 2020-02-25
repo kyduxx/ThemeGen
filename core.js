@@ -1,4 +1,4 @@
-const VERSION = "0.5";
+const VERSION = "0.52";
 
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
@@ -212,7 +212,10 @@ function Result() {
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        if (keys === 0 || keys === 2) {
+        if (keys > 21 && keys < 37) {
+            $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
+        }
+        else if (keys === 0 || keys === 2) {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
         } else {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
