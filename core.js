@@ -1,8 +1,8 @@
-const VERSION = "0.52";
+const VERSION = "0.6";
 
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
-    PLUGINS: [1, 1],
+    PLUGINS: [1, 1, 1],
     THEME: {
         0: ["Title", "ÆroSpace", "title"],
         1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background"],
@@ -41,6 +41,8 @@ var CONFIG = {
         34: ["Welcome Message", "Theme base designed by Purple Wizard.", "WelcomeMessage"],
         35: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark"],
         36: ["Edit Custom Status", "Put another status", "EditStatus"],
+        37: ["Server Folders", "📁", "Folders"],
+        38: ["Opened Server Folders", "💠", "FoldersOpen"],
     },
 };
 
@@ -132,6 +134,10 @@ setInterval(function () {
         UpdatePlugins();
     });
 
+    $("#ToggleToggleServerList").on("click", function () {
+        UpdatePlugins();
+    });
+
     $("#redNum").change(function () {
         if ($("#redNum").val() < 0) $("#redNum").val("0");
         $("#red").val($("#redNum").val());
@@ -206,10 +212,11 @@ function Result() {
     if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[0] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HoverMemberList.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[1] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>'); }
+    if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        if (keys > 21 && keys < 37) {
+        if (keys > 21 && keys < 39) {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
         }
         else if (keys === 0 || keys === 2) {
@@ -266,4 +273,5 @@ function UpdateVars() {
 function UpdatePlugins() {
     if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1; else CONFIG.PLUGINS[0] = 0;
     if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
+    if($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
 }

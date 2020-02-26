@@ -2,7 +2,7 @@
 
 <head>
     <link rel="icon" href="fav.gif" type="image/gif">
-    <link rel="stylesheet" href="styles.css?v=0.52">
+    <link rel="stylesheet" href="styles.css?v=0.6">
 </head>
 
 <body>
@@ -156,9 +156,9 @@
                     <input id="ToggleRGB" checked type="checkbox" class="square">
                     <div class="desc">This feature cannot by modified for now.</div>
                 </div>
-                <div class="value">Horizontal Server List (WIP)
-                    <input id="ToggleRGB" checked type="checkbox" class="square">
-                    <div class="desc">This feature cannot by modified for now.</div>
+                <div class="value">Horizontal Server List
+                    <input id="ToggleServerList" checked type="checkbox" class="square">
+                    <div class="desc">This feature put the server list on top of the window.</div>
                 </div>
             </div>
             <div id="config7" class="form" style="display: none;">
@@ -237,6 +237,17 @@
                     <div class="desc">Edit Custom Status Text (TEXT <span class="green">✔</span> / EMOJIS <span class="green">✔</span>
                         only)</div>
                 </div>
+
+                <div class="value">Server Folders <div class="no square"></div>
+                <input id="Theme-Folders" data-id="0" type="text">
+                <div class="desc">Edit closed server folder icon (TEXT <span class="green">✔</span> / EMOJIS <span class="green">✔</span>
+                    only)</div>
+            </div>
+            <div class="value">Opened Server Folders <div class="no square"></div>
+                <input id="Theme-FoldersOpen" data-id="0" type="text">
+                <div class="desc">Edit opened server folder icon (TEXT <span class="green">✔</span> / EMOJIS <span class="green">✔</span>
+                    only)</div>
+            </div>
             </div>
             <div id="NewResult" class="RGBbutton">Generate</div>
         </div>
@@ -299,7 +310,7 @@
     <div id="copyright"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="core.js?v=0.52" async></script>
+    <script src="core.js?v=0.6" async></script>
 </body>
 
 </html>
