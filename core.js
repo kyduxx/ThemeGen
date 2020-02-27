@@ -1,50 +1,80 @@
-const VERSION = "0.62";
+const VERSION = "0.7";
 
+var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
-    PLUGINS: [1, 1, 1],
+    PLUGINS: [0, 0, 0],
     THEME: {
-        0: ["Title", "ÆroSpace", "title"],
-        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background"],
-        2: ["Font", "Quicksand", "font"],
-        3: ["RGB 1", "rgb(130, 0, 216)", "rgb1"],
-        4: ["RGB 2", "rgb(0, 225, 255)", "rgb2"],
-        5: ["Animation", "var(--rgb1), var(--rgb2)", "animation"],
-        6: ["Online", "rgb(0, 255, 136)", "Online"],
-        7: ["Idle", "rgb(0, 99, 156)", "Idle"],
-        8: ["Unavailable", "rgb(228, 15, 0)", "Unavailable"],
-        9: ["Offline", "rgb(90, 95, 100)", "Offline"],
-        10: ["Playing", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg)", "Playing"],
-        11: ["Xbox", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg)", "Xbox"],
-        12: ["Spotify", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg)", "Spotify"],
-        13: ["Streaming", "url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg)", "Streaming"],
-        14: ["Grey", "rgb(77, 70, 85)", "grey"],
-        15: ["Darkgrey", "rgb(18, 18, 18)", "darkgrey"],
-        16: ["ChatBox", "var(--darkgrey5)", "ChatBox"],
-        17: ["Sidebar", "var(--darkgrey5)", "Sidebar"],
-        18: ["Send Message", "var(--darkgrey)", "SendMessage"],
-        19: ["Logo", "url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)", "logo"],
-        20: ["Hover Message", "var(--darkgrey5)", "HoverMessage"],
-        21: ["Animation Time", "5s", "time"],
-        22: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs"],
-        23: ["Add New Server", "➕ Add a new server", "AddNewServer"],
-        24: ["Close Window Button", "❌", "Close"],
-        25: ["Resize Window Button", "🔵", "Resize"],
-        26: ["Hide Window Button", "➖", "Hide"],
-        27: ["Profile Picture Hovered", "Watch me", "ProfilePic"],
-        28: ["Unread Icon", "✨", "Unread"],
-        29: ["Options Icon", "🔧", "Options"],
-        30: ["Channel Icon", "💬", "Channel"],
-        31: ["Emoji Icon", "🙂", "Emoji"],
-        32: ["Emoji Icon Hovered", "😜", "EmojiHover"],
-        33: ["Community Name", "purpies", "Community"],
-        34: ["Welcome Message", "Theme base designed by Purple Wizard.", "WelcomeMessage"],
-        35: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark"],
-        36: ["Edit Custom Status", "Put another status", "EditStatus"],
-        37: ["Server Folders", "📁", "Folders"],
-        38: ["Opened Server Folders", "💠", "FoldersOpen"],
+        0: ["Title", "Purple's", "title", "general", "Theme title", accepts = ["texts"], false],
+        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background", "general", "Theme background", accepts = ["img"], false],
+        2: ["Font", "Quicksand", "font", "general", "Theme font", accepts = ["fonts"], false],
+        3: ["Animation", "rgb(130, 0, 216), rgb(0, 225, 255)", "animation", "rgb", "RGB Animation", accepts = ["colors", "rgb"], true],
+        4: ["Online", "rgb(0, 255, 136)", "Online", "status", "Online status color", accepts = ["rgb", "colors"], true],
+        5: ["Idle", "rgb(0, 99, 156)", "Idle", "status", "Idle status color", accepts = ["rgb", "colors"], true],
+        6: ["Unavailable", "rgb(228, 15, 0)", "Unavailable", "status", "Unavailable status color", accepts = ["rgb", "colors"], true],
+        7: ["Offline", "rgb(90, 95, 100)", "Offline", "status", "Offline status color", accepts = ["rgb", "colors"], true],
+        8: ["Playing", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg)", "Playing", "profile", "Playing profile color", accepts = ["img", "colors", "rgb"], true],
+        9: ["Xbox", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg)", "Xbox", "profile", "Xbox profile color", accepts = ["img", "colors", "rgb"], true],
+        10: ["Spotify", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg)", "Spotify", "profile", "Spotify profile color", accepts = ["img", "colors", "rgb"], true],
+        11: ["Streaming", "url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg)", "Streaming", "profile", "Streaming profile color", accepts = ["img", "colors", "rgb"], true],
+        12: ["Grey", "rgb(77, 70, 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
+        13: ["Darkgrey", "rgb(18, 18, 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
+        14: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "colors", "vars"], true],
+        15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "colors", "vars"], true],
+        16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "colors", "vars"], true],
+        17: ["Logo", "url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
+        18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "icons", "vars"], true],
+        19: ["Animation Time", "5s", "time", "rgb", "Duration in seconds of the animation (Example: 10s = 10 seconds)", accepts = ["texts"], false],
+        20: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
+        21: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
+        22: ["Close Window Button", "❌", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
+        23: ["Resize Window Button", "🔵", "Resize", "texts", "Resize window icon", accepts = ["texts", "icons"], false],
+        24: ["Hide Window Button", "➖", "Hide", "texts", "Hide windows icon", accepts = ["texts", "icons"], false],
+        25: ["Profile Picture Hovered", "Watch me", "ProfilePic", "texts", "Text of an hovered profile picture", accepts = ["texts", "icons"], false],
+        26: ["Unread Icon", "✨", "Unread", "texts", "Unread Icon Text", accepts = ["texts", "icons"], false],
+        27: ["Options Icon", "🔧", "Options", "texts", "Options Icon", accepts = ["texts", "icons"], false],
+        28: ["Channel Icon", "💬", "Channel", "texts", "This replaces the default # in the Upper left Chat box", accepts = ["texts", "icons"], false],
+        29: ["Emoji Icon", "🙂", "Emoji", "texts", "Emojis Button", accepts = ["texts", "icons"], false],
+        30: ["Emoji Icon Hovered", "😜", "EmojiHover", "texts", "Hovered Emojis Button", accepts = ["texts", "icons"], false],
+        31: ["Community Name", "purpies", "Community", "texts", "Text after the members count in server invites", accepts = ["texts", "icons"], false],
+        32: ["Welcome Message", "Theme base designed by Purple Wizard.", "WelcomeMessage", "texts", "Text after the greeting message of a server", accepts = ["texts", "icons"], false],
+        33: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
+        34: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
+        35: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
+        36: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
     },
 };
+
+function InitVars() {
+    for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
+        let square = "<div class='no square'></div>";
+        if (CONFIG.THEME[keys][6] === true) square = "<div class='square' id='square-" + CONFIG.THEME[keys][2] + "'></div>";
+
+
+        var Accepted = "<span class='accept'>";
+
+        for (var i in CONFIG.THEME[keys][5]) {
+            if (i != 0) Accepted = Accepted + ", " + CONFIG.THEME[keys][5][i];
+            else Accepted = Accepted + CONFIG.THEME[keys][5][i];
+        }
+
+        Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("colors").join("<span class='green'>✔</span> Colors Name").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
+
+        if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
+
+        var CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '">' + CONFIG.THEME[keys][0] + square +
+            '<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
+            '<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div>' +
+            '</div>');
+
+        if (CONFIG.THEME[keys][3] === "general") $("#config1").append(CONTENT);
+        if (CONFIG.THEME[keys][3] === "rgb") $("#config2").append(CONTENT);
+        if (CONFIG.THEME[keys][3] === "status") $("#config3").append(CONTENT);
+        if (CONFIG.THEME[keys][3] === "profile") $("#config4").append(CONTENT);
+        if (CONFIG.THEME[keys][3] === "menus") $("#config5").append(CONTENT);
+        if (CONFIG.THEME[keys][3] === "texts") $("#config7").append(CONTENT);
+    }
+}
 
 function Edit(target) {
     $("#settings").hide();
@@ -57,7 +87,30 @@ function Edit(target) {
     $("#redNum").val(0);
     $("#greenNum").val(0);
     $("#blueNum").val(0);
-    CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+    $("#Variables").hide();
+    $("#colorpicker").hide();
+    $("#Fonts").hide();
+    var SHOWVAREDITOR = 0;
+    var SHOWRGBEDITOR = 0;
+    var SHOWFONTSEDITOR = 0;
+    for (var i in CONFIG.THEME[target][5]) {
+        if (CONFIG.THEME[target][5][i] === "rgb") SHOWRGBEDITOR = 1;
+        if (CONFIG.THEME[target][5][i] === "vars") SHOWVAREDITOR = 1;
+        if (CONFIG.THEME[target][5][i] === "fonts") SHOWFONTSEDITOR = 1;
+    }
+
+    if (SHOWRGBEDITOR === 1) {
+        $("#colorpicker").show();
+        CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+    }
+    if (SHOWVAREDITOR === 1) {
+        $("#Variables").show();
+        CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+    }
+    if (SHOWFONTSEDITOR === 1) {
+        $("#Fonts").show();
+        CONFIG.EDITOR.new = "Quicksand";
+    }
     $("#EditorSelection").html("Editing <div class='noedit'>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "</div>");
     $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
     $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
@@ -72,22 +125,13 @@ function GetValue(STYLE) {
 
 function SetValue(STYLE) {
     document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
-    if (STYLE === 3 || STYLE === 4) {
-        document.body.style.setProperty('--temp', GetValue(3));
-        document.body.style.setProperty('--animation', CONFIG.THEME[5][1]);
-    }
-    if (STYLE === 16 || STYLE === 17 || STYLE === 18 || STYLE === 20) {
-        document.body.style.setProperty('--' + CONFIG.THEME[14][2], CONFIG.THEME[14][1]);
-        document.body.style.setProperty('--' + CONFIG.THEME[15][2], CONFIG.THEME[15][1]);
-    }
 
-    if (STYLE === 14) {
-        var grey5 = CONFIG.THEME[14][1].split("rgb(").join("rgba(").split(")").join(", .5)");
+    if (CONFIG.THEME[STYLE][3] === "menus") {
+        document.body.style.setProperty('--' + CONFIG.THEME[12][2], CONFIG.THEME[12][1]);
+        document.body.style.setProperty('--' + CONFIG.THEME[13][2], CONFIG.THEME[13][1]);
+        var grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(", .5)");
+        var darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(", .75)");
         document.body.style.setProperty('--grey5', grey5);
-    }
-
-    if (STYLE === 15) {
-        var darkgrey5 = CONFIG.THEME[15][1].split("rgb(").join("rgba(").split(")").join(", .75)");
         document.body.style.setProperty('--darkgrey5', darkgrey5);
     }
     document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
@@ -109,11 +153,17 @@ setInterval(function () {
         UpdateVars();
     });
     if ($("#edition").is(":visible")) {
-        console.log("update edition");
         CONFIG.EDITOR.old = CONFIG.THEME[CONFIG.EDITOR.id][1];
-        CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
-        $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
-        $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
+        if (CONFIG.EDITOR.new != "var(--grey)" && CONFIG.EDITOR.new != "var(--darkgrey)" && CONFIG.EDITOR.new != "var(--grey5)" && CONFIG.EDITOR.new != "var(--darkgrey5)" && CONFIG.EDITOR.new != "transparent") {
+            if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+        }
+        if ($("#Fonts").is(":visible")) {
+            $("#EditorOld").html("Old Font <div class='noedit'>" + CONFIG.EDITOR.old + "</div>");
+            $("#EditorNew").html("New Font <div class='noedit' style='font-family:" + CONFIG.EDITOR.new + ", sans-serif';>" + CONFIG.EDITOR.new + "</div>");
+        } else {
+            $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
+            $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
+        }
     }
     if ($('#ResultText').is(':empty')) $("#output").hide(); else $("#output").show();
 }, 1000);
@@ -121,6 +171,9 @@ setInterval(function () {
 (function () {
     ShowMenu(1);
     InitVars();
+    for (var f in fonts) {
+        $("#fontsList").append("<a href='#' id='font" + f + "'>" + fonts[f] + "</a>");
+    }
     $("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
     $("input[type='text'], textarea").attr('spellcheck', false);
     $("#NewResult").on("click", function () { Result(); });
@@ -134,7 +187,7 @@ setInterval(function () {
         UpdatePlugins();
     });
 
-    $("#ToggleToggleServerList").on("click", function () {
+    $("#ToggleServerList").on("click", function () {
         UpdatePlugins();
     });
 
@@ -166,16 +219,74 @@ setInterval(function () {
         document.documentElement.style.setProperty('--temp3', "rgb(0, 0, " + $("#blue").val() + ")");
     });
 
-    $("#RGB1").on("click", function () { Edit(3); });
-    $("#RGB2").on("click", function () { Edit(4); });
+    $("#font").on("click", function () { Edit(2); });
 
-    $("#Status1").on("click", function () { Edit(6); });
-    $("#Status2").on("click", function () { Edit(7); });
-    $("#Status3").on("click", function () { Edit(8); });
-    $("#Status4").on("click", function () { Edit(9); });
+    $("#font0").on("click", function () {
+        CONFIG.EDITOR.new = fonts[0];
+    });
+    $("#font1").on("click", function () {
+        CONFIG.EDITOR.new = fonts[1];
+    });
+    $("#font2").on("click", function () {
+        CONFIG.EDITOR.new = fonts[2];
+    });
+    $("#font3").on("click", function () {
+        CONFIG.EDITOR.new = fonts[3];
+    });
+    $("#font4").on("click", function () {
+        CONFIG.EDITOR.new = fonts[4];
+    });
+    $("#font5").on("click", function () {
+        CONFIG.EDITOR.new = fonts[5];
+    });
+    $("#font6").on("click", function () {
+        CONFIG.EDITOR.new = fonts[6];
+    });
+    $("#font7").on("click", function () {
+        CONFIG.EDITOR.new = fonts[7];
+    });
+    $("#font8").on("click", function () {
+        CONFIG.EDITOR.new = fonts[8];
+    });
+    $("#font9").on("click", function () {
+        CONFIG.EDITOR.new = fonts[9];
+    });
+    $("#font10").on("click", function () {
+        CONFIG.EDITOR.new = fonts[10];
+    });
 
-    $("#Grey").on("click", function () { Edit(14); });
-    $("#Darkgrey").on("click", function () { Edit(15); });
+
+    $("#Online").on("click", function () { Edit(4); });
+    $("#Idle").on("click", function () { Edit(5); });
+    $("#Unavailable").on("click", function () { Edit(6); });
+    $("#Offline").on("click", function () { Edit(7); });
+
+    $("#grey").on("click", function () { Edit(12); });
+    $("#darkgrey").on("click", function () { Edit(13); });
+    $("#ChatBox").on("click", function () { Edit(14); });
+    $("#Sidebar").on("click", function () { Edit(15); });
+    $("#HoverMessage").on("click", function () { Edit(18); });
+    $("#SendMessage").on("click", function () { Edit(16); });
+
+    $("#VAR1").on("click", function () {
+        CONFIG.EDITOR.new = "var(--grey)";
+    });
+
+    $("#VAR2").on("click", function () {
+        CONFIG.EDITOR.new = "var(--darkgrey)";
+    });
+
+    $("#VAR3").on("click", function () {
+        CONFIG.EDITOR.new = "var(--grey5)";
+    });
+
+    $("#VAR4").on("click", function () {
+        CONFIG.EDITOR.new = "var(--darkgrey5)";
+    });
+
+    $("#VAR5").on("click", function () {
+        CONFIG.EDITOR.new = "transparent";
+    });
 
     $("#SaveEdition").on("click", function () {
         $("#edition").hide();
@@ -210,13 +321,17 @@ function Result() {
     $("#ResultText").append('<span class="meta">//META{"name":"' + CONFIG.THEME[0][1] + '","description":"Made with ÆroSpace Theme Generator","author":"ᴘᴜʀᴘʟᴇ ᴡɪᴢᴀʀᴅ#0984","version":"1.0", "website":"https://github.com/GoldenLys/"}*//{}</span>\n<br>');
     $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
     if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
+    if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
+    if (CONFIG.THEME[2][1] === "Lobster") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap")</span>;\n<br>'); }
+    if (CONFIG.THEME[2][1] === "Indie Flower") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap")</span>;\n<br>'); }
+    if (CONFIG.THEME[2][1] === "Cuprum") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Cuprum&display=swap")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[0] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HoverMemberList.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[1] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        if (keys > 21 && keys < 39) {
+        if (CONFIG.THEME[keys][3] === "texts") {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
         }
         else if (keys === 0 || keys === 2) {
@@ -226,8 +341,8 @@ function Result() {
         }
     }
 
-    var grey5 = CONFIG.THEME[14][1].split("rgb(").join("rgba(").split(")").join(", .5)");
-    var darkgrey5 = CONFIG.THEME[15][1].split("rgb(").join("rgba(").split(")").join(", .75)");
+    var grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(", .5)");
+    var darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(", .75)");
     $("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
     $("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
 
@@ -257,12 +372,6 @@ function ShowMenu(ID) {
     $("#config" + ID).show();
 }
 
-function InitVars() {
-    for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        $("#Theme-" + CONFIG.THEME[keys][2]).val(CONFIG.THEME[keys][1]);
-    }
-}
-
 function UpdateVars() {
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
         CONFIG.THEME[keys][1] = $("#Theme-" + CONFIG.THEME[keys][2]).val();
@@ -272,5 +381,5 @@ function UpdateVars() {
 function UpdatePlugins() {
     if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1; else CONFIG.PLUGINS[0] = 0;
     if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
-    if($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
+    if ($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
 }
