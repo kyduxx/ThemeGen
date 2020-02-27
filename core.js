@@ -1,12 +1,12 @@
-const VERSION = "0.7";
+const VERSION = "0.72";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     PLUGINS: [0, 0, 0],
     THEME: {
-        0: ["Title", "Purple's", "title", "general", "Theme title", accepts = ["texts"], false],
-        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background", "general", "Theme background", accepts = ["img"], false],
+        0: ["Title", "Discord", "title", "general", "Theme title", accepts = ["texts"], false],
+        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background", "general", "Theme background", accepts = ["img", "rgb", "colors"], false],
         2: ["Font", "Quicksand", "font", "general", "Theme font", accepts = ["fonts"], false],
         3: ["Animation", "rgb(130, 0, 216), rgb(0, 225, 255)", "animation", "rgb", "RGB Animation", accepts = ["colors", "rgb"], true],
         4: ["Online", "rgb(0, 255, 136)", "Online", "status", "Online status color", accepts = ["rgb", "colors"], true],
