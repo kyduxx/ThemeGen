@@ -1,4 +1,4 @@
-const VERSION = "0.6";
+const VERSION = "0.62";
 
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
@@ -82,12 +82,12 @@ function SetValue(STYLE) {
     }
 
     if (STYLE === 14) {
-        var grey5 = CONFIG.THEME[14][1].split(")").join(", .5)");
+        var grey5 = CONFIG.THEME[14][1].split("rgb(").join("rgba(").split(")").join(", .5)");
         document.body.style.setProperty('--grey5', grey5);
     }
 
     if (STYLE === 15) {
-        var darkgrey5 = CONFIG.THEME[15][1].split(")").join(", .75)");
+        var darkgrey5 = CONFIG.THEME[15][1].split("rgb(").join("rgba(").split(")").join(", .75)");
         document.body.style.setProperty('--darkgrey5', darkgrey5);
     }
     document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
@@ -226,10 +226,9 @@ function Result() {
         }
     }
 
-    var grey5 = CONFIG.THEME[14][1].split(")").join(", .5)");
+    var grey5 = CONFIG.THEME[14][1].split("rgb(").join("rgba(").split(")").join(", .5)");
+    var darkgrey5 = CONFIG.THEME[15][1].split("rgb(").join("rgba(").split(")").join(", .75)");
     $("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
-
-    var darkgrey5 = CONFIG.THEME[15][1].split(")").join(", .75)");
     $("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
 
     $("#ResultText").append('<span class="val">}</span> <span class="comment">/* Made with Purple Wizard theme generator v' + VERSION + ', have fun ! */</span>');
