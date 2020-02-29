@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cuprum&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=0.7">
+    <link rel="stylesheet" href="styles.css?v=0.8">
 </head>
 
 <body>
@@ -29,25 +29,28 @@
                 <div data-id="7" id="btn7" class="RGBbutton"></div>
             </div>
             <div id="config1" class="form"></div>
-            <div id="config2" class="form"></div>
+            <div id="config2" class="form">
+                <div class="menu">
+                    <div id="REMOVERGB" class="RGBbutton Remove">Remove 1 Color</div>
+                    <div id="ADDRGB" class="RGBbutton Add">Add 1 Color</div>
+                </div>
+                <p id="rgbtext" />
+            </div>
             <div id="config3" class="form"></div>
             <div id="config4" class="form"></div>
             <div id="config5" class="form"></div>
             <div id="config6" class="form">
-                <div class="value">Hoverable Memberlist
-                    <input id="ToggleHover" type="checkbox" class="square">
-                    <div class="desc">This makes the memberlist a bit smaller and let you open it by hoverring it.</div>
+                <div class="value" id="HoverMemberList">Hoverable Memberlist
+                    <input id="ToggleHover" type="checkbox" checked class="square">
+                    <div class="desc">This makes the list of members a little smaller and allows you to open it by
+                        hovering over it.</div>
                 </div>
-                <div class="value">Disable offline status
-                    <input id="ToggleOffline" type="checkbox" class="square">
-                    <div class="desc">Remove the grey offline status.</div>
+                <div class="value" id="NoOffline">Disable offline status
+                    <input id="ToggleOffline" type="checkbox" checked class="square">
+                    <div class="desc">Remove the offline status from the list of members and profiles.</div>
                 </div>
-                <div class="value">RGB Theme (WIP)
-                    <input id="ToggleRGB" type="checkbox" class="square">
-                    <div class="desc">This feature cannot by modified for now.</div>
-                </div>
-                <div class="value">Horizontal Server List
-                    <input id="ToggleServerList" type="checkbox" class="square">
+                <div class="value" id="HorizontalServerList">Horizontal Server List
+                    <input id="ToggleServerList" type="checkbox" checked class="square">
                     <div class="desc">This feature put the server list on top of the window.</div>
                 </div>
             </div>
@@ -137,7 +140,7 @@
     <div id="copyright"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="core.js?v=0.72" async></script>
+    <script src="core.js?v=0.8" async></script>
 </body>
 
 </html>

@@ -5,6 +5,16 @@
     --logo: url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif);
     --background: url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg);
     --font: 'Quicksand';
+    --rgb1: rgb(130, 0, 216);
+    --rgb2: rgb(0, 225, 255);
+    --rgb3: rgb(0, 0, 0);
+    --rgb4: rgb(0, 0, 0);
+    --rgb5: rgb(0, 0, 0);
+    --rgb6: rgb(0, 0, 0);
+    --rgb7: rgb(0, 0, 0);
+    --rgb8: rgb(0, 0, 0);
+    --rgb9: rgb(0, 0, 0);
+    --rgb10: rgb(0, 0, 0);
     --animation: rgb(130, 0, 216), rgb(0, 225, 255);
     --Online: rgb(0, 255, 136);
     --Idle: rgb(0, 99, 156);
@@ -28,13 +38,16 @@
     --time: 5s;
     --JoinUs: 'Hey! Wanna have some fun.. Join US !';
     --AddNewServer: '➕ Add a new server';
-    --Close: '❌';
+    --Close: '🔴';
     --Resize: '🔵';
-    --Hide: '➖';
+    --Hide: '⚫';
     --ProfilePic: 'Watch me';
     --Unread: '✨';
     --Options: '🔧';
     --Channel: '💬';
+    --Voice: "🔊";
+    --Micro: "🎙️";
+    --Headset: "🎧";
     --Emoji: '🙂';
     --EmojiHover: '😜';
     --Community: 'purpies';
@@ -103,6 +116,46 @@
 
 #square-logo {
     background: center / cover no-repeat var(--logo);
+}
+
+#square-rgb1 {
+    background-color: var(--rgb1);
+}
+
+#square-rgb2 {
+    background-color: var(--rgb2);
+}
+
+#square-rgb3 {
+    background-color: var(--rgb3);
+}
+
+#square-rgb4 {
+    background-color: var(--rgb4);
+}
+
+#square-rgb5 {
+    background-color: var(--rgb5);
+}
+
+#square-rgb6 {
+    background-color: var(--rgb6);
+}
+
+#square-rgb7 {
+    background-color: var(--rgb7);
+}
+
+#square-rgb8 {
+    background-color: var(--rgb8);
+}
+
+#square-rgb9 {
+    background-color: var(--rgb9);
+}
+
+#square-rgb10 {
+    background-color: var(--rgb10);
 }
 
 body {
@@ -263,6 +316,7 @@ code:after {
 
 .menu {
     display: flex;
+    margin: 5px;
 }
 
 .menu .RGBbutton:first-child {
@@ -301,6 +355,7 @@ input[type=text] {
     width: calc(50% - 10px);
 }
 
+
 input[type=text]:focus {
     width: 75%;
     color: var(--purple);
@@ -334,6 +389,26 @@ input[type=text]:focus {
     50% {
         background-position: 100% 50%;
     }
+}
+
+.RGBbutton.Add {
+    background-color: var(--Online);
+}
+
+.RGBbutton.Remove {
+    background-color: var(--Unavailable);
+}
+
+.RGBbutton.disabled {
+    background-color: var(--darkgrey)!important;
+    color: var(--grey)!important;
+
+}
+
+.RGBbutton.disabled:hover {
+    transform: none!important;
+    text-shadow: none!important;
+    font-weight: initial!important;
 }
 
 .RGBbutton {
@@ -414,7 +489,7 @@ input[type=text]:focus {
 
 .custom {
     -webkit-appearance: none;
-    width: 69%;
+    width: 80%;
     font-size: 20px;
     line-height: 30px;
     margin: 5px;
@@ -445,7 +520,7 @@ input[type=text]:focus {
 }
 
 #colorpicker .inline.column .title {
-    width: 100px!important;
+    width: 10%!important;
 }
 
 #colorpicker .inline.column {
@@ -505,8 +580,8 @@ input[type=number] {
     padding-top: .35em;
     width: 100%;
 }
-.dropdown,
-.startCircle, .RGBbutton, #square-animation, code:after, input[type=checkbox]:checked {
+
+.dropdown, .startCircle, .RGBbutton:not(.Add):not(.Remove), #square-animation, code:after, input[type=checkbox]:checked {
     background: radial-gradient(circle, var(--animation))!important;
     background-size: 1000% 500%!important;
     -webkit-animation: K2KBG var(--time) ease infinite !important;
@@ -683,7 +758,7 @@ input[type=checkbox]:checked::before {
 
 .dropdown-content a {
     color: white;
-    padding: 5px 16px;
+    padding: 0 16px;
     text-decoration: none;
     display: block;
 }
@@ -706,4 +781,10 @@ input[type=checkbox]:checked::before {
 .dropbtn:after {
     margin-left: 5px;
     content: "⬇"
+}
+
+#rgbtext {
+    text-align: center;
+    color: var(--Unavailable);
+    width: 100%;
 }
