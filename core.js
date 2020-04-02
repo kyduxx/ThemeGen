@@ -348,6 +348,7 @@ function UPDATEUI() {
     $("#Sidebar").on("click", function () { Edit(15); });
     $("#HoverMessage").on("click", function () { Edit(18); });
     $("#SendMessage").on("click", function () { Edit(16); });
+    $("#TitleBG").on("click", function () { Edit(49); });
 
     $("#VAR1").on("click", function () {
         CONFIG.EDITOR.new = "var(--grey)";

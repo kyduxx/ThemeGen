@@ -32,6 +32,7 @@
     --SendMessage: var(--darkgrey);
     --Sidebar: var(--darkgrey5);
     --HoverMessage: var(--darkgrey5);
+    --TitleBG: var(--darkgrey5);
     --temp1: rgb(128, 0, 0);
     --temp2: rgb(0, 128, 0);
     --temp3: rgb(0, 0, 128);
@@ -100,6 +101,10 @@
 
 #square-Chatbox {
     background-color: var(--ChatBox);
+}
+
+#square-TitleBG {
+    background-color: var(--TitleBG);
 }
 
 #square-Sidebar {
