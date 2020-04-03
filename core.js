@@ -1,4 +1,4 @@
-const VERSION = "0.91";
+const VERSION = "0.92";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
@@ -259,6 +259,10 @@ function UPDATEUI() {
     });
 
     $("#ToggleServerList").on("click", function () {
+        UpdatePlugins();
+    });
+
+    $("#ToggleGHSL").on("click", function () {
         UpdatePlugins();
     });
 
