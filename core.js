@@ -1,10 +1,10 @@
-const VERSION = "0.92";
+const VERSION = "2.0";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     RGB: 2,
-    PLUGINS: [1, 1, 1, 0],
+    PLUGINS: [1, 1, 1, 0, 0],
     THEME: {
         0: ["Title", "Discord", "title", "general", "Theme title", accepts = ["texts"], false],
         1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
@@ -25,7 +25,7 @@ var CONFIG = {
         16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
         17: ["Logo", "url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
         18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "icons", "vars"], true],
-        19: ["RGB 1", "rgb(130, 0, 216)", "rgb1", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
+        19: ["RGB 1", "rgb(130, 0, 216)", "Primary", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
         20: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
         21: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
         22: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
@@ -157,6 +157,7 @@ function SetValue(STYLE) {
             if (CONFIG.RGB >= 9) animation = animation + ", " + CONFIG.THEME[44][1];
             if (CONFIG.RGB == 10) animation = animation + ", " + CONFIG.THEME[45][1];
             document.body.style.setProperty('--animation', OPTIONALRGB);
+            document.body.style.setProperty('--rgb1', 'var(--Primary)');
         }
 
         if (CONFIG.THEME[STYLE][3] === "menus") {
@@ -267,6 +268,10 @@ function UPDATEUI() {
         UpdatePlugins();
     });
 
+    $("#ToggleGAT").on("click", function () {
+        UpdatePlugins();
+    });
+
     $("#redNum").change(function () {
         if ($("#redNum").val() < 0) $("#redNum").val("0");
         $("#red").val($("#redNum").val());
@@ -331,7 +336,7 @@ function UPDATEUI() {
         CONFIG.EDITOR.new = fonts[10];
     });
 
-    $("#rgb1").on("click", function () { Edit(19); });
+    $("#Primary").on("click", function () { Edit(19); });
     $("#rgb2").on("click", function () { Edit(37); });
     $("#rgb3").on("click", function () { Edit(38); });
     $("#rgb4").on("click", function () { Edit(39); });
@@ -423,7 +428,7 @@ function Result() {
     $("#settings").hide();
     $("#output").show();
     $("#ResultText").html("");
-    $("#ResultText").append('<span class="meta">//META{"name":"' + CONFIG.THEME[0][1] + '","description":"Made with ÆroSpace Theme Generator","author":"ᴘᴜʀᴘʟᴇ ᴡɪᴢᴀʀᴅ#0984","version":"' + VERSION + '", "website":"https://github.com/GoldenLys/"}*//{}</span>\n<br>');
+    $("#ResultText").append('<span class="meta">/**\n<br>* @name ' + CONFIG.THEME[0][1] + '\n<br>* @author ᴘᴜʀᴘʟᴇ ᴡɪᴢᴀʀᴅ#0984\n<br>* @version ' + VERSION + '\n<br>* @invite SBuYeHh\n<br>* @description An amazing RGB theme with full customization included, made by Purple Wizard.\n<br>* @source https://github.com/GoldenLys/BetterDiscord-Elysia\n<br>* @website https://goldenlys.github.io/ThemeGen\n<br>*/\n<br>');
     $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
     if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
@@ -434,6 +439,8 @@ function Result() {
     if (CONFIG.PLUGINS[1] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
+    if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GameActivityToggle_FIX.css")</span>;\n<br>'); }
+    
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
@@ -460,6 +467,7 @@ function Result() {
     let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(", .75)");
     $("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
     $("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
+    $("#ResultText").append('<span class="var">--Primary:</span> ' + CONFIG.THEME[19][1] + ';\n<br>');
 
     $("#ResultText").append('<span class="val">}</span> <span class="comment">/* Made with Purple Wizard theme generator v' + VERSION + ', have fun ! */</span>');
 }
@@ -498,4 +506,5 @@ function UpdatePlugins() {
     if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
     if ($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
     if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1; else CONFIG.PLUGINS[3] = 0;
+    if ($("#ToggleGAT").is(':checked')) CONFIG.PLUGINS[4] = 1; else CONFIG.PLUGINS[4] = 0;
 }

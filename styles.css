@@ -5,7 +5,8 @@
     --logo: url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif);
     --background: url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg);
     --font: 'Quicksand';
-    --rgb1: rgb(130, 0, 216);
+    --Primary: rgb(130, 0, 216);
+    --rgb1: var(--Primary);
     --rgb2: rgb(0, 225, 255);
     --rgb3: rgb(0, 0, 0);
     --rgb4: rgb(0, 0, 0);
@@ -124,7 +125,7 @@
     background: center / cover no-repeat var(--logo);
 }
 
-#square-rgb1 {
+#square-Primary {
     background-color: var(--rgb1);
 }
 
