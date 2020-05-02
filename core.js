@@ -241,6 +241,7 @@ function UPDATEUI() {
     $("#Theme-font").prop("disabled", true);
     for (var r = 0; r < 10; r++) { $("#Theme-rgb" + r).prop("disabled", true); }
 
+    $("#Theme-Primary").prop("disabled", true);
     $("#Theme-Online").prop("disabled", true);
     $("#Theme-Idle").prop("disabled", true);
     $("#Theme-Unavailable").prop("disabled", true);
