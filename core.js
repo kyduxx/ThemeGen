@@ -1,30 +1,31 @@
-const VERSION = "2.0";
+const VERSION = "2.1";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     RGB: 2,
     PLUGINS: [1, 1, 1, 0, 0],
+    SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
     THEME: {
         0: ["Title", "Discord", "title", "general", "Theme title", accepts = ["texts"], false],
-        1: ["Background", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg)", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
+        1: ["Background", "https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
         2: ["Font", "Quicksand", "font", "general", "Theme font", accepts = ["fonts"], false],
-        3: ["Animation Time", "5s", "time", "rgb", "Duration in seconds of the animation (Example: 10s = 10 seconds)", accepts = ["texts"], false],
+        3: ["Animation Time", "10s", "time", "rgb", "Duration in seconds of the animation (Example: 10s = 10 seconds)", accepts = ["texts"], false],
         4: ["Online", "rgb(0, 255, 136)", "Online", "status", "Online status color", accepts = ["rgb"], true],
         5: ["Idle", "rgb(0, 99, 156)", "Idle", "status", "Idle status color", accepts = ["rgb"], true],
         6: ["Unavailable", "rgb(228, 15, 0)", "Unavailable", "status", "Unavailable status color", accepts = ["rgb"], true],
         7: ["Offline", "rgb(90, 95, 100)", "Offline", "status", "Offline status color", accepts = ["rgb"], true],
-        8: ["Playing", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg)", "Playing", "profile", "Playing profile color", accepts = ["img", "rgb"], true],
-        9: ["Xbox", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg)", "Xbox", "profile", "Xbox profile color", accepts = ["img", "rgb"], true],
-        10: ["Spotify", "url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg)", "Spotify", "profile", "Spotify profile color", accepts = ["img", "rgb"], true],
-        11: ["Streaming", "url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg)", "Streaming", "profile", "Streaming profile color", accepts = ["img", "rgb"], true],
+        8: ["Playing", "https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg", "Playing", "profile", "Playing profile color", accepts = ["img", "rgb"], true],
+        9: ["Xbox", "https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg", "Xbox", "profile", "Xbox profile color", accepts = ["img", "rgb"], true],
+        10: ["Spotify", "https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg", "Spotify", "profile", "Spotify profile color", accepts = ["img", "rgb"], true],
+        11: ["Streaming", "https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg", "Streaming", "profile", "Streaming profile color", accepts = ["img", "rgb"], true],
         12: ["Grey", "rgb(77, 70, 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
         13: ["Darkgrey", "rgb(18, 18, 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
         14: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "vars"], true],
         15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
         16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
-        17: ["Logo", "url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif)", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
-        18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "icons", "vars"], true],
+        17: ["Logo", "https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
+        18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "vars"], true],
         19: ["RGB 1", "rgb(130, 0, 216)", "Primary", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
         20: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
         21: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
@@ -64,23 +65,17 @@ function InitVars() {
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
         let square = "<div class='no square'></div>";
         if (CONFIG.THEME[keys][6] === true) square = "<div class='square' id='square-" + CONFIG.THEME[keys][2] + "'></div>";
-
-
-        var Accepted = "<span class='accept'>";
-
+        let Accepted = "<span class='accept'>";
         for (var i in CONFIG.THEME[keys][5]) {
             if (i != 0) Accepted = Accepted + ", " + CONFIG.THEME[keys][5][i];
             else Accepted = Accepted + CONFIG.THEME[keys][5][i];
         }
 
         Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
-
         if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
-
-        var CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '">' + CONFIG.THEME[keys][0] + square +
+        var CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
             '<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
-            '<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div>' +
-            '</div>');
+            '<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div></div>');
 
         if (CONFIG.THEME[keys][3] === "general") $("#config1").append(CONTENT);
         if (CONFIG.THEME[keys][3] === "rgb") $("#config2").append(CONTENT);
@@ -103,41 +98,51 @@ function Edit(target) {
         $("#redNum").val(0);
         $("#greenNum").val(0);
         $("#blueNum").val(0);
-        $("#Variables").hide();
-        $("#colorpicker").hide();
-        $("#Fonts").hide();
-        var SHOWVAREDITOR = 0;
-        var SHOWRGBEDITOR = 0;
-        var SHOWFONTSEDITOR = 0;
+        $("#EDITOR-VAR").hide();
+        $("#EDITOR-COL").hide();
+        $("#EDITOR-FNT").hide();
+        $("#EDITOR-URL").hide();
+        let SHOWVAREDITOR = 0;
+        let SHOWRGBEDITOR = 0;
+        let SHOWFONTSEDITOR = 0;
+        let SHOWURLEDITOR = 0;
         for (var i in CONFIG.THEME[target][5]) {
             if (CONFIG.THEME[target][5][i] === "rgb") SHOWRGBEDITOR = 1;
             if (CONFIG.THEME[target][5][i] === "vars") SHOWVAREDITOR = 1;
             if (CONFIG.THEME[target][5][i] === "fonts") SHOWFONTSEDITOR = 1;
+            if (CONFIG.THEME[target][5][i] === "img") SHOWURLEDITOR = 1;
         }
 
         if (SHOWRGBEDITOR === 1) {
-            $("#colorpicker").show();
+            $("#EDITOR-COL").show();
             CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
         }
         if (SHOWVAREDITOR === 1) {
-            $("#Variables").show();
+            $("#EDITOR-VAR").show();
             CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
         }
         if (SHOWFONTSEDITOR === 1) {
-            $("#Fonts").show();
+            $("#EDITOR-FNT").show();
             CONFIG.EDITOR.new = "Quicksand";
         }
-        $("#EditorSelection").html("Editing <div class='noedit'>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "</div>");
-        $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
-        $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
+        if (SHOWURLEDITOR === 1) {
+            $("#EDITOR-URL").show();
+            CONFIG.EDITOR.new = "https://";
+            $("#red").val(-1);
+            $("#green").val(-1);
+            $("#blue").val(-1);
+            $("#redNum").val(-1);
+            $("#greenNum").val(-1);
+            $("#blueNum").val(-1);
+        }
+        $("#EditorSelection").html("<div class='LEFT-BOX'>Editing</div>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "");
+        $("#EditorOld").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.old + '";></div>Old Value</div><input disabled type="text" value="' + CONFIG.EDITOR.old + '" class="fullwidth">');
+        $("#EditorNew").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.new + '";></div>New Value</div><input disabled type="text" value="' + CONFIG.EDITOR.new + '" class="fullwidth">');
     }
 }
 
 function GetValue(STYLE) {
-    var bodyStyles = window.getComputedStyle(document.body);
-    var value = bodyStyles.getPropertyValue('--' + CONFIG.THEME[STYLE][2]);
-
-    return value;
+    return window.getComputedStyle(document.body).getPropertyValue('--' + CONFIG.THEME[STYLE][2]);
 }
 
 function SetValue(STYLE) {
@@ -160,6 +165,12 @@ function SetValue(STYLE) {
             document.body.style.setProperty('--rgb1', 'var(--Primary)');
         }
 
+        if (STYLE === 1 || STYLE === 8 || STYLE === 9 || STYLE === 10 || STYLE === 11 || STYLE === 17) {
+            if (CONFIG.SELECTED[STYLE] === "img") {
+                document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], 'url(' + CONFIG.THEME[STYLE][1] + ')');
+            }
+        }
+
         if (CONFIG.THEME[STYLE][3] === "menus") {
             document.body.style.setProperty('--' + CONFIG.THEME[12][2], CONFIG.THEME[12][1]);
             document.body.style.setProperty('--' + CONFIG.THEME[13][2], CONFIG.THEME[13][1]);
@@ -168,7 +179,6 @@ function SetValue(STYLE) {
             document.body.style.setProperty('--grey5', grey5);
             document.body.style.setProperty('--darkgrey5', darkgrey5);
         }
-        document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
     }
 }
 
@@ -194,14 +204,21 @@ function UPDATEUI() {
     if ($("#edition").is(":visible")) {
         CONFIG.EDITOR.old = CONFIG.THEME[CONFIG.EDITOR.id][1];
         if (CONFIG.EDITOR.new != "var(--grey)" && CONFIG.EDITOR.new != "var(--darkgrey)" && CONFIG.EDITOR.new != "var(--grey5)" && CONFIG.EDITOR.new != "var(--darkgrey5)" && CONFIG.EDITOR.new != "transparent") {
-            if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+            let rgb = $("#red").val() + $("#blue").val() + $("#green").val();
+            if (rgb != "-1-1-1") {
+                if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+            }
+            if (CONFIG.EDITOR.id == 1 || CONFIG.EDITOR.id == 8 || CONFIG.EDITOR.id == 9 || CONFIG.EDITOR.id == 10 || CONFIG.EDITOR.id == 11 || CONFIG.EDITOR.id == 17) {
+                if (CONFIG.SELECTED[CONFIG.EDITOR.id] == "img") CONFIG.EDITOR.new = $("#NewURL").val();
+            }
+
         }
-        if ($("#Fonts").is(":visible")) {
-            $("#EditorOld").html("Old Font <div class='noedit'>" + CONFIG.EDITOR.old + "</div>");
-            $("#EditorNew").html("New Font <div class='noedit' style='font-family:" + CONFIG.EDITOR.new + ", sans-serif';>" + CONFIG.EDITOR.new + "</div>");
+        if ($("#EDITOR-FNT").is(":visible")) {
+            $("#EditorSelection").html("<div class='LEFT-BOX'>Editing</div>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "");
+            $("#EditorOld").html("<div class='LEFT-BOX'>Old Font</div><div class='noedit'>" + CONFIG.EDITOR.old + "</div>");
+            $("#EditorNew").html("<div class='LEFT-BOX'>New Font</div><div class='noedit' style='font-family:" + CONFIG.EDITOR.new + ", sans-serif';>" + CONFIG.EDITOR.new + "</div>");
         } else {
-            $("#EditorOld").html("Old Value <div class='noedit'>" + CONFIG.EDITOR.old + "<div class='square' style='background-color:" + CONFIG.EDITOR.old + "';></div></div>");
-            $("#EditorNew").html("New Value <div class='noedit'>" + CONFIG.EDITOR.new + "<div class='square' style='background-color:" + CONFIG.EDITOR.new + "';></div></div>");
+            $("#EditorNew").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.new + '";></div>New Value</div><input disabled type="text" value="' + CONFIG.EDITOR.new + '" class="fullwidth">');
         }
     }
     if ($('#ResultText').is(':empty')) $("#output").hide(); else $("#output").show();
@@ -231,7 +248,7 @@ function UPDATEUI() {
     ShowMenu(1);
     InitVars();
     for (var f in fonts) {
-        $("#fontsList").append("<a href='#' id='font" + f + "' style='font-family:" + fonts[f] + ";'>" + fonts[f] + "</a>");
+        $("#fontsList").append("<div id='font" + f + "' style='font-family:" + fonts[f] + ";' class='RGBbutton'>" + fonts[f] + "</div>");
     }
     $("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
     $("input[type='text'], textarea").attr('spellcheck', false);
@@ -277,28 +294,34 @@ function UPDATEUI() {
         if ($("#redNum").val() < 0) $("#redNum").val("0");
         $("#red").val($("#redNum").val());
         document.documentElement.style.setProperty('--temp1', "rgb(" + $("#redNum").val() + ", 0, 0)");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
     $("#red").change(function () {
         $("#redNum").val($("#red").val());
         document.documentElement.style.setProperty('--temp1', "rgb(" + $("#red").val() + ", 0, 0)");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
     $("#greenNum").change(function () {
         if ($("#greenNum").val() < 0) $("#greenNum").val("0");
         $("#green").val($("#greenNum").val());
         document.documentElement.style.setProperty('--temp2', "rgb(0, " + $("#greenNum").val() + ", 0)");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
     $("#green").change(function () {
         $("#greenNum").val($("#green").val());
         document.documentElement.style.setProperty('--temp2', "rgb(0, " + $("#green").val() + ", 0)");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
     $("#blueNum").change(function () {
         if ($("blueNum").val() < 0) $("#blueNum").val("0");
         $("#blue").val($("#blueNum").val());
         document.documentElement.style.setProperty('--temp3', "rgb(0, 0, " + $("#blueNum").val() + ")");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
     $("#blue").change(function () {
         $("#blueNum").val($("#blue").val());
         document.documentElement.style.setProperty('--temp3', "rgb(0, 0, " + $("#blue").val() + ")");
+        VerifyType(CONFIG.EDITOR.id, "rgb");
     });
 
     $("#font").on("click", function () { Edit(2); });
@@ -337,6 +360,7 @@ function UPDATEUI() {
         CONFIG.EDITOR.new = fonts[10];
     });
 
+    $("#background").on("click", function () { Edit(1); });
     $("#Primary").on("click", function () { Edit(19); });
     $("#rgb2").on("click", function () { Edit(37); });
     $("#rgb3").on("click", function () { Edit(38); });
@@ -347,16 +371,19 @@ function UPDATEUI() {
     $("#rgb8").on("click", function () { Edit(43); });
     $("#rgb9").on("click", function () { Edit(44); });
     $("#rgb10").on("click", function () { Edit(45); });
-
     $("#Online").on("click", function () { Edit(4); });
     $("#Idle").on("click", function () { Edit(5); });
     $("#Unavailable").on("click", function () { Edit(6); });
     $("#Offline").on("click", function () { Edit(7); });
-
+    $("#Playing").on("click", function () { Edit(8); });
+    $("#Xbox").on("click", function () { Edit(9); });
+    $("#Spotify").on("click", function () { Edit(10); });
+    $("#Streaming").on("click", function () { Edit(11); });
     $("#grey").on("click", function () { Edit(12); });
     $("#darkgrey").on("click", function () { Edit(13); });
     $("#ChatBox").on("click", function () { Edit(14); });
     $("#Sidebar").on("click", function () { Edit(15); });
+    $("#logo").on("click", function () { Edit(17); });
     $("#HoverMessage").on("click", function () { Edit(18); });
     $("#SendMessage").on("click", function () { Edit(16); });
     $("#TitleBG").on("click", function () { Edit(49); });
@@ -408,7 +435,7 @@ function UPDATEUI() {
     $("#ADDRGB").on("click", function () {
         if (CONFIG.RGB < 10) {
             CONFIG.RGB++;
-            if(CONFIG.RGB === 2) CONFIG.THEME[3][1] = $("#Theme-" + CONFIG.THEME[3][2]).val();
+            if (CONFIG.RGB === 2) CONFIG.THEME[3][1] = $("#Theme-" + CONFIG.THEME[3][2]).val();
             SetValue(19);
             UPDATEUI();
         }
@@ -423,7 +450,18 @@ function UPDATEUI() {
         }
     });
 
+    $('#NewURL').on('input', function () {
+        CONFIG.SELECTED[CONFIG.EDITOR.id] = "img";
+        CONFIG.EDITOR.new = $("#NewURL").val();
+    });
+
 })();
+
+function VerifyType(ID, TYPE) {
+    if (ID === 1 || ID === 8 || ID === 9 || ID === 10 || ID === 11 || ID === 17) {
+        CONFIG.SELECTED[CONFIG.EDITOR.id] = TYPE;
+    }
+}
 
 function Result() {
     $("#settings").hide();
@@ -441,11 +479,16 @@ function Result() {
     if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GameActivityToggle_FIX.css")</span>;\n<br>'); }
-    
+
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-        if (keys === 0 || keys === 2 || CONFIG.THEME[keys][3] === "texts") {
+
+        if (keys === 1 || keys === 8 || keys === 9 || keys === 10 || keys === 11 || keys === 17) {
+            if (CONFIG.SELECTED[keys] === "img") {
+                $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "url(' + CONFIG.THEME[keys][1] + ')";\n<br>');
+            } else { $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>'); }
+        } else if (keys === 0 || keys === 2 || CONFIG.THEME[keys][3] === "texts") {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
         } else if (keys !== 19 && keys !== 37 && keys !== 38 && keys !== 38 && keys !== 39 && keys !== 40 && keys !== 41 && keys !== 42 && keys !== 43 && keys !== 44 && keys !== 45) {
             $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');

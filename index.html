@@ -5,7 +5,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="ÆroSpace Theme Generator">
     <meta property="og:locale" content="en_US">
-    <meta property="og:description" content="- Create your own amazing theme
+    <meta property="og:description"
+        content="- Create your own amazing theme
 - Compatible with Windows / Mac on both Light & Dark themes
 - 50 customizable options (Background, Colors, RGB Animation, Custom Icons & Texts, Addons & Support for a few plugins)">
     <meta property="og:image" content="https://goldenlys.github.io/ThemeGen/fav.gif">
@@ -14,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cuprum&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2.01">
+    <link rel="stylesheet" href="styles.css?v=2.1">
 </head>
 
 <body>
@@ -47,28 +48,32 @@
             <div id="config4" class="form"></div>
             <div id="config5" class="form"></div>
             <div id="config6" class="form">
-                <div class="value" id="HoverMemberList">Hoverable Memberlist
+                <div class="value" id="HoverMemberList">
                     <input id="ToggleHover" type="checkbox" checked class="square">
+                    Hoverable Memberlist
+
                     <div class="desc">This makes the list of members a little smaller and allows you to open it by
                         hovering over it.</div>
                 </div>
-                <div class="value" id="NoOffline">Disable offline status
+                <div class="value" id="NoOffline">
                     <input id="ToggleOffline" type="checkbox" checked class="square">
+                    Disable offline status
                     <div class="desc">Remove the offline status from the list of members and profiles.</div>
                 </div>
-                <div class="value" id="HorizontalServerList">Horizontal Server List
+                <div class="value" id="HorizontalServerList">
                     <input id="ToggleServerList" type="checkbox" checked class="square">
+                    Horizontal Server List
                     <div class="desc">This feature put the server list on top of the window.</div>
                 </div>
-                <div class="value" id="GHSL">Horizontal Server List by Gibbu v2.0 (PATCH ONLY)
+                <div class="value" id="GHSL">
                     <input id="ToggleGHSL" type="checkbox" class="square">
-                    <div class="desc">This adds a compatibility patch to the Horizontal Server List made by Gibbu, no
-                        need for it with the default configuration</div>
+                    Horizontal Server List by Gibbu v2.0 (PATCH ONLY)
+                    <div class="desc">This adds a compatibility patch for the plugin made by Gibbu.</div>
                 </div>
-                <div class="value" id="GAT">Game Activity Toggle by Zerebos (PATCH ONLY)
+                <div class="value" id="GAT">
                     <input id="ToggleGAT" type="checkbox" class="square">
-                    <div class="desc">This adds a compatibility patch to the Game Activity Toggle plugin made by egrodo,
-                        no need for it with the default configuration</div>
+                    Game Activity Toggle by Zerebos (PATCH ONLY)
+                    <div class="desc">This adds a compatibility patch for the plugin made by Zerebos.</div>
                 </div>
             </div>
             <div id="config7" class="form"></div>
@@ -85,17 +90,15 @@
                     <div class="value" id="EditorSelection"></div>
                     <div class="value" id="EditorOld"></div>
                     <div class="value" id="EditorNew"></div>
-                    <div class="value" id="Fonts">
-                        Font Selector
-                        <div class="dropdown noedit">
-                            <div class="dropbtn">List</div>
-                            <div class="dropdown-content" id="fontsList">
-                            </div>
-                        </div>
+                </div>
+                <div id="EDITOR-FNT">
+                    <div class="title">
+                        <p>Font Picker</p>
+                    </div>
+                    <div class="menu" id="fontsList">
                     </div>
                 </div>
-
-                <div id="Variables">
+                <div id="EDITOR-VAR">
                     <div class="title">
                         <p>Variables</p>
                     </div>
@@ -107,7 +110,7 @@
                         <div id="VAR5" class="RGBbutton">Transparent</div>
                     </div>
                 </div>
-                <div id="colorpicker">
+                <div id="EDITOR-COL">
                     <div class="title">
                         <p>RGB Color Picker</p>
                     </div>
@@ -115,28 +118,35 @@
                         <div class="title">
                             <p>Red</p>
                         </div>
-                        <input id="redNum" value="128" type="number" min="0" max="255">
-                        <input id="red" value="128" type="range" min="0" max="255" class="custom">
+                        <input id="redNum" value="-1" type="number" min="-1" max="255">
+                        <input id="red" value="-1" type="range" min="0" max="255" class="custom">
                     </div>
                     <div class="inline column">
                         <div class="title">
                             <p>Green</p>
                         </div>
-                        <input id="greenNum" value="128" type="number" min="0" max="255">
-                        <input id="green" value="128" type="range" min="0" max="255" class="custom">
+                        <input id="greenNum" value="-1" type="number" min="-1" max="255">
+                        <input id="green" value="-1" type="range" min="0" max="255" class="custom">
                     </div>
                     <div class="inline column">
                         <div class="title">
                             <p>Blue</p>
                         </div>
-                        <input id="blueNum" value="128" type="number" min="0" max="255">
-                        <input id="blue" value="128" type="range" min="0" max="255" class="custom">
+                        <input id="blueNum" value="-1" type="number" min="-1" max="255">
+                        <input id="blue" value="-1" type="range" min="0" max="255" class="custom">
                     </div>
+                </div>
+                <div id="EDITOR-URL">
+                    <div class="title">
+                        <p>URL to Image</p>
+                    </div>
+                    <input id="NewURL" type="text" value="https://" spellcheck="false">
+
                 </div>
             </div>
             <div class="menu">
-                <div id="CancelEdition" class="RGBbutton">Cancel</div>
-                <div id="SaveEdition" class="RGBbutton">Save</div>
+                <div id="CancelEdition" class="RGBbutton Remove">Cancel</div>
+                <div id="SaveEdition" class="RGBbutton Add">Save</div>
             </div>
         </div>
 
@@ -148,7 +158,7 @@
             <code id="ResultText" class="content"></code><br />
             <div class="menu">
                 <div id="Download" class="RGBbutton">Download Theme</div>
-                <div id="NewConfig" class="RGBbutton">New Theme</div>
+                <div id="NewConfig" class="RGBbutton Remove">New Theme</div>
             </div>
         </div>
 
@@ -157,7 +167,7 @@
     <div id="copyright"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="core.js?v=2.01" async></script>
+    <script src="core.js?v=2.1" async></script>
 </body>
 
 </html>
