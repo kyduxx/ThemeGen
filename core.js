@@ -4,7 +4,7 @@ var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial"
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     RGB: 2,
-    PLUGINS: [1, 1, 1, 0, 0],
+    PLUGINS: [1, 1, 1, 0],
     SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
     THEME: {
         0: ["Title", "Discord", "title", "general", "Theme title", accepts = ["texts"], false],
@@ -286,10 +286,6 @@ function UPDATEUI() {
         UpdatePlugins();
     });
 
-    $("#ToggleGAT").on("click", function () {
-        UpdatePlugins();
-    });
-
     $("#redNum").change(function () {
         if ($("#redNum").val() < 0) $("#redNum").val("0");
         $("#red").val($("#redNum").val());
@@ -550,5 +546,4 @@ function UpdatePlugins() {
     if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
     if ($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
     if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1; else CONFIG.PLUGINS[3] = 0;
-    if ($("#ToggleGAT").is(':checked')) CONFIG.PLUGINS[4] = 1; else CONFIG.PLUGINS[4] = 0;
 }
