@@ -1,4 +1,4 @@
-const VERSION = "2.1";
+const VERSION = "2.2";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
@@ -58,6 +58,9 @@ var CONFIG = {
         48: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
         49: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
         50: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+        51: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text",accepts = ["texts", "icons"], false],
+        52: ["Tagged Name", "YOU", "TaggedName", "texts", "Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
+        53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
     },
 };
 
