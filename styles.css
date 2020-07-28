@@ -21,6 +21,7 @@
     --Idle: rgb(0, 99, 156);
     --Unavailable: rgb(228, 15, 0);
     --Offline: rgb(90, 95, 100);
+    --StreamingColor: rgb(78, 0, 180);
     --Playing: url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg);
     --Xbox: url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg);
     --Spotify: url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg);
@@ -87,6 +88,10 @@
 
 #square-Spotify {
     background: center / cover no-repeat var(--Spotify);
+}
+
+#square-StreamingColor {
+    background: center / cover no-repeat var(--StreamingColor);
 }
 
 #square-Streaming {

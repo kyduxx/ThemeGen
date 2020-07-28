@@ -61,6 +61,7 @@ var CONFIG = {
         51: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
         52: ["Tagged Name", "YOU", "TaggedName", "texts", "Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
         53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
+        54 :["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
     },
 };
 
