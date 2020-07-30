@@ -2,8 +2,8 @@
 :root {
     --white: white;
     --title: "ÆroSpace";
-    --logo: url(https://cdn.discordapp.com/attachments/476154188494143498/675832706386362398/ALPHA4.gif);
-    --background: url(https://cdn.discordapp.com/attachments/476154188494143498/680898001346363415/appear.jpg);
+    --logo: url("https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif");
+    --background: url("https://goldenlys.github.io/ThemeGen/img/bg.jpg");
     --font: 'Quicksand';
     --Primary: rgb(130, 0, 216);
     --rgb1: var(--Primary);
@@ -22,10 +22,10 @@
     --Unavailable: rgb(228, 15, 0);
     --Offline: rgb(90, 95, 100);
     --StreamingColor: rgb(78, 0, 180);
-    --Playing: url(https://cdn.discordapp.com/attachments/476154188494143498/680898006937370645/provenance.jpg);
-    --Xbox: url(https://cdn.discordapp.com/attachments/476154188494143498/680898003246252176/energyunion.jpg);
-    --Spotify: url(https://cdn.discordapp.com/attachments/476154188494143498/680898009122340937/spacestorm.jpg);
-    --Streaming: url(https://cdn.discordapp.com/attachments/476154188494143498/680897535828557844/aldebaran.jpg);
+    --Playing: url("https://goldenlys.github.io/ThemeGen/img/playing.jpg");
+    --Xbox: url("https://goldenlys.github.io/ThemeGen/img/xbox.jpg");
+    --Spotify: url("https://goldenlys.github.io/ThemeGen/img/spotify.jpg");
+    --Streaming: url("https://goldenlys.github.io/ThemeGen/img/twitch.jpg");
     --grey: rgb(77, 70, 85);
     --grey5: rgba(77, 70, 85, 0.5);
     --darkgrey: rgb(18, 18, 18);
