@@ -1,4 +1,4 @@
-const VERSION = "2.3";
+const VERSION = "2.4";
 
 var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
@@ -62,6 +62,7 @@ var CONFIG = {
         52: ["Tagged Name", "YOU", "TaggedName", "texts", "Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
         53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
         54 :["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
+        55: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
     },
 };
 
