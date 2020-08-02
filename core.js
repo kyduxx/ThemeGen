@@ -1,6 +1,6 @@
 const VERSION = "2.4";
 
-var fonts = ["Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
+var fonts = ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     RGB: 2,
@@ -9,7 +9,7 @@ var CONFIG = {
     THEME: {
         0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
         1: ["Background", "https://goldenlys.github.io/ThemeGen/img/bg.jpg", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
-        2: ["Font", "Quicksand", "font", "general", "Theme font", accepts = ["fonts"], false],
+        2: ["Font", "Avignon PS Pro", "font", "general", "Theme font", accepts = ["fonts"], false],
         3: ["Animation Time", "10s", "time", "rgb", "Duration in seconds of the animation (Example: 10s = 10 seconds)", accepts = ["texts"], false],
         4: ["Online", "rgb(0, 255, 136)", "Online", "status", "Online status color", accepts = ["rgb"], true],
         5: ["Idle", "rgb(0, 99, 156)", "Idle", "status", "Idle status color", accepts = ["rgb"], true],
@@ -59,7 +59,7 @@ var CONFIG = {
         49: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
         50: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
         51: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
-        52: ["Tagged Name", "YOU", "TaggedName", "texts", "Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
+        52: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left'><span class='red'>Not Working</span></span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
         53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
         54 :["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
         55: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
@@ -470,6 +470,7 @@ function Result() {
     $("#ResultText").html("");
     $("#ResultText").append('<span class="meta">/**\n<br>* @name ' + CONFIG.THEME[0][1] + '\n<br>* @author Purple Wizard\n<br>* @authorLink https://github.com/GoldenLys\n<br>* @version ' + VERSION + '\n<br>* @invite SBuYeHh\n<br>* @description An amazing RGB theme with full customization included, made by Purple Wizard.\n<br>* @source https://github.com/GoldenLys/BetterDiscord-Elysia\n<br>* @website https://goldenlys.github.io/ThemeGen\n<br>*/\n<br>');
     $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
+   if (CONFIG.THEME[2][1] === "Avignon PS Pro") { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>'); }
     if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Lobster") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap")</span>;\n<br>'); }

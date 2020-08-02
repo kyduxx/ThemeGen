@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 :root {
     --white: white;
     --title: "ÆroSpace";
     --logo: url("https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif");
     --background: url("https://goldenlys.github.io/ThemeGen/img/bg.jpg");
-    --font: 'Quicksand';
+    --font: 'Avignon PS Pro';
     --Primary: rgb(130, 0, 216);
     --rgb1: var(--Primary);
     --rgb2: rgb(0, 225, 255);
@@ -828,4 +827,15 @@ input[type=checkbox]:checked::before {
 .LEFT-BOX {
     display: flex;
     width: 50%;
+}
+
+.red {
+    color: var(--Unavailable);
+}
+
+.desc .left {
+    padding: 0 5px;
+    background: var(--grey);
+    border-radius: 0 5px 5px 0;
+    float: left;
 }
