@@ -1,65 +1,8 @@
 :root {
     --white: white;
-    --title: "ÆroSpace";
-    --logo: url("https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif");
-    --background: url("https://goldenlys.github.io/ThemeGen/img/bg.jpg");
-    --font: 'Avignon PS Pro';
-    --Primary: rgb(130, 0, 216);
-    --rgb1: var(--Primary);
-    --rgb2: rgb(0, 225, 255);
-    --rgb3: rgb(0, 0, 0);
-    --rgb4: rgb(0, 0, 0);
-    --rgb5: rgb(0, 0, 0);
-    --rgb6: rgb(0, 0, 0);
-    --rgb7: rgb(0, 0, 0);
-    --rgb8: rgb(0, 0, 0);
-    --rgb9: rgb(0, 0, 0);
-    --rgb10: rgb(0, 0, 0);
-    --animation: rgb(130, 0, 216), rgb(0, 225, 255);
-    --Online: rgb(0, 255, 136);
-    --Idle: rgb(0, 99, 156);
-    --Unavailable: rgb(228, 15, 0);
-    --Offline: rgb(90, 95, 100);
-    --StreamingColor: rgb(78, 0, 180);
-    --Playing: url("https://goldenlys.github.io/ThemeGen/img/playing.jpg");
-    --Xbox: url("https://goldenlys.github.io/ThemeGen/img/xbox.jpg");
-    --Spotify: url("https://goldenlys.github.io/ThemeGen/img/spotify.jpg");
-    --Streaming: url("https://goldenlys.github.io/ThemeGen/img/twitch.jpg");
-    --grey: rgb(77, 70, 85);
-    --grey5: rgba(77, 70, 85, 0.5);
-    --darkgrey: rgb(18, 18, 18);
-    --darkgrey5: rgba(18, 18, 18, 0.75);
-    --ChatBox: var(--darkgrey5);
-    --SendMessage: var(--darkgrey);
-    --Sidebar: var(--darkgrey5);
-    --HoverMessage: var(--darkgrey5);
-    --TitleBG: var(--darkgrey5);
-    --temp1: rgb(128, 0, 0);
-    --temp2: rgb(0, 128, 0);
-    --temp3: rgb(0, 0, 128);
-    --time: 5s;
-    --JoinUs: 'Hey! Wanna have some fun.. Join US !';
-    --AddNewServer: '➕ Add a new server';
-    --Close: '🔴';
-    --Resize: '🔵';
-    --Hide: '⚫';
-    --ProfilePic: 'Watch me';
-    --Unread: '✨';
-    --Options: '⚙️';
-    --Channel: '💬';
-    --Voice: "🔊";
-    --Micro: "🎙️";
-    --Headset: "🎧";
-    --Emoji: '🙂';
-    --EmojiHover: '😜';
-    --Community: 'purpies';
-    --WelcomeMessage: 'Theme base designed by Purple Wizard.';
-    --Watermark: 'Made with 💖 by Purple Wizard';
-    --EditStatus: 'Put another status';
-    --Folders: '📁';
-    --FoldersOpen: '💠';
-    --ServerSize: 45px;
-    --ServerColumns: 1;
+    --EDITOR_RED: 0;
+    --EDITOR_GREEN: 0;
+    --EDITOR_BLUE: 0;
 }
 
 #square-Online {
@@ -238,19 +181,21 @@ body {
 
 @keyframes animatedBackground {
     from {
-      background-position: 0px 0px; }
-  
+        background-position: 0px 0px;
+    }
     to {
-      background-position: 100% 0px; } 
-  }
-  
-  @-webkit-keyframes animatedBackground {
+        background-position: 100% 0px;
+    }
+}
+
+@-webkit-keyframes animatedBackground {
     from {
-      background-position: 0px 0px; }
-  
+        background-position: 0px 0px;
+    }
     to {
-      background-position: 100% 0px; } 
-  }
+        background-position: 100% 0px;
+    }
+}
 
 *::selection {
     opacity: 0;
@@ -266,7 +211,7 @@ code {
     position: relative;
     background: var(--grey);
     padding: 1em .5em;
-    border-radius: .25em;
+    border-radius: 5px;
 }
 
 code:after {
@@ -285,7 +230,7 @@ code:after {
 #TextPreview {
     text-shadow: 0 0 13px;
     background: var(--darkgrey5);
-    border-radius: .5em;
+    border-radius: 5px;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -300,13 +245,12 @@ code:after {
 
 .text {
     margin-top: 10px;
-    font-family: monospace;
     font-size: 12px;
 }
 
 .form {
-    padding: 1em 2em;
-    border-radius: .25em;
+    padding: .5rem 2rem;
+    border-radius: 5px;
 }
 
 .centered.columns, .centered.columns .column {
@@ -326,7 +270,7 @@ code:after {
     position: relative;
     display: block;
     margin: 2px 10%;
-    border-radius: .5em;
+    border-radius: 5px;
     padding: 5px;
     width: calc(80% - 10px);
     background: var(--darkgrey5);
@@ -349,7 +293,7 @@ code:after {
     height: 60px;
     background-color: var(--grey5);
     padding: 10px 5px 0;
-    border-radius: .5em;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     padding-bottom: 30px
@@ -361,7 +305,7 @@ code:after {
 }
 
 .menu .RGBbutton:first-child {
-    border-radius: .25em 0 0 .25em;
+    border-radius: 5px 0 0 5px;
     border: none;
 }
 
@@ -375,7 +319,7 @@ code:after {
 }
 
 .menu .RGBbutton:last-child {
-    border-radius: 0 .25em .25em 0;
+    border-radius: 0 5px 5px 0;
 }
 
 #NewURL {
@@ -395,7 +339,7 @@ input[type=text] {
     outline: none;
     float: right;
     border: none;
-    border-radius: .15em;
+    border-radius: 5px;
     box-shadow: 0 0 5px 1px var(--darkgrey);
     height: 30px;
     color: white;
@@ -425,10 +369,6 @@ input[type=text]:focus {
 }
 
 #copyright {
-    position: fixed;
-    bottom: 2px;
-    left: 0;
-    right: 0;
     text-align: center;
 }
 
@@ -466,13 +406,13 @@ input[type=text]:focus {
     font-size: 1.25em;
     line-height: 3em;
     margin: 0em;
-    border-radius: .25em;
+    border-radius: 5px;
     text-align: center;
 }
 
 .RGBbutton:hover {
     transform: scale(.98);
-    border-radius: .25em!important;
+    border-radius: 5px!important;
     text-shadow: 0 0 13px;
     font-weight: bold;
 }
@@ -517,7 +457,7 @@ input[type=text]:focus {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: .5em;
+    border-radius: 5px;
     margin: 0;
     z-index: -1;
     height: 100%;
@@ -532,7 +472,7 @@ input[type=text]:focus {
     margin: 5px;
     height: 30px;
     background: var(--grey5);
-    border-radius: .25em;
+    border-radius: 5px;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -546,7 +486,7 @@ input[type=text]:focus {
 .custom::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    border-radius: .25em;
+    border-radius: 5px;
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -717,7 +657,7 @@ input[type=checkbox] {
     -ms-appearance: none;
     height: 30px;
     width: 30px;
-    border-radius: .25em;
+    border-radius: 5px;
     background: var(--darkgrey);
 }
 
@@ -760,21 +700,21 @@ input[type=checkbox]:checked::before {
     font-size: 15px;
     line-height: 15px;
     height: 15px;
-    border-radius: .25em;
+    border-radius: 5px;
 }
 
 #EDITOR-VAR, #EDITOR-COL {
     font-size: 14px;
     line-height: 14px;
-    margin: 5px;
+    margin: 5px 0;
     padding: 5px;
     background: var(--darkgrey5);
-    border-radius: .25em;
+    border-radius: 5px;
 }
 
 .dropdown {
     margin: 5px auto;
-    border-radius: .25em;
+    border-radius: 5px;
     line-height: 30px;
     width: 50%;
     position: relative;
@@ -787,7 +727,7 @@ input[type=checkbox]:checked::before {
     text-align: center;
     background-color: var(--grey5);
     width: 100%;
-    border-radius: .25em;
+    border-radius: 5px;
     z-index: 1;
 }
 
@@ -829,13 +769,220 @@ input[type=checkbox]:checked::before {
     width: 50%;
 }
 
-.red {
+.desc .left.red {
     color: var(--Unavailable);
 }
 
+.desc .left.green {
+    color: var(--Online);
+}
+
 .desc .left {
-    padding: 0 5px;
-    background: var(--grey);
-    border-radius: 0 5px 5px 0;
+    background-color: var(--darkgrey5);
+    margin: 5px 5px;
+    padding: 2.5px 5px;
+    font-size: 15px;
+    line-height: 15px;
+    height: 15px;
+    border-radius: 5px;
     float: left;
+}
+
+#fontsList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#fontsList .RGBbutton {
+    flex: 0 50%;
+    height: 100%;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+
+#fontsList .RGBbutton:nth-child(2n) {
+    border-width: 5px;
+    border-radius: 0 5px 5px 0;
+}
+
+#fontsList .RGBbutton:not(:nth-child(2n)) {
+    border-radius: 5px 0 0 5px;
+
+}
+
+.color-picker {
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.color-picker .content {
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.color-picker .selector {
+    position: relative;
+    display: flex;
+    margin: .5rem 0;
+    height: 3rem;
+}
+
+.color-picker .button {
+    height: 100%;
+    color: white;
+    cursor: pointer;
+    font-size: 1.35rem;
+    line-height: 3rem;
+    border-radius: 50%;
+    width: 3rem;
+    text-align: center;
+    transition: all .5s ease-out;
+}
+
+.color-picker .button i {
+    font-size: 1.35rem;
+    line-height: 3rem;
+}
+
+.color-picker .button:hover {
+    background-color: var(--grey5);
+    text-shadow: 0 0 5px;
+}
+
+.color-picker .color-range {
+    width: calc(100% - 6rem);
+    -webkit-appearance: none;
+    font-size: 1.35rem;
+    margin: 0 .5em;
+    line-height: 3rem;
+    height: 3rem;
+    margin: 0;
+    background: black;
+    border-radius: 25px;
+    outline: none;
+}
+
+.color-picker .button-validate {
+    height: 100%;
+    background: var(--grey5);
+    margin-top: 1rem;
+    padding: 5px 10px;
+    color: white;
+    font-size: 1.25rem;
+    text-shadow: 0 0 5px;
+    line-height: 1.25rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all .5s ease-out;
+}
+
+#range-red {
+    background: center / cover no-repeat linear-gradient(to right, rgb(0 var(--EDITOR_GREEN) var(--EDITOR_BLUE)), rgb(255 var(--EDITOR_GREEN) var(--EDITOR_BLUE)));
+}
+
+#range-green {
+    background: center / cover no-repeat linear-gradient(to right, rgb(var(--EDITOR_RED) 0 var(--EDITOR_BLUE)), rgb(var(--EDITOR_RED) 255 var(--EDITOR_BLUE)));
+}
+
+#range-blue {
+    background: center / cover no-repeat linear-gradient(to right, rgb(var(--EDITOR_RED) var(--EDITOR_GREEN) 0), rgb(var(--EDITOR_RED) var(--EDITOR_GREEN) 255));
+}
+
+.color-picker .color-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 25px;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.color-picker input::after {
+    content: var(--EDITOR_RED);
+    z-index: 2;
+    width: 100%;
+    float: left;
+    margin-left: 0%;
+}
+
+.color-picker .selector .container {
+    position: absolute;
+    top: 0;
+    left: 3rem;
+    right: 3rem;
+    bottom: 0;
+    line-height: 3rem;
+}
+
+.color-picker .selector .container .color-value {
+    color: black;
+    text-align: center;
+    width: 3rem;
+    background: white;
+    border-radius: 50%;
+}
+
+.color-picker input[type=text] {
+    background-color: transparent;
+    border: none;
+    color: white;
+    height: 3rem;
+    font-size: 1.25rem;
+    padding: 0 10px;
+    margin: 0 10px;
+    border-radius: 10px;
+    -webkit-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+    box-shadow: none;
+    float: initial;
+}
+
+.color-picker .hex-color {
+    align-items: center;
+    line-height: 3rem;
+    height: 3rem;
+    font-size: 1.25rem;
+}
+
+.color-picker .hex-color .text {
+    margin: 0;
+    line-height: 3rem;
+    font-size: 1.25rem;
+    float: left;
+}
+
+.color-picker .hex-color .button {
+    float: right;
+}
+
+.color-picker input[type=text]::before {
+    content: "#";
+}
+
+.color-picker input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus {
+    background-color: rgba(255 255 255 / 30%);
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.color-picker input[type="text"]::-webkit-input-placeholder {
+    text-transform: uppercase;
+    color: white;
+}
+
+.color-picker .WP-divider {
+    margin: 0;
+    width: 100%;
+    height: 1px;
+    text-align: center;
+    background: var(--grey5);
+    display: inline-block;
 }

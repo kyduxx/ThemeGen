@@ -1,32 +1,38 @@
-const VERSION = "2.4";
+const VERSION = "2.5";
 
-var fonts = ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"];
+var APP = {
+    TYPES: ["red", "green", "blue"],
+    PICKER: ["-1", "-1", "-1"],
+    SELECTION: "",
+    FONTS: ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"],
+};
+
 var CONFIG = {
     EDITOR: { id: 0, old: "", new: "" },
     RGB: 2,
-    PLUGINS: [1, 1, 1, 0],
+    PLUGINS: [1, 1, 1, 0, 1],
     SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
     THEME: {
         0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
         1: ["Background", "https://goldenlys.github.io/ThemeGen/img/bg.jpg", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
         2: ["Font", "Avignon PS Pro", "font", "general", "Theme font", accepts = ["fonts"], false],
         3: ["Animation Time", "10s", "time", "rgb", "Duration in seconds of the animation (Example: 10s = 10 seconds)", accepts = ["texts"], false],
-        4: ["Online", "rgb(0, 255, 136)", "Online", "status", "Online status color", accepts = ["rgb"], true],
-        5: ["Idle", "rgb(0, 99, 156)", "Idle", "status", "Idle status color", accepts = ["rgb"], true],
-        6: ["Unavailable", "rgb(228, 15, 0)", "Unavailable", "status", "Unavailable status color", accepts = ["rgb"], true],
-        7: ["Offline", "rgb(90, 95, 100)", "Offline", "status", "Offline status color", accepts = ["rgb"], true],
+        4: ["Online", "rgb(0 255 136)", "Online", "status", "Online status color", accepts = ["rgb"], true],
+        5: ["Idle", "rgb(0 99 156)", "Idle", "status", "Idle status color", accepts = ["rgb"], true],
+        6: ["Unavailable", "rgb(228 15 0)", "Unavailable", "status", "Unavailable status color", accepts = ["rgb"], true],
+        7: ["Offline", "rgb(90 95 100)", "Offline", "status", "Offline status color", accepts = ["rgb"], true],
         8: ["Playing", "https://goldenlys.github.io/ThemeGen/img/playing.jpg", "Playing", "profile", "Playing profile color", accepts = ["img", "rgb"], true],
         9: ["Xbox", "https://goldenlys.github.io/ThemeGen/img/xbox.jpg", "Xbox", "profile", "Xbox profile color", accepts = ["img", "rgb"], true],
         10: ["Spotify", "https://goldenlys.github.io/ThemeGen/img/spotify.jpg", "Spotify", "profile", "Spotify profile color", accepts = ["img", "rgb"], true],
         11: ["Streaming", "https://goldenlys.github.io/ThemeGen/img/twitch.jpg", "Streaming", "profile", "Streaming profile color", accepts = ["img", "rgb"], true],
-        12: ["Grey", "rgb(77, 70, 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
-        13: ["Darkgrey", "rgb(18, 18, 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
+        12: ["Grey", "rgb(77 70 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
+        13: ["Darkgrey", "rgb(18 18 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
         14: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "vars"], true],
         15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
         16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
         17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
         18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "vars"], true],
-        19: ["RGB 1", "rgb(130, 0, 216)", "Primary", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
+        19: ["RGB 1", "rgb(130 0 216)", "Primary", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
         20: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
         21: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
         22: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
@@ -44,30 +50,31 @@ var CONFIG = {
         34: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
         35: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
         36: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
-        37: ["RGB 2", "rgb(0, 225, 255)", "rgb2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
-        38: ["RGB 3", "rgb(0, 0, 0)", "rgb3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
-        39: ["RGB 4", "rgb(0, 0, 0)", "rgb4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
-        40: ["RGB 5", "rgb(0, 0, 0)", "rgb5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
-        41: ["RGB 6", "rgb(0, 0, 0)", "rgb6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
-        42: ["RGB 7", "rgb(0, 0, 0)", "rgb7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
-        43: ["RGB 8", "rgb(0, 0, 0)", "rgb8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
-        44: ["RGB 9", "rgb(0, 0, 0)", "rgb9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
-        45: ["RGB 10", "rgb(0, 0, 0)", "rgb10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
+        37: ["RGB 2", "rgb(0 225 255)", "rgb2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
+        38: ["RGB 3", "rgb(0 0 0)", "rgb3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
+        39: ["RGB 4", "rgb(0 0 0)", "rgb4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
+        40: ["RGB 5", "rgb(0 0 0)", "rgb5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
+        41: ["RGB 6", "rgb(0 0 0)", "rgb6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
+        42: ["RGB 7", "rgb(0 0 0)", "rgb7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
+        43: ["RGB 8", "rgb(0 0 0)", "rgb8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
+        44: ["RGB 9", "rgb(0 0 0)", "rgb9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
+        45: ["RGB 10", "rgb(0 0 0)", "rgb10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
         46: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
         47: ["Mute/Unmute Icon", "🎙️", "Micro", "texts", "Microphone Icon", accepts = ["texts", "icons"], false],
         48: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
         49: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
         50: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
         51: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
-        52: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left'><span class='red'>Not Working</span></span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
+        52: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
         53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
-        54 :["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
+        54: ["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
         55: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
     },
 };
 
 function InitVars() {
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
+        SetValue(keys);
         let square = "<div class='no square'></div>";
         if (CONFIG.THEME[keys][6] === true) square = "<div class='square' id='square-" + CONFIG.THEME[keys][2] + "'></div>";
         let Accepted = "<span class='accept'>";
@@ -78,7 +85,7 @@ function InitVars() {
 
         Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
         if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
-        var CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
+        let CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
             '<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
             '<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div></div>');
 
@@ -97,12 +104,8 @@ function Edit(target) {
         $("#edition").show();
         CONFIG.EDITOR.id = target;
         CONFIG.EDITOR.old = CONFIG.THEME[target][1];
-        $("#red").val(0);
-        $("#green").val(0);
-        $("#blue").val(0);
-        $("#redNum").val(0);
-        $("#greenNum").val(0);
-        $("#blueNum").val(0);
+        APP.PICKER = ["0", "0", "0"];
+        WP_UPDATE();
         $("#EDITOR-VAR").hide();
         $("#EDITOR-COL").hide();
         $("#EDITOR-FNT").hide();
@@ -120,11 +123,11 @@ function Edit(target) {
 
         if (SHOWRGBEDITOR === 1) {
             $("#EDITOR-COL").show();
-            CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+            CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + ", " + APP.PICKER[1] + ", " + APP.PICKER[2] + ")";
         }
         if (SHOWVAREDITOR === 1) {
             $("#EDITOR-VAR").show();
-            CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+            CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + ", " + APP.PICKER[1] + ", " + APP.PICKER[2] + ")";
         }
         if (SHOWFONTSEDITOR === 1) {
             $("#EDITOR-FNT").show();
@@ -133,12 +136,8 @@ function Edit(target) {
         if (SHOWURLEDITOR === 1) {
             $("#EDITOR-URL").show();
             CONFIG.EDITOR.new = "https://";
-            $("#red").val(-1);
-            $("#green").val(-1);
-            $("#blue").val(-1);
-            $("#redNum").val(-1);
-            $("#greenNum").val(-1);
-            $("#blueNum").val(-1);
+            APP.PICKER = ["-1", "-1", "-1"];
+            WP_UPDATE();
         }
         $("#EditorSelection").html("<div class='LEFT-BOX'>Editing</div>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "");
         $("#EditorOld").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.old + '";></div>Old Value</div><input disabled type="text" value="' + CONFIG.EDITOR.old + '" class="fullwidth">');
@@ -151,7 +150,7 @@ function GetValue(STYLE) {
 }
 
 function SetValue(STYLE) {
-    if (STYLE != 37 || STYLE != 38) {
+    if (STYLE != 0 && STYLE != 50 && STYLE != 55 && CONFIG.THEME[STYLE][3] != "texts") {
         document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
 
         if (STYLE === 19 || STYLE === 37 || STYLE === 38 || STYLE === 39 || STYLE === 40 || STYLE === 41 || STYLE === 42 || STYLE === 43 || STYLE === 44 || STYLE === 45) {
@@ -179,26 +178,15 @@ function SetValue(STYLE) {
         if (CONFIG.THEME[STYLE][3] === "menus") {
             document.body.style.setProperty('--' + CONFIG.THEME[12][2], CONFIG.THEME[12][1]);
             document.body.style.setProperty('--' + CONFIG.THEME[13][2], CONFIG.THEME[13][1]);
-            var grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(", .5)");
-            var darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(", .75)");
+            var grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(" / 50%)");
+            var darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(" / 75%)");
             document.body.style.setProperty('--grey5', grey5);
             document.body.style.setProperty('--darkgrey5', darkgrey5);
         }
     }
 }
 
-setInterval(function () {
-    if (document.hasFocus() === false) {
-        for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-            SetValue(keys);
-        }
-        UpdateVars();
-    }
-}, 3000);
-
-setInterval(function () {
-    UPDATEUI();
-}, 1000);
+setInterval(UPDATEUI, 1000);
 
 function UPDATEUI() {
     document.title = CONFIG.THEME[0][1] + " Theme Generator";
@@ -209,9 +197,9 @@ function UPDATEUI() {
     if ($("#edition").is(":visible")) {
         CONFIG.EDITOR.old = CONFIG.THEME[CONFIG.EDITOR.id][1];
         if (CONFIG.EDITOR.new != "var(--grey)" && CONFIG.EDITOR.new != "var(--darkgrey)" && CONFIG.EDITOR.new != "var(--grey5)" && CONFIG.EDITOR.new != "var(--darkgrey5)" && CONFIG.EDITOR.new != "transparent") {
-            let rgb = $("#red").val() + $("#blue").val() + $("#green").val();
+            let rgb = APP.PICKER[0] + APP.PICKER[1] + APP.PICKER[2];
             if (rgb != "-1-1-1") {
-                if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + $("#red").val() + ", " + $("#green").val() + ", " + $("#blue").val() + ")";
+                if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + " " + APP.PICKER[1] + " " + APP.PICKER[2] + ")";
             }
             if (CONFIG.EDITOR.id == 1 || CONFIG.EDITOR.id == 8 || CONFIG.EDITOR.id == 9 || CONFIG.EDITOR.id == 10 || CONFIG.EDITOR.id == 11 || CONFIG.EDITOR.id == 17) {
                 if (CONFIG.SELECTED[CONFIG.EDITOR.id] == "img") CONFIG.EDITOR.new = $("#NewURL").val();
@@ -252,8 +240,8 @@ function UPDATEUI() {
 (function () {
     ShowMenu(1);
     InitVars();
-    for (var f in fonts) {
-        $("#fontsList").append("<div id='font" + f + "' style='font-family:" + fonts[f] + ";' class='RGBbutton'>" + fonts[f] + "</div>");
+    for (var f in APP.FONTS) {
+        $("#fontsList").append("<div id='font" + f + "' style='font-family:" + APP.FONTS[f] + ";' class='RGBbutton'>" + APP.FONTS[f] + "</div>");
     }
     $("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
     $("input[type='text'], textarea").attr('spellcheck', false);
@@ -291,123 +279,18 @@ function UPDATEUI() {
         UpdatePlugins();
     });
 
-    $("#redNum").change(function () {
-        if ($("#redNum").val() < 0) $("#redNum").val("0");
-        $("#red").val($("#redNum").val());
-        document.documentElement.style.setProperty('--temp1', "rgb(" + $("#redNum").val() + ", 0, 0)");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-    $("#red").change(function () {
-        $("#redNum").val($("#red").val());
-        document.documentElement.style.setProperty('--temp1', "rgb(" + $("#red").val() + ", 0, 0)");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-    $("#greenNum").change(function () {
-        if ($("#greenNum").val() < 0) $("#greenNum").val("0");
-        $("#green").val($("#greenNum").val());
-        document.documentElement.style.setProperty('--temp2', "rgb(0, " + $("#greenNum").val() + ", 0)");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-    $("#green").change(function () {
-        $("#greenNum").val($("#green").val());
-        document.documentElement.style.setProperty('--temp2', "rgb(0, " + $("#green").val() + ", 0)");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-    $("#blueNum").change(function () {
-        if ($("blueNum").val() < 0) $("#blueNum").val("0");
-        $("#blue").val($("#blueNum").val());
-        document.documentElement.style.setProperty('--temp3', "rgb(0, 0, " + $("#blueNum").val() + ")");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-    $("#blue").change(function () {
-        $("#blueNum").val($("#blue").val());
-        document.documentElement.style.setProperty('--temp3', "rgb(0, 0, " + $("#blue").val() + ")");
-        VerifyType(CONFIG.EDITOR.id, "rgb");
-    });
-
     $("#font").on("click", function () { Edit(2); });
+    $("#fontsList .RGBbutton").click(function () { CONFIG.EDITOR.new = APP.FONTS[this.id.slice(4)]; });
 
-    $("#font0").on("click", function () {
-        CONFIG.EDITOR.new = fonts[0];
-    });
-    $("#font1").on("click", function () {
-        CONFIG.EDITOR.new = fonts[1];
-    });
-    $("#font2").on("click", function () {
-        CONFIG.EDITOR.new = fonts[2];
-    });
-    $("#font3").on("click", function () {
-        CONFIG.EDITOR.new = fonts[3];
-    });
-    $("#font4").on("click", function () {
-        CONFIG.EDITOR.new = fonts[4];
-    });
-    $("#font5").on("click", function () {
-        CONFIG.EDITOR.new = fonts[5];
-    });
-    $("#font6").on("click", function () {
-        CONFIG.EDITOR.new = fonts[6];
-    });
-    $("#font7").on("click", function () {
-        CONFIG.EDITOR.new = fonts[7];
-    });
-    $("#font8").on("click", function () {
-        CONFIG.EDITOR.new = fonts[8];
-    });
-    $("#font9").on("click", function () {
-        CONFIG.EDITOR.new = fonts[9];
-    });
-    $("#font10").on("click", function () {
-        CONFIG.EDITOR.new = fonts[10];
+    $(".form .value").click(function () {
+        for (let ID in CONFIG.THEME) { if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 50 && ID != 55) Edit(ID); }
     });
 
-    $("#background").on("click", function () { Edit(1); });
-    $("#Primary").on("click", function () { Edit(19); });
-    $("#rgb2").on("click", function () { Edit(37); });
-    $("#rgb3").on("click", function () { Edit(38); });
-    $("#rgb4").on("click", function () { Edit(39); });
-    $("#rgb5").on("click", function () { Edit(40); });
-    $("#rgb6").on("click", function () { Edit(41); });
-    $("#rgb7").on("click", function () { Edit(42); });
-    $("#rgb8").on("click", function () { Edit(43); });
-    $("#rgb9").on("click", function () { Edit(44); });
-    $("#rgb10").on("click", function () { Edit(45); });
-    $("#Online").on("click", function () { Edit(4); });
-    $("#Idle").on("click", function () { Edit(5); });
-    $("#Unavailable").on("click", function () { Edit(6); });
-    $("#Offline").on("click", function () { Edit(7); });
-    $("#Playing").on("click", function () { Edit(8); });
-    $("#Xbox").on("click", function () { Edit(9); });
-    $("#Spotify").on("click", function () { Edit(10); });
-    $("#Streaming").on("click", function () { Edit(11); });
-    $("#grey").on("click", function () { Edit(12); });
-    $("#darkgrey").on("click", function () { Edit(13); });
-    $("#ChatBox").on("click", function () { Edit(14); });
-    $("#Sidebar").on("click", function () { Edit(15); });
-    $("#logo").on("click", function () { Edit(17); });
-    $("#HoverMessage").on("click", function () { Edit(18); });
-    $("#SendMessage").on("click", function () { Edit(16); });
-    $("#TitleBG").on("click", function () { Edit(49); });
-
-    $("#VAR1").on("click", function () {
-        CONFIG.EDITOR.new = "var(--grey)";
-    });
-
-    $("#VAR2").on("click", function () {
-        CONFIG.EDITOR.new = "var(--darkgrey)";
-    });
-
-    $("#VAR3").on("click", function () {
-        CONFIG.EDITOR.new = "var(--grey5)";
-    });
-
-    $("#VAR4").on("click", function () {
-        CONFIG.EDITOR.new = "var(--darkgrey5)";
-    });
-
-    $("#VAR5").on("click", function () {
-        CONFIG.EDITOR.new = "transparent";
-    });
+    $("#VAR1").on("click", function () { CONFIG.EDITOR.new = "var(--grey)"; });
+    $("#VAR2").on("click", function () { CONFIG.EDITOR.new = "var(--darkgrey)"; });
+    $("#VAR3").on("click", function () { CONFIG.EDITOR.new = "var(--grey5)"; });
+    $("#VAR4").on("click", function () { CONFIG.EDITOR.new = "var(--darkgrey5)"; });
+    $("#VAR5").on("click", function () { CONFIG.EDITOR.new = "transparent"; });
 
     $("#SaveEdition").on("click", function () {
         $("#edition").hide();
@@ -456,10 +339,38 @@ function UPDATEUI() {
         CONFIG.EDITOR.new = $("#NewURL").val();
     });
 
+    $("#range-red").bind('input', function () {
+        document.documentElement.style.setProperty('--EDITOR_RED', $("#range-red").val());
+        APP.PICKER[0] = $("#range-red").val();
+        WP_UPDATE();
+        VerifyType(CONFIG.EDITOR.id, "rgb");
+    });
+
+    $("#range-green").bind('input', function () {
+        document.documentElement.style.setProperty('--EDITOR_GREEN', $("#range-green").val());
+        APP.PICKER[1] = $("#range-green").val();
+        WP_UPDATE();
+        VerifyType(CONFIG.EDITOR.id, "rgb");
+    });
+
+    $("#range-blue").bind('input', function () {
+        document.documentElement.style.setProperty('--EDITOR_BLUE', $("#range-blue").val());
+        APP.PICKER[2] = $("#range-blue").val();
+        WP_UPDATE();
+        VerifyType(CONFIG.EDITOR.id, "rgb");
+    });
+
+    $("#selector-red .button.minus").on("click", function () { WP_CHANGE(0, false); });
+    $("#selector-red .button.plus").on("click", function () { WP_CHANGE(0, true); });
+    $("#selector-green .button.minus").on("click", function () { WP_CHANGE(1, false); });
+    $("#selector-green .button.plus").on("click", function () { WP_CHANGE(1, true); });
+    $("#selector-blue .button.minus").on("click", function () { WP_CHANGE(2, false); });
+    $("#selector-blue .button.plus").on("click", function () { WP_CHANGE(2, true); });
+    UpdateVars();
 })();
 
 function VerifyType(ID, TYPE) {
-    if (ID === 1 || ID === 8 || ID === 9 || ID === 10 || ID === 11 || ID === 17) {
+    if (ID == 1 || ID == 8 || ID == 9 || ID == 10 || ID == 11 || ID == 17) {
         CONFIG.SELECTED[CONFIG.EDITOR.id] = TYPE;
     }
 }
@@ -470,7 +381,7 @@ function Result() {
     $("#ResultText").html("");
     $("#ResultText").append('<span class="meta">/**\n<br>* @name ' + CONFIG.THEME[0][1] + '\n<br>* @author Purple Wizard\n<br>* @authorLink https://github.com/GoldenLys\n<br>* @version ' + VERSION + '\n<br>* @invite SBuYeHh\n<br>* @description An amazing RGB theme with full customization included, made by Purple Wizard.\n<br>* @source https://github.com/GoldenLys/BetterDiscord-Elysia\n<br>* @website https://goldenlys.github.io/ThemeGen\n<br>*/\n<br>');
     $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
-   if (CONFIG.THEME[2][1] === "Avignon PS Pro") { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>'); }
+    if (CONFIG.THEME[2][1] === "Avignon PS Pro") { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
     if (CONFIG.THEME[2][1] === "Lobster") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap")</span>;\n<br>'); }
@@ -480,8 +391,7 @@ function Result() {
     if (CONFIG.PLUGINS[1] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
     if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
-    if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GameActivityToggle_FIX.css")</span>;\n<br>'); }
-
+    if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Letters-in-HSL.css")</span>;\n<br>'); }
     $("#ResultText").append('<span class="val">:root {</span>\n<br>');
 
     for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
@@ -509,8 +419,8 @@ function Result() {
     if (CONFIG.RGB >= 9) animation = animation + ", " + CONFIG.THEME[44][1];
     if (CONFIG.RGB == 10) animation = animation + ", " + CONFIG.THEME[45][1];
     $("#ResultText").append('<span class="var">--animation:</span> ' + animation + ';\n<br>');
-    let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(", .5)");
-    let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(", .75)");
+    let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(" / 50%)");
+    let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(" / 75%)");
     $("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
     $("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
     $("#ResultText").append('<span class="var">--Primary:</span> ' + CONFIG.THEME[19][1] + ';\n<br>');
@@ -550,6 +460,45 @@ function UpdateVars() {
 function UpdatePlugins() {
     if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1; else CONFIG.PLUGINS[0] = 0;
     if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
-    if ($("#ToggleServerList").is(':checked')) CONFIG.PLUGINS[2] = 1; else CONFIG.PLUGINS[2] = 0;
+    if ($("#ToggleServerList").is(':checked')) {
+        $("#HSL-Letters").show();
+        CONFIG.PLUGINS[2] = 1;
+    }
+    else {
+        $("#HSL-Letters").hide();
+        $("#ToggleHSL-Letters").prop("checked", false);
+        CONFIG.PLUGINS[4] = 0;
+        CONFIG.PLUGINS[2] = 0;
+    }
     if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1; else CONFIG.PLUGINS[3] = 0;
+
+    if ($("#ToggleHSL-Letters").is(':checked')) CONFIG.PLUGINS[4] = 1; else CONFIG.PLUGINS[4] = 0;
 }
+
+const WP_CHANGE = function (TYPE, PARAM) {
+
+    if (!PARAM) {
+        if (APP.PICKER[TYPE] > 0) APP.PICKER[TYPE]--;
+    } else {
+        if (APP.PICKER[TYPE] < 255) APP.PICKER[TYPE]++;
+    }
+    WP_UPDATE();
+};
+
+const WP_UPDATE = function () {
+    APP.SELECTION = "rgb(" + APP.PICKER[0] + " " + APP.PICKER[1] + " " + APP.PICKER[2] + ")";
+    $(".button-validate").attr("style", "background-color: " + APP.SELECTION + ";");
+    CONFIG.EDITOR.new = APP.SELECTION;
+
+    for (let COLOR in APP.PICKER) {
+        $("#range-" + APP.TYPES[COLOR]).val(APP.PICKER[COLOR]);
+        if (APP.PICKER[COLOR] === "-1") APP.PICKER[COLOR] = "0";
+        $("#selector-" + APP.TYPES[COLOR] + " .color-value").html(APP.PICKER[COLOR]);
+        $("#selector-" + APP.TYPES[COLOR] + " .color-value").css("margin-left", "calc(" + (APP.PICKER[COLOR] / 255) + " * (100% - 3em))");
+    }
+    $("#color-name").attr("placeholder", WP_HEXCOLOR("rgb(" + APP.PICKER[0] + "," + APP.PICKER[1] + "," + APP.PICKER[2] + ")"));
+};
+const WP_HEXCOLOR = function (a) {
+    a = a.replace(/[^\d,]/g, "").split(",");
+    return ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1);
+};
