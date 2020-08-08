@@ -108,6 +108,14 @@
 	background-color: var(--C8);
 }
 
+#square-C9 {
+	background-color: var(--C9);
+}
+
+#square-C10 {
+	background-color: var(--C10);
+}
+
 
 body {
 	margin: 0;

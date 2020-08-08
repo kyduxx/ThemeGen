@@ -67,6 +67,8 @@ var CONFIG = {
 		51: ["Streaming", "rgb(78 0 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
 		52: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
 		53: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["texts", "vars"], true],
+		54: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
+		55: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
 		/*54: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
 	},
 };
@@ -190,6 +192,8 @@ function UPDATEUI() {
 	if (CONFIG.RGB >= 6) $("#C6").show(); else $("#C6").hide();
 	if (CONFIG.RGB >= 7) $("#C7").show(); else $("#C7").hide();
 	if (CONFIG.RGB >= 8) $("#C8").show(); else $("#C8").hide();
+	if (CONFIG.RGB >= 9) $("#C9").show(); else $("#C9").hide();
+	if (CONFIG.RGB == 10) $("#C10").show(); else $("#C10").hide();
 }
 
 (function () {
@@ -226,7 +230,7 @@ function UPDATEUI() {
 	$("#menu").on("click", ".RGBbutton", function () { ShowMenu($(this).attr("data-id")); });
 
 	$("#Theme-font").prop("disabled", true);
-	for (var r = 0; r < 8; r++) { $("#Theme-C" + r).prop("disabled", true); }
+	for (var r = 0; r < 10; r++) { $("#Theme-C" + r).prop("disabled", true); }
 	$("#Theme-Online").prop("disabled", true);
 	$("#Theme-Idle").prop("disabled", true);
 	$("#Theme-Unavailable").prop("disabled", true);
@@ -296,7 +300,7 @@ function UPDATEUI() {
 	});
 
 	$("#ADDRGB").on("click", function () {
-		if (CONFIG.RGB < 8) {
+		if (CONFIG.RGB < 10) {
 			CONFIG.RGB++;
 			if (CONFIG.RGB === 2) CONFIG.THEME[3][1] = $("#Theme-" + CONFIG.THEME[3][2]).val();
 			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB +".css");
