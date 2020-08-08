@@ -486,18 +486,10 @@ input[type=number] {
 	width: 100%;
 }
 
-#copyright strong,
-.title p {
-	background: radial-gradient(circle, var(--animation)) !important;
-	background-size: 1000% 500% !important;
-	-webkit-animation: K2KBG var(--time) ease infinite !important;
-	animation: K2KBG var(--time) ease infinite !important;
-	font-weight: 700 !important;
-	color: var(--white) !important;
-	-webkit-background-clip: text !important;
-	background-clip: text !important;
-	-webkit-text-fill-color: transparent !important;
-	text-shadow: none !important;
+#copyright strong, .title p {
+	font-weight: 700;
+	color: var(--white);
+	text-shadow: none;
 }
 
 .noedit {
