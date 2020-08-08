@@ -1,4 +1,4 @@
-const VERSION = "2.5";
+const VERSION = "3.0";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -10,7 +10,7 @@ var APP = {
 var CONFIG = {
 	EDITOR: { id: 0, old: "", new: "" },
 	RGB: 2,
-	PLUGINS: [1, 1, 1, 0, 1],
+	PLUGINS: [1, 1, 1, 0, 0],
 	SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
 	THEME: {
 		0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
@@ -32,71 +32,44 @@ var CONFIG = {
 		16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
 		17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
 		18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "vars"], true],
-		19: ["RGB 1", "rgb(130 0 216)", "Primary", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
-		20: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
-		21: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
-		22: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
-		23: ["Resize Window Button", "🔵", "Resize", "texts", "Resize window icon", accepts = ["texts", "icons"], false],
-		24: ["Hide Window Button", "⚫", "Hide", "texts", "Hide windows icon", accepts = ["texts", "icons"], false],
-		25: ["Profile Picture Hovered", "Watch me", "ProfilePic", "texts", "Text of an hovered profile picture", accepts = ["texts", "icons"], false],
-		26: ["Unread Icon", "✨", "Unread", "texts", "Unread Icon Text", accepts = ["texts", "icons"], false],
-		27: ["Options Icon", "⚙️", "Options", "texts", "Options Icon", accepts = ["texts", "icons"], false],
-		28: ["Emoji Icon", "🙂", "Emoji", "texts", "Emojis Button", accepts = ["texts", "icons"], false],
-		29: ["Emoji Icon Hovered", "😜", "EmojiHover", "texts", "Hovered Emojis Button", accepts = ["texts", "icons"], false],
-		30: ["Text Channels Icon", "💬", "Channel", "texts", "Text Channel Icon", accepts = ["texts", "icons"], false],
-		31: ["Voice Channels Icon", "🔊", "Voice", "texts", "Voice Channel Icon", accepts = ["texts", "icons"], false],
-		32: ["Community Name", "purpies", "Community", "texts", "Text after the members count in server invites", accepts = ["texts", "icons"], false],
-		33: ["Welcome Message", "✨ Welcome to ELYSIA, designed by Purple Wizard.", "WelcomeMessage", "texts", "Text after the greeting message of a server", accepts = ["texts", "icons"], false],
-		34: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
-		35: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
-		36: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
-		37: ["RGB 2", "rgb(0 225 255)", "rgb2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
-		38: ["RGB 3", "rgb(0 0 0)", "rgb3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
-		39: ["RGB 4", "rgb(0 0 0)", "rgb4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
-		40: ["RGB 5", "rgb(0 0 0)", "rgb5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
-		41: ["RGB 6", "rgb(0 0 0)", "rgb6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
-		42: ["RGB 7", "rgb(0 0 0)", "rgb7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
-		43: ["RGB 8", "rgb(0 0 0)", "rgb8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
-		44: ["RGB 9", "rgb(0 0 0)", "rgb9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
-		45: ["RGB 10", "rgb(0 0 0)", "rgb10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
-		46: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
-		47: ["Mute/Unmute Icon", "🎙️", "Micro", "texts", "Microphone Icon", accepts = ["texts", "icons"], false],
-		48: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
-		49: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
-		50: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
-		51: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
-		52: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],
-		53: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
-		54: ["Streaming", "rgb(78, 0, 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
-		55: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+		19: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
+		20: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
+		21: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
+		22: ["Resize Window Button", "🔵", "Resize", "texts", "Resize window icon", accepts = ["texts", "icons"], false],
+		23: ["Hide Window Button", "⚫", "Hide", "texts", "Hide windows icon", accepts = ["texts", "icons"], false],
+		24: ["Profile Picture Hovered", "Watch me", "ProfilePic", "texts", "Text of an hovered profile picture", accepts = ["texts", "icons"], false],
+		25: ["Unread Icon", "✨", "Unread", "texts", "Unread Icon Text", accepts = ["texts", "icons"], false],
+		26: ["Options Icon", "⚙️", "Options", "texts", "Options Icon", accepts = ["texts", "icons"], false],
+		27: ["Emoji Icon", "🙂", "Emoji", "texts", "Emojis Button", accepts = ["texts", "icons"], false],
+		28: ["Emoji Icon Hovered", "😜", "EmojiHover", "texts", "Hovered Emojis Button", accepts = ["texts", "icons"], false],
+		29: ["Text Channels Icon", "💬", "Channel", "texts", "Text Channel Icon", accepts = ["texts", "icons"], false],
+		30: ["Voice Channels Icon", "🔊", "Voice", "texts", "Voice Channel Icon", accepts = ["texts", "icons"], false],
+		31: ["Community Name", "purpies", "Community", "texts", "Text after the members count in server invites", accepts = ["texts", "icons"], false],
+		32: ["Welcome Message", "✨ Welcome to ELYSIA, designed by Purple Wizard.", "WelcomeMessage", "texts", "Text after the greeting message of a server", accepts = ["texts", "icons"], false],
+		33: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
+		34: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
+		35: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
+		36: ["RGB 1", "rgb(130 0 216)", "C1", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
+		37: ["RGB 2", "rgb(0 225 255)", "C2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
+		38: ["RGB 3", "rgb(0 0 0)", "C3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
+		39: ["RGB 4", "rgb(0 0 0)", "C4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
+		40: ["RGB 5", "rgb(0 0 0)", "C5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
+		41: ["RGB 6", "rgb(0 0 0)", "C6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
+		42: ["RGB 7", "rgb(0 0 0)", "C7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
+		43: ["RGB 8", "rgb(0 0 0)", "C8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
+		44: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
+		45: ["Mute/Unmute Icon", "🎙️", "Micro", "texts", "Microphone Icon", accepts = ["texts", "icons"], false],
+		46: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
+		47: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
+		48: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+		49: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
+		50: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
+		51: ["Streaming", "rgb(78 0 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
+		52: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+		53: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["texts", "vars"], true],
+		/*54: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
 	},
 };
-
-function InitVars() {
-	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
-		SetValue(keys);
-		let square = "<div class='no square'></div>";
-		if (CONFIG.THEME[keys][6] === true) square = "<div class='square' id='square-" + CONFIG.THEME[keys][2] + "'></div>";
-		let Accepted = "<span class='accept'>";
-		for (var i in CONFIG.THEME[keys][5]) {
-			if (i != 0) Accepted = Accepted + ", " + CONFIG.THEME[keys][5][i];
-			else Accepted = Accepted + CONFIG.THEME[keys][5][i];
-		}
-
-		Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
-		if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
-		let CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
-			'<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
-			'<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div></div>');
-
-		if (CONFIG.THEME[keys][3] === "general") $("#config1").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "rgb") $("#config2").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "status") $("#config3").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "profile") $("#config4").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "menus") $("#config5").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "texts") $("#config7").append(CONTENT);
-	}
-}
 
 function Edit(target) {
 	if ($("input").is(":focus") === false) {
@@ -150,24 +123,8 @@ function GetValue(STYLE) {
 }
 
 function SetValue(STYLE) {
-	if (STYLE != 0 && STYLE != 50 && STYLE != 55 && CONFIG.THEME[STYLE][3] != "texts") {
+	if (STYLE != 0 && STYLE != 48 && STYLE != 52 && CONFIG.THEME[STYLE][3] != "texts") {
 		document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
-
-		if (STYLE === 19 || STYLE === 37 || STYLE === 38 || STYLE === 39 || STYLE === 40 || STYLE === 41 || STYLE === 42 || STYLE === 43 || STYLE === 44 || STYLE === 45) {
-			let OPTIONALRGB = CONFIG.THEME[19][1];
-			if (CONFIG.RGB == 1) OPTIONALRGB = OPTIONALRGB + ", " + OPTIONALRGB;
-			if (CONFIG.RGB >= 2) OPTIONALRGB = OPTIONALRGB + ", " + CONFIG.THEME[37][1];
-			if (CONFIG.RGB >= 3) OPTIONALRGB = OPTIONALRGB + ", " + CONFIG.THEME[38][1];
-			if (CONFIG.RGB >= 4) OPTIONALRGB = OPTIONALRGB + ", " + CONFIG.THEME[39][1];
-			if (CONFIG.RGB >= 5) OPTIONALRGB = OPTIONALRGB + ", " + CONFIG.THEME[40][1];
-			if (CONFIG.RGB >= 6) animation = animation + ", " + CONFIG.THEME[41][1];
-			if (CONFIG.RGB >= 7) animation = animation + ", " + CONFIG.THEME[42][1];
-			if (CONFIG.RGB >= 8) animation = animation + ", " + CONFIG.THEME[43][1];
-			if (CONFIG.RGB >= 9) animation = animation + ", " + CONFIG.THEME[44][1];
-			if (CONFIG.RGB == 10) animation = animation + ", " + CONFIG.THEME[45][1];
-			document.body.style.setProperty('--animation', OPTIONALRGB);
-			document.body.style.setProperty('--rgb1', 'var(--Primary)');
-		}
 
 		if (STYLE === 1 || STYLE === 8 || STYLE === 9 || STYLE === 10 || STYLE === 11 || STYLE === 17) {
 			if (CONFIG.SELECTED[STYLE] === "img") {
@@ -221,25 +178,45 @@ function UPDATEUI() {
 	if (CONFIG.RGB == 1) {
 		$("#rgbtext").html("RGB animation : Disabled");
 		$("#time").hide();
-		$("#rgb2").hide();
+		$("#C2").hide();
 	} else {
 		$("#rgbtext").html("");
 		$("#time").show();
-		$("#rgb2").show();
+		$("#C2").show();
 	}
-	if (CONFIG.RGB >= 3) $("#rgb3").show(); else $("#rgb3").hide();
-	if (CONFIG.RGB >= 4) $("#rgb4").show(); else $("#rgb4").hide();
-	if (CONFIG.RGB >= 5) $("#rgb5").show(); else $("#rgb5").hide();
-	if (CONFIG.RGB >= 6) $("#rgb6").show(); else $("#rgb6").hide();
-	if (CONFIG.RGB >= 7) $("#rgb7").show(); else $("#rgb7").hide();
-	if (CONFIG.RGB >= 8) $("#rgb8").show(); else $("#rgb8").hide();
-	if (CONFIG.RGB >= 9) $("#rgb9").show(); else $("#rgb9").hide();
-	if (CONFIG.RGB == 10) $("#rgb10").show(); else $("#rgb10").hide();
+	if (CONFIG.RGB >= 3) $("#C3").show(); else $("#C3").hide();
+	if (CONFIG.RGB >= 4) $("#C4").show(); else $("#C4").hide();
+	if (CONFIG.RGB >= 5) $("#C5").show(); else $("#C5").hide();
+	if (CONFIG.RGB >= 6) $("#C6").show(); else $("#C6").hide();
+	if (CONFIG.RGB >= 7) $("#C7").show(); else $("#C7").hide();
+	if (CONFIG.RGB >= 8) $("#C8").show(); else $("#C8").hide();
 }
 
 (function () {
 	ShowMenu(1);
-	InitVars();
+	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
+		SetValue(keys);
+		let square = "<div class='no square'></div>";
+		if (CONFIG.THEME[keys][6] === true) square = "<div class='square' id='square-" + CONFIG.THEME[keys][2] + "'></div>";
+		let Accepted = "<span class='accept'>";
+		for (var i in CONFIG.THEME[keys][5]) {
+			if (i != 0) Accepted = Accepted + ", " + CONFIG.THEME[keys][5][i];
+			else Accepted = Accepted + CONFIG.THEME[keys][5][i];
+		}
+
+		Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
+		if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
+		let CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
+			'<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
+			'<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div></div>');
+
+		if (CONFIG.THEME[keys][3] === "general") $("#config1").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "rgb") $("#config2").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "status") $("#config3").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "profile") $("#config4").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "menus") $("#config5").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "texts") $("#config7").append(CONTENT);
+	}
 	for (var f in APP.FONTS) {
 		$("#fontsList").append("<div id='font" + f + "' style='font-family:" + APP.FONTS[f] + ";' class='RGBbutton'>" + APP.FONTS[f] + "</div>");
 	}
@@ -249,9 +226,7 @@ function UPDATEUI() {
 	$("#menu").on("click", ".RGBbutton", function () { ShowMenu($(this).attr("data-id")); });
 
 	$("#Theme-font").prop("disabled", true);
-	for (var r = 0; r < 10; r++) { $("#Theme-rgb" + r).prop("disabled", true); }
-
-	$("#Theme-Primary").prop("disabled", true);
+	for (var r = 0; r < 8; r++) { $("#Theme-C" + r).prop("disabled", true); }
 	$("#Theme-Online").prop("disabled", true);
 	$("#Theme-Idle").prop("disabled", true);
 	$("#Theme-Unavailable").prop("disabled", true);
@@ -279,11 +254,15 @@ function UPDATEUI() {
 		UpdatePlugins();
 	});
 
+	$("#HSL-Letters").on("click", function () {
+		UpdatePlugins();
+	});
+
 	$("#font").on("click", function () { Edit(2); });
 	$("#fontsList .RGBbutton").click(function () { CONFIG.EDITOR.new = APP.FONTS[this.id.slice(4)]; });
 
 	$(".form .value").click(function () {
-		for (let ID in CONFIG.THEME) { if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 50 && ID != 55) Edit(ID); }
+		for (let ID in CONFIG.THEME) { if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 48 && ID != 52) Edit(ID); }
 	});
 
 	$("#VAR1").on("click", function () { CONFIG.EDITOR.new = "var(--grey)"; });
@@ -317,9 +296,10 @@ function UPDATEUI() {
 	});
 
 	$("#ADDRGB").on("click", function () {
-		if (CONFIG.RGB < 10) {
+		if (CONFIG.RGB < 8) {
 			CONFIG.RGB++;
 			if (CONFIG.RGB === 2) CONFIG.THEME[3][1] = $("#Theme-" + CONFIG.THEME[3][2]).val();
+			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB +".css");
 			SetValue(19);
 			UPDATEUI();
 		}
@@ -328,6 +308,7 @@ function UPDATEUI() {
 	$("#REMOVERGB").on("click", function () {
 		if (CONFIG.RGB > 1) {
 			CONFIG.RGB--;
+			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB +".css");
 			SetValue(19);
 			if (CONFIG.RGB == 1) { CONFIG.THEME[3][1] = "0s"; SetValue(3); }
 			UPDATEUI();
@@ -381,6 +362,7 @@ function Result() {
 	$("#ResultText").html("");
 	$("#ResultText").append('<span class="meta">/**\n<br>* @name ' + CONFIG.THEME[0][1] + '\n<br>* @author Purple Wizard\n<br>* @authorLink https://github.com/GoldenLys\n<br>* @version ' + VERSION + '\n<br>* @invite SBuYeHh\n<br>* @description An amazing RGB theme with full customization included, made by Purple Wizard.\n<br>* @source https://github.com/GoldenLys/BetterDiscord-Elysia\n<br>* @website https://goldenlys.github.io/ThemeGen\n<br>*/\n<br>');
 	$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
+	$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/RGB/' + CONFIG.RGB + '.css")</span>;\n<br>\n<br><span class="comment">/* PLUGINS */</span>\n<br>\n<br>');
 	if (CONFIG.THEME[2][1] === "Avignon PS Pro") { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>;\n<br>'); }
 	if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
 	if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
@@ -392,7 +374,7 @@ function Result() {
 	if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
 	if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
 	if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Letters-in-HSL.css")</span>;\n<br>'); }
-	$("#ResultText").append('<span class="val">:root {</span>\n<br>');
+	$("#ResultText").append('\n<br>\n<br><span class="comment">/* CONFIG */</span>\n<br>\n<br><span class="val">:root {</span>\n<br>');
 
 	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
 
@@ -402,28 +384,14 @@ function Result() {
 			} else { $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>'); }
 		} else if (keys === 0 || keys === 2 || CONFIG.THEME[keys][3] === "texts") {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
-		} else if (keys !== 19 && keys !== 37 && keys !== 38 && keys !== 38 && keys !== 39 && keys !== 40 && keys !== 41 && keys !== 42 && keys !== 43 && keys !== 44 && keys !== 45) {
+		} else if (CONFIG.THEME[keys][1] != "rgb(0 0 0)") {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
 		}
 	}
-
-	let animation = CONFIG.THEME[19][1];
-	if (CONFIG.RGB == 1) animation = animation + ", " + animation;
-	if (CONFIG.RGB >= 2) animation = animation + ", " + CONFIG.THEME[37][1];
-	if (CONFIG.RGB >= 3) animation = animation + ", " + CONFIG.THEME[38][1];
-	if (CONFIG.RGB >= 4) animation = animation + ", " + CONFIG.THEME[39][1];
-	if (CONFIG.RGB >= 5) animation = animation + ", " + CONFIG.THEME[40][1];
-	if (CONFIG.RGB >= 6) animation = animation + ", " + CONFIG.THEME[41][1];
-	if (CONFIG.RGB >= 7) animation = animation + ", " + CONFIG.THEME[42][1];
-	if (CONFIG.RGB >= 8) animation = animation + ", " + CONFIG.THEME[43][1];
-	if (CONFIG.RGB >= 9) animation = animation + ", " + CONFIG.THEME[44][1];
-	if (CONFIG.RGB == 10) animation = animation + ", " + CONFIG.THEME[45][1];
-	$("#ResultText").append('<span class="var">--animation:</span> ' + animation + ';\n<br>');
 	let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(" / 50%)");
 	let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(" / 75%)");
 	$("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
 	$("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
-	$("#ResultText").append('<span class="var">--Primary:</span> ' + CONFIG.THEME[19][1] + ';\n<br>');
 
 	$("#ResultText").append('<span class="val">}</span> <span class="comment">/* Made with Purple Wizard theme generator v' + VERSION + ', have fun ! */</span>');
 }

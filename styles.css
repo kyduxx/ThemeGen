@@ -4,7 +4,6 @@
 	--EDITOR_GREEN: 0;
 	--EDITOR_BLUE: 0;
 }
-
 #square-Online {
 	background-color: var(--Online);
 }
@@ -69,49 +68,46 @@
 	background-color: var(--HoverMessage);
 }
 
+#square-Highlighted {
+	background-color: var(--Highlighted);
+}
+
 #square-logo {
 	background: center/cover no-repeat var(--logo);
 }
 
-#square-Primary {
-	background-color: var(--rgb1);
+#square-C1 {
+	background-color: var(--C1);
 }
 
-#square-rgb2 {
-	background-color: var(--rgb2);
+#square-C2 {
+	background-color: var(--C2);
 }
 
-#square-rgb3 {
-	background-color: var(--rgb3);
+#square-C3 {
+	background-color: var(--C3);
 }
 
-#square-rgb4 {
-	background-color: var(--rgb4);
+#square-C4 {
+	background-color: var(--C4);
 }
 
-#square-rgb5 {
-	background-color: var(--rgb5);
+#square-C5 {
+	background-color: var(--C5);
 }
 
-#square-rgb6 {
-	background-color: var(--rgb6);
+#square-C6 {
+	background-color: var(--C6);
 }
 
-#square-rgb7 {
-	background-color: var(--rgb7);
+#square-C7 {
+	background-color: var(--C7);
 }
 
-#square-rgb8 {
-	background-color: var(--rgb8);
+#square-C8 {
+	background-color: var(--C8);
 }
 
-#square-rgb9 {
-	background-color: var(--rgb9);
-}
-
-#square-rgb10 {
-	background-color: var(--rgb10);
-}
 
 body {
 	margin: 0;
@@ -126,83 +122,6 @@ body {
 
 * {
 	font-family: var(--font), sans-serif;
-}
-
-.startCircle {
-	opacity: 0;
-	z-index: 1;
-	position: absolute;
-	width: 1%;
-	height: 1%;
-	animation: startAnim 2.5s;
-	-webkit-animation: startAnim 2.5s;
-}
-
-@keyframes startAnim {
-	0% {
-		width: 100%;
-		height: 100%;
-		opacity: 1;
-	}
-
-	25% {
-		border-radius: 50%;
-	}
-
-	100% {
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		transform: scale(0);
-	}
-}
-
-@-webkit-keyframes K2KBG {
-	from {
-		background-position: 0 0;
-	}
-
-	50% {
-		background-position: 100% 100%;
-	}
-
-	to {
-		background-position: 0 0;
-	}
-}
-
-@keyframes K2KBG {
-	from {
-		background-position: 0 0;
-	}
-
-	50% {
-		background-position: 100% 100%;
-	}
-
-	to {
-		background-position: 0 0;
-	}
-}
-
-@keyframes animatedBackground {
-	from {
-		background-position: 0 0;
-	}
-
-	to {
-		background-position: 100% 0;
-	}
-}
-
-@-webkit-keyframes animatedBackground {
-	from {
-		background-position: 0 0;
-	}
-
-	to {
-		background-position: 100% 0;
-	}
 }
 
 ::selection {
@@ -559,24 +478,12 @@ input[type=number] {
 }
 
 .divider {
-	background: radial-gradient(circle, var(--animation)) !important;
-	background-size: 1000% 500% !important;
-	-webkit-animation: K2KBG var(--time) ease infinite !important;
-	animation: K2KBG var(--time) ease infinite !important;
 	border: none !important;
 	opacity: .65;
 	border-radius: .1em;
 	margin: 1em 0;
 	padding-top: .35em;
 	width: 100%;
-}
-
-#square-animation, .RGBbutton:not(.Add):not(.Remove), .dropdown,
-.startCircle, code:after, input[type=checkbox]:checked {
-	background: radial-gradient(circle, var(--animation)) !important;
-	background-size: 1000% 500% !important;
-	-webkit-animation: K2KBG var(--time) ease infinite !important;
-	animation: K2KBG var(--time) ease infinite !important;
 }
 
 #copyright strong,
@@ -631,7 +538,7 @@ code .var {
 }
 
 code .comment {
-	color: rgb(127 114 141);
+	color: rgb(255 255 255 / 50%);
 }
 
 code .val {
