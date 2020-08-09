@@ -1,4 +1,4 @@
-const VERSION = "3.0";
+const VERSION = "3.1";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -31,7 +31,7 @@ var CONFIG = {
 		15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
 		16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
 		17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
-		18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["texts", "vars"], true],
+		18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["rgb", "vars"], true],
 		19: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
 		20: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
 		21: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
@@ -66,11 +66,12 @@ var CONFIG = {
 		50: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
 		51: ["Streaming", "rgb(78 0 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
 		52: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
-		53: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["texts", "vars"], true],
+		53: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["rgb", "vars"], true],
 		54: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
 		55: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
-		/*54: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
-	},
+		56: ["Active Box", "rgb(235 235 235)", "ActiveBox", "menus", "Selected Box background", accepts = ["rgb", "vars"], true],
+		/*57: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
+	}
 };
 
 function Edit(target) {

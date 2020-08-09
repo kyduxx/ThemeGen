@@ -72,6 +72,10 @@
 	background-color: var(--Highlighted);
 }
 
+#square-ActiveBox {
+	background-color: var(--ActiveBox);
+}
+
 #square-logo {
 	background: center/cover no-repeat var(--logo);
 }
