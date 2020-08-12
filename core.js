@@ -70,7 +70,8 @@ var CONFIG = {
 		54: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
 		55: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
 		56: ["Active Box", "rgb(235 235 235)", "ActiveBox", "menus", "Selected Box background", accepts = ["rgb", "vars"], true],
-		/*57: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
+		57: ["Announcements Channels Icon", "📣", "Announcement", "texts", "Announcement Channel Icon", accepts = ["texts", "icons"], false],
+		/*58: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
 	}
 };
 
@@ -138,8 +139,8 @@ function SetValue(STYLE) {
 		if (CONFIG.THEME[STYLE][3] === "menus") {
 			document.body.style.setProperty('--' + CONFIG.THEME[12][2], CONFIG.THEME[12][1]);
 			document.body.style.setProperty('--' + CONFIG.THEME[13][2], CONFIG.THEME[13][1]);
-			var grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(" / 50%)");
-			var darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(" / 75%)");
+			var grey5 = CONFIG.THEME[12][1].split(")").join(" / 50%)");
+			var darkgrey5 = CONFIG.THEME[13][1].split(")").join(" / 75%)");
 			document.body.style.setProperty('--grey5', grey5);
 			document.body.style.setProperty('--darkgrey5', darkgrey5);
 		}
@@ -393,8 +394,8 @@ function Result() {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
 		}
 	}
-	let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgba(").split(")").join(" / 50%)");
-	let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgba(").split(")").join(" / 75%)");
+	let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgb(").split(")").join(" / 50%)");
+	let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgb(").split(")").join(" / 75%)");
 	$("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
 	$("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
 
