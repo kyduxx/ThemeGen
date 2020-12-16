@@ -792,7 +792,6 @@ input[type=checkbox]:checked::before {
 }
 
 .color-picker .button-validate {
-	height: 100%;
 	background: var(--grey5);
 	margin-top: 1rem;
 	padding: 5px 10px;
