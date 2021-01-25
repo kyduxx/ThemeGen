@@ -1,4 +1,4 @@
-const VERSION = "3.1";
+const VERSION = "3.2";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -10,7 +10,7 @@ var APP = {
 var CONFIG = {
 	EDITOR: { id: 0, old: "", new: "" },
 	RGB: 2,
-	PLUGINS: [1, 1, 1, 0, 0],
+	PLUGINS: [1, 1, 1, 0, 0, 0],
 	SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
 	THEME: {
 		0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
@@ -264,6 +264,10 @@ function UPDATEUI() {
 		UpdatePlugins();
 	});
 
+	$("#ToggleUIT").on("click", function () {
+		UpdatePlugins();
+	});
+
 	$("#font").on("click", function () { Edit(2); });
 	$("#fontsList .RGBbutton").click(function () { CONFIG.EDITOR.new = APP.FONTS[this.id.slice(4)]; });
 
@@ -380,6 +384,7 @@ function Result() {
 	if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
 	if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
 	if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Letters-in-HSL.css")</span>;\n<br>'); }
+	if (CONFIG.PLUGINS[5] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/UserIsTyping.css")</span>;\n<br>'); }
 	$("#ResultText").append('\n<br>\n<br><span class="comment">/* CONFIG */</span>\n<br>\n<br><span class="val">:root {</span>\n<br>');
 
 	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
@@ -445,12 +450,11 @@ function UpdatePlugins() {
 		CONFIG.PLUGINS[2] = 0;
 	}
 	if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1; else CONFIG.PLUGINS[3] = 0;
-
 	if ($("#ToggleHSL-Letters").is(':checked')) CONFIG.PLUGINS[4] = 1; else CONFIG.PLUGINS[4] = 0;
+	if ($("#ToggleUIT").is(':checked')) CONFIG.PLUGINS[5] = 1; else CONFIG.PLUGINS[5] = 0;
 }
 
 const WP_CHANGE = function (TYPE, PARAM) {
-
 	if (!PARAM) {
 		if (APP.PICKER[TYPE] > 0) APP.PICKER[TYPE]--;
 	} else {
