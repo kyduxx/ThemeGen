@@ -1,17 +1,29 @@
-const VERSION = "3.2";
+const VERSION = "3.3";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
 	PICKER: ["-1", "-1", "-1"],
 	SELECTION: "",
 	FONTS: ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"],
+	LOGOS: ["1.gif", "2.png", "3.gif", "4.png", "5.png", "6.png", "7.png", "8.gif", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png"],
 };
 
 var CONFIG = {
-	EDITOR: { id: 0, old: "", new: "" },
+	EDITOR: {
+		id: 0,
+		old: "",
+		new: ""
+	},
 	RGB: 2,
 	PLUGINS: [1, 1, 1, 0, 0, 0],
-	SELECTED: { 1: "img", 8: "img", 9: "img", 10: "img", 11: "img", 17: "img" },
+	SELECTED: {
+		1: "img",
+		8: "img",
+		9: "img",
+		10: "img",
+		11: "img",
+		17: "img"
+	},
 	THEME: {
 		0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
 		1: ["Background", "https://goldenlys.github.io/ThemeGen/img/bg.jpg", "background", "general", "Theme background", accepts = ["img", "rgb"], false],
@@ -30,7 +42,7 @@ var CONFIG = {
 		14: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "vars"], true],
 		15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
 		16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
-		17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img"], true],
+		17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img", "logo"], true],
 		18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["rgb", "vars"], true],
 		19: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
 		20: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
@@ -87,15 +99,18 @@ function Edit(target) {
 		$("#EDITOR-COL").hide();
 		$("#EDITOR-FNT").hide();
 		$("#EDITOR-URL").hide();
+		$("#EDITOR-LGS").hide();
 		let SHOWVAREDITOR = 0;
 		let SHOWRGBEDITOR = 0;
 		let SHOWFONTSEDITOR = 0;
 		let SHOWURLEDITOR = 0;
+		let SHOWLOGOEDITOR = 0;
 		for (var i in CONFIG.THEME[target][5]) {
 			if (CONFIG.THEME[target][5][i] === "rgb") SHOWRGBEDITOR = 1;
 			if (CONFIG.THEME[target][5][i] === "vars") SHOWVAREDITOR = 1;
 			if (CONFIG.THEME[target][5][i] === "fonts") SHOWFONTSEDITOR = 1;
 			if (CONFIG.THEME[target][5][i] === "img") SHOWURLEDITOR = 1;
+			if (CONFIG.THEME[target][5][i] === "logo") SHOWLOGOEDITOR = 1;
 		}
 
 		if (SHOWRGBEDITOR === 1) {
@@ -116,6 +131,7 @@ function Edit(target) {
 			APP.PICKER = ["-1", "-1", "-1"];
 			WP_UPDATE();
 		}
+		if (SHOWLOGOEDITOR === 1) $("#EDITOR-LGS").show();
 		$("#EditorSelection").html("<div class='LEFT-BOX'>Editing</div>" + CONFIG.THEME[CONFIG.EDITOR.id][0] + "");
 		$("#EditorOld").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.old + '";></div>Old Value</div><input disabled type="text" value="' + CONFIG.EDITOR.old + '" class="fullwidth">');
 		$("#EditorNew").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.new + '";></div>New Value</div><input disabled type="text" value="' + CONFIG.EDITOR.new + '" class="fullwidth">');
@@ -130,8 +146,8 @@ function SetValue(STYLE) {
 	if (STYLE != 0 && STYLE != 48 && STYLE != 52 && CONFIG.THEME[STYLE][3] != "texts") {
 		document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
 
-		if (STYLE === 1 || STYLE === 8 || STYLE === 9 || STYLE === 10 || STYLE === 11 || STYLE === 17) {
-			if (CONFIG.SELECTED[STYLE] === "img") {
+		if (STYLE == 1 || STYLE == 8 || STYLE == 9 || STYLE == 10 || STYLE == 11 || STYLE == 17) {
+			if (CONFIG.SELECTED[STYLE] === "img" || CONFIG.SELECTED[STYLE] == "logo") {
 				document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], 'url(' + CONFIG.THEME[STYLE][1] + ')');
 			}
 		}
@@ -160,7 +176,7 @@ function UPDATEUI() {
 		if (CONFIG.EDITOR.new != "var(--grey)" && CONFIG.EDITOR.new != "var(--darkgrey)" && CONFIG.EDITOR.new != "var(--grey5)" && CONFIG.EDITOR.new != "var(--darkgrey5)" && CONFIG.EDITOR.new != "transparent") {
 			let rgb = APP.PICKER[0] + APP.PICKER[1] + APP.PICKER[2];
 			if (rgb != "-1-1-1") {
-				if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts") CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + " " + APP.PICKER[1] + " " + APP.PICKER[2] + ")";
+				if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts" && CONFIG.SELECTED[CONFIG.EDITOR.id] !== "logo") CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + " " + APP.PICKER[1] + " " + APP.PICKER[2] + ")";
 			}
 			if (CONFIG.EDITOR.id == 1 || CONFIG.EDITOR.id == 8 || CONFIG.EDITOR.id == 9 || CONFIG.EDITOR.id == 10 || CONFIG.EDITOR.id == 11 || CONFIG.EDITOR.id == 17) {
 				if (CONFIG.SELECTED[CONFIG.EDITOR.id] == "img") CONFIG.EDITOR.new = $("#NewURL").val();
@@ -175,10 +191,13 @@ function UPDATEUI() {
 			$("#EditorNew").html('<div class="LEFT-BOX"><div class="square" style="background:' + CONFIG.EDITOR.new + '";></div>New Value</div><input disabled type="text" value="' + CONFIG.EDITOR.new + '" class="fullwidth">');
 		}
 	}
-	if ($('#ResultText').is(':empty')) $("#output").hide(); else $("#output").show();
+	if ($('#ResultText').is(':empty')) $("#output").hide();
+	else $("#output").show();
 
-	if (CONFIG.RGB >= 2) $("#REMOVERGB").removeClass("disabled"); else $("#REMOVERGB").addClass("disabled");
-	if (CONFIG.RGB <= 9) $("#ADDRGB").removeClass("disabled"); else $("#ADDRGB").addClass("disabled");
+	if (CONFIG.RGB >= 2) $("#REMOVERGB").removeClass("disabled");
+	else $("#REMOVERGB").addClass("disabled");
+	if (CONFIG.RGB <= 9) $("#ADDRGB").removeClass("disabled");
+	else $("#ADDRGB").addClass("disabled");
 	if (CONFIG.RGB == 1) {
 		$("#rgbtext").html("RGB animation : Disabled");
 		$("#time").hide();
@@ -188,14 +207,22 @@ function UPDATEUI() {
 		$("#time").show();
 		$("#C2").show();
 	}
-	if (CONFIG.RGB >= 3) $("#C3").show(); else $("#C3").hide();
-	if (CONFIG.RGB >= 4) $("#C4").show(); else $("#C4").hide();
-	if (CONFIG.RGB >= 5) $("#C5").show(); else $("#C5").hide();
-	if (CONFIG.RGB >= 6) $("#C6").show(); else $("#C6").hide();
-	if (CONFIG.RGB >= 7) $("#C7").show(); else $("#C7").hide();
-	if (CONFIG.RGB >= 8) $("#C8").show(); else $("#C8").hide();
-	if (CONFIG.RGB >= 9) $("#C9").show(); else $("#C9").hide();
-	if (CONFIG.RGB == 10) $("#C10").show(); else $("#C10").hide();
+	if (CONFIG.RGB >= 3) $("#C3").show();
+	else $("#C3").hide();
+	if (CONFIG.RGB >= 4) $("#C4").show();
+	else $("#C4").hide();
+	if (CONFIG.RGB >= 5) $("#C5").show();
+	else $("#C5").hide();
+	if (CONFIG.RGB >= 6) $("#C6").show();
+	else $("#C6").hide();
+	if (CONFIG.RGB >= 7) $("#C7").show();
+	else $("#C7").hide();
+	if (CONFIG.RGB >= 8) $("#C8").show();
+	else $("#C8").hide();
+	if (CONFIG.RGB >= 9) $("#C9").show();
+	else $("#C9").hide();
+	if (CONFIG.RGB == 10) $("#C10").show();
+	else $("#C10").hide();
 }
 
 (function () {
@@ -211,7 +238,8 @@ function UPDATEUI() {
 		}
 
 		Accepted = Accepted.split("fonts").join("<span class='green'>✔</span> Font name").split("texts").join("<span class='green'>✔</span> Text").split("img").join("<span class='green'>✔</span> Image URL").split("vars").join("<span class='green'>✔</span> Variables").split("icons").join("<span class='green'>✔</span> Emojis").split("rgb").join("<span class='green'>✔</span> RGB");
-		if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>"; else Accepted = Accepted + "</span>";
+		if (CONFIG.THEME[keys][5].length === 1) Accepted = Accepted + " only.</span>";
+		else Accepted = Accepted + "</span>";
 		let CONTENT = ('<div class="value" id="' + CONFIG.THEME[keys][2] + '"><div class="LEFT-BOX">' + square + CONFIG.THEME[keys][0] + '</div>' +
 			'<input id="Theme-' + CONFIG.THEME[keys][2] + '" data-id="' + keys + '" type="text" value="' + CONFIG.THEME[keys][1] + '">' +
 			'<div class="desc">' + CONFIG.THEME[keys][4] + ' ' + Accepted + ' </div></div>');
@@ -223,16 +251,26 @@ function UPDATEUI() {
 		if (CONFIG.THEME[keys][3] === "menus") $("#config5").append(CONTENT);
 		if (CONFIG.THEME[keys][3] === "texts") $("#config7").append(CONTENT);
 	}
-	for (var f in APP.FONTS) {
+	for (let f in APP.FONTS) {
 		$("#fontsList").append("<div id='font" + f + "' style='font-family:" + APP.FONTS[f] + ";' class='RGBbutton'>" + APP.FONTS[f] + "</div>");
+	}
+
+	for (let i in APP.LOGOS) {
+		$("#logosList").append("<div id='logo" + i + "' class='RGBbutton'><img  class='square' src='" + window.location.origin + "/img/logos/" + APP.LOGOS[i] + " '></div>");
 	}
 	$("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
 	$("input[type='text'], textarea").attr('spellcheck', false);
-	$("#NewResult").on("click", function () { Result(); });
-	$("#menu").on("click", ".RGBbutton", function () { ShowMenu($(this).attr("data-id")); });
+	$("#NewResult").on("click", function () {
+		Result();
+	});
+	$("#menu").on("click", ".RGBbutton", function () {
+		ShowMenu($(this).attr("data-id"));
+	});
 
 	$("#Theme-font").prop("disabled", true);
-	for (var r = 0; r < 10; r++) { $("#Theme-C" + r).prop("disabled", true); }
+	for (var r = 0; r < 10; r++) {
+		$("#Theme-C" + r).prop("disabled", true);
+	}
 	$("#Theme-Online").prop("disabled", true);
 	$("#Theme-Idle").prop("disabled", true);
 	$("#Theme-Unavailable").prop("disabled", true);
@@ -268,18 +306,40 @@ function UPDATEUI() {
 		UpdatePlugins();
 	});
 
-	$("#font").on("click", function () { Edit(2); });
-	$("#fontsList .RGBbutton").click(function () { CONFIG.EDITOR.new = APP.FONTS[this.id.slice(4)]; });
-
-	$(".form .value").click(function () {
-		for (let ID in CONFIG.THEME) { if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 48 && ID != 52) Edit(ID); }
+	$("#font").on("click", function () {
+		Edit(2);
+	});
+	$("#fontsList .RGBbutton").click(function () {
+		CONFIG.EDITOR.new = APP.FONTS[this.id.slice(4)];
 	});
 
-	$("#VAR1").on("click", function () { CONFIG.EDITOR.new = "var(--grey)"; });
-	$("#VAR2").on("click", function () { CONFIG.EDITOR.new = "var(--darkgrey)"; });
-	$("#VAR3").on("click", function () { CONFIG.EDITOR.new = "var(--grey5)"; });
-	$("#VAR4").on("click", function () { CONFIG.EDITOR.new = "var(--darkgrey5)"; });
-	$("#VAR5").on("click", function () { CONFIG.EDITOR.new = "transparent"; });
+	$("#logosList .RGBbutton").click(function () {
+		CONFIG.SELECTED[17] = "logo";
+		CONFIG.EDITOR.new = $(this).children('img').attr('src');
+		SetValue(17);
+	});
+
+	$(".form .value").click(function () {
+		for (let ID in CONFIG.THEME) {
+			if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 48 && ID != 52) Edit(ID);
+		}
+	});
+
+	$("#VAR1").on("click", function () {
+		CONFIG.EDITOR.new = "var(--grey)";
+	});
+	$("#VAR2").on("click", function () {
+		CONFIG.EDITOR.new = "var(--darkgrey)";
+	});
+	$("#VAR3").on("click", function () {
+		CONFIG.EDITOR.new = "var(--grey5)";
+	});
+	$("#VAR4").on("click", function () {
+		CONFIG.EDITOR.new = "var(--darkgrey5)";
+	});
+	$("#VAR5").on("click", function () {
+		CONFIG.EDITOR.new = "transparent";
+	});
 
 	$("#SaveEdition").on("click", function () {
 		$("#edition").hide();
@@ -309,7 +369,7 @@ function UPDATEUI() {
 		if (CONFIG.RGB < 10) {
 			CONFIG.RGB++;
 			if (CONFIG.RGB === 2) CONFIG.THEME[3][1] = $("#Theme-" + CONFIG.THEME[3][2]).val();
-			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB +".css");
+			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB + ".css");
 			SetValue(19);
 			UPDATEUI();
 		}
@@ -318,9 +378,12 @@ function UPDATEUI() {
 	$("#REMOVERGB").on("click", function () {
 		if (CONFIG.RGB > 1) {
 			CONFIG.RGB--;
-			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB +".css");
+			$("head link#animation-count").attr("href", "https://goldenlys.github.io/BetterDiscord-Elysia/RGB/" + CONFIG.RGB + ".css");
 			SetValue(19);
-			if (CONFIG.RGB == 1) { CONFIG.THEME[3][1] = "0s"; SetValue(3); }
+			if (CONFIG.RGB == 1) {
+				CONFIG.THEME[3][1] = "0s";
+				SetValue(3);
+			}
 			UPDATEUI();
 		}
 	});
@@ -351,12 +414,24 @@ function UPDATEUI() {
 		VerifyType(CONFIG.EDITOR.id, "rgb");
 	});
 
-	$("#selector-red .button.minus").on("click", function () { WP_CHANGE(0, false); });
-	$("#selector-red .button.plus").on("click", function () { WP_CHANGE(0, true); });
-	$("#selector-green .button.minus").on("click", function () { WP_CHANGE(1, false); });
-	$("#selector-green .button.plus").on("click", function () { WP_CHANGE(1, true); });
-	$("#selector-blue .button.minus").on("click", function () { WP_CHANGE(2, false); });
-	$("#selector-blue .button.plus").on("click", function () { WP_CHANGE(2, true); });
+	$("#selector-red .button.minus").on("click", function () {
+		WP_CHANGE(0, false);
+	});
+	$("#selector-red .button.plus").on("click", function () {
+		WP_CHANGE(0, true);
+	});
+	$("#selector-green .button.minus").on("click", function () {
+		WP_CHANGE(1, false);
+	});
+	$("#selector-green .button.plus").on("click", function () {
+		WP_CHANGE(1, true);
+	});
+	$("#selector-blue .button.minus").on("click", function () {
+		WP_CHANGE(2, false);
+	});
+	$("#selector-blue .button.plus").on("click", function () {
+		WP_CHANGE(2, true);
+	});
 	UpdateVars();
 })();
 
@@ -373,26 +448,52 @@ function Result() {
 	$("#ResultText").append('<span class="meta">/**\n<br>* @name ' + CONFIG.THEME[0][1] + '\n<br>* @author Purple Wizard\n<br>* @authorLink https://github.com/GoldenLys\n<br>* @version ' + VERSION + '\n<br>* @invite SBuYeHh\n<br>* @description An amazing RGB theme with full customization included, made by Purple Wizard.\n<br>* @source https://github.com/GoldenLys/BetterDiscord-Elysia\n<br>* @website https://goldenlys.github.io/ThemeGen\n<br>*/\n<br>');
 	$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/aerobase.css")</span>;\n<br>');
 	$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/RGB/' + CONFIG.RGB + '.css")</span>;\n<br>\n<br><span class="comment">/* PLUGINS */</span>\n<br>\n<br>');
-	if (CONFIG.THEME[2][1] === "Avignon PS Pro") { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>;\n<br>'); }
-	if (CONFIG.THEME[2][1] === "Quicksand") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>'); }
-	if (CONFIG.THEME[2][1] === "Gruppo") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>'); }
-	if (CONFIG.THEME[2][1] === "Lobster") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap")</span>;\n<br>'); }
-	if (CONFIG.THEME[2][1] === "Indie Flower") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap")</span>;\n<br>'); }
-	if (CONFIG.THEME[2][1] === "Cuprum") { $("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Cuprum&display=swap")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[0] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HoverMemberList.css")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[1] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[2] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[3] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[4] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Letters-in-HSL.css")</span>;\n<br>'); }
-	if (CONFIG.PLUGINS[5] === 1) { $("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/UserIsTyping.css")</span>;\n<br>'); }
+	if (CONFIG.THEME[2][1] === "Avignon PS Pro") {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Avignon.css")</span>;\n<br>');
+	}
+	if (CONFIG.THEME[2][1] === "Quicksand") {
+		$("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap")</span>;\n<br>');
+	}
+	if (CONFIG.THEME[2][1] === "Gruppo") {
+		$("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Gruppo&display=swap")</span>;\n<br>');
+	}
+	if (CONFIG.THEME[2][1] === "Lobster") {
+		$("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap")</span>;\n<br>');
+	}
+	if (CONFIG.THEME[2][1] === "Indie Flower") {
+		$("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap")</span>;\n<br>');
+	}
+	if (CONFIG.THEME[2][1] === "Cuprum") {
+		$("#ResultText").append('<span class="plugin">@import url("https://fonts.googleapis.com/css?family=Cuprum&display=swap")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[0] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HoverMemberList.css")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[1] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/NoOffline.css")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[2] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/HorizontalServerList.css")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[3] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/GIBBUHSLFIX.css")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[4] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/Letters-in-HSL.css")</span>;\n<br>');
+	}
+	if (CONFIG.PLUGINS[5] === 1) {
+		$("#ResultText").append('<span class="plugin">@import url("https://goldenlys.github.io/BetterDiscord-Elysia/UserIsTyping.css")</span>;\n<br>');
+	}
 	$("#ResultText").append('\n<br>\n<br><span class="comment">/* CONFIG */</span>\n<br>\n<br><span class="val">:root {</span>\n<br>');
 
 	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
 
 		if (keys === 1 || keys === 8 || keys === 9 || keys === 10 || keys === 11 || keys === 17) {
-			if (CONFIG.SELECTED[keys] === "img") {
+			if (CONFIG.SELECTED[keys] === "img" || CONFIG.SELECTED[keys] === "logo") {
 				$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> url("' + CONFIG.THEME[keys][1] + '");\n<br>');
-			} else { $("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>'); }
+			} else {
+				$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
+			}
 		} else if (keys === 0 || keys === 2 || CONFIG.THEME[keys][3] === "texts") {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
 		} else if (CONFIG.THEME[keys][1] != "rgb(0 0 0)") {
@@ -437,21 +538,25 @@ function UpdateVars() {
 }
 
 function UpdatePlugins() {
-	if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1; else CONFIG.PLUGINS[0] = 0;
-	if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1; else CONFIG.PLUGINS[1] = 0;
+	if ($("#ToggleHover").is(':checked')) CONFIG.PLUGINS[0] = 1;
+	else CONFIG.PLUGINS[0] = 0;
+	if ($("#ToggleOffline").is(':checked')) CONFIG.PLUGINS[1] = 1;
+	else CONFIG.PLUGINS[1] = 0;
 	if ($("#ToggleServerList").is(':checked')) {
 		$("#HSL-Letters").show();
 		CONFIG.PLUGINS[2] = 1;
-	}
-	else {
+	} else {
 		$("#HSL-Letters").hide();
 		$("#ToggleHSL-Letters").prop("checked", false);
 		CONFIG.PLUGINS[4] = 0;
 		CONFIG.PLUGINS[2] = 0;
 	}
-	if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1; else CONFIG.PLUGINS[3] = 0;
-	if ($("#ToggleHSL-Letters").is(':checked')) CONFIG.PLUGINS[4] = 1; else CONFIG.PLUGINS[4] = 0;
-	if ($("#ToggleUIT").is(':checked')) CONFIG.PLUGINS[5] = 1; else CONFIG.PLUGINS[5] = 0;
+	if ($("#ToggleGHSL").is(':checked')) CONFIG.PLUGINS[3] = 1;
+	else CONFIG.PLUGINS[3] = 0;
+	if ($("#ToggleHSL-Letters").is(':checked')) CONFIG.PLUGINS[4] = 1;
+	else CONFIG.PLUGINS[4] = 0;
+	if ($("#ToggleUIT").is(':checked')) CONFIG.PLUGINS[5] = 1;
+	else CONFIG.PLUGINS[5] = 0;
 }
 
 const WP_CHANGE = function (TYPE, PARAM) {
