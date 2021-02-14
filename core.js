@@ -256,7 +256,7 @@ function UPDATEUI() {
 	}
 
 	for (let i in APP.LOGOS) {
-		$("#logosList").append("<div id='logo" + i + "' class='RGBbutton'><img  class='square' src='" + window.location.origin + "/img/logos/" + APP.LOGOS[i] + " '></div>");
+		$("#logosList").append("<div id='logo" + i + "' class='RGBbutton'><img  class='square' src='" + window.location.href + "/img/logos/" + APP.LOGOS[i] + " '></div>");
 	}
 	$("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
 	$("input[type='text'], textarea").attr('spellcheck', false);
