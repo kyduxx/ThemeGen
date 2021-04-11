@@ -1,4 +1,4 @@
-const VERSION = "3.3";
+const VERSION = "3.4";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -496,7 +496,7 @@ function Result() {
 			}
 		} else if (keys === 0 || keys === 2 || CONFIG.THEME[keys][3] === "texts") {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> "' + CONFIG.THEME[keys][1] + '";\n<br>');
-		} else if (CONFIG.THEME[keys][1] != "rgb(0 0 0)") {
+		} else {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
 		}
 	}
