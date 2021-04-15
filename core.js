@@ -1,4 +1,4 @@
-const VERSION = "3.4";
+const VERSION = "3.5";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -82,8 +82,8 @@ var CONFIG = {
 		54: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
 		55: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
 		56: ["Active Box", "rgb(235 235 235)", "ActiveBox", "menus", "Selected Box background", accepts = ["rgb", "vars"], true],
-		57: ["Announcements Channels Icon", "📣", "Announcement", "texts", "Announcement Channel Icon", accepts = ["texts", "icons"], false],
-		/*58: ["Tagged Name", "YOU", "TaggedName", "texts", "<span class='left red'>Obsolete</span> Text shown when you're tagged in the chat", accepts = ["texts", "icons"], false],*/
+		57: ["Announcement Channels Icon", "📣", "Announcement", "texts", "Announcement Channel Icon", accepts = ["texts", "icons"], false],
+		58: ["Stage Channels Icon", "📺", "Stage", "texts", "Stage Channel Icon", accepts = ["texts", "icons"], false],
 	}
 };
 
