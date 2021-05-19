@@ -1,11 +1,11 @@
-const VERSION = "3.5";
+const VERSION = "3.6";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
 	PICKER: ["-1", "-1", "-1"],
 	SELECTION: "",
 	FONTS: ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"],
-	LOGOS: ["1.gif", "2.png", "3.gif", "4.png", "5.png", "6.png", "7.png", "8.gif", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png"],
+	LOGOS: ["1.gif", "2.png", "3.gif", "4.png", "5.png", "6.png", "7.png", "8.gif", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.gif"],
 };
 
 var CONFIG = {
@@ -256,7 +256,7 @@ function UPDATEUI() {
 	}
 
 	for (let i in APP.LOGOS) {
-		$("#logosList").append("<div id='logo" + i + "' class='RGBbutton'><img  class='square' src='" + window.location.href + "/img/logos/" + APP.LOGOS[i] + " '></div>");
+		$("#logosList").append("<div id='logo" + i + "' class='RGBbutton'><img  class='square' src='" + window.location.href + "img/logos/" + APP.LOGOS[i] + " '></div>");
 	}
 	$("#copyright").html("Theme generator v" + VERSION + " by <strong>Purple Wizard</strong>.");
 	$("input[type='text'], textarea").attr('spellcheck', false);
