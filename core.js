@@ -5,7 +5,7 @@ var APP = {
 	PICKER: ["-1", "-1", "-1"],
 	SELECTION: "",
 	FONTS: ["Avignon PS Pro", "Quicksand", "Gruppo", "Lobster", "Indie Flower", "Cuprum", "Arial", "Helvetica Neue", "Courier New", "Times New Roman", "Comic Sans MS", "Impact"],
-	LOGOS: ["1.gif", "2.png", "3.gif", "4.png", "5.png", "6.png", "7.png", "8.gif", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.gif"],
+	LOGOS: ["1.gif", "2.png", "3.gif", "4.png", "5.png", "6.png", "7.png", "8.gif", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png", "15.png", "16.gif", "17.gif"],
 };
 
 var CONFIG = {
