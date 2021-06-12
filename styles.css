@@ -385,30 +385,6 @@ input[type=text]:focus {
     box-shadow: 0 0 5px 1px transparent;
 }
 
-#config4 .value>.square::before,
-.no.square::before {
-    content: "";
-}
-
-#config4 .value {
-    background: 0 0;
-}
-
-#config4 .square::before {
-    content: " ";
-}
-
-#config4 .square {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    margin: 0;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-}
-
 .custom {
     -webkit-appearance: none;
     width: 80%;
@@ -560,13 +536,6 @@ code .val {
     border-radius: 0 0 .5em .5em;
     background: var(--grey5);
     font-size: 14px;
-    line-height: 30px;
-}
-
-#config4 .desc {
-    top: unset;
-    bottom: 0;
-    height: 30px;
     line-height: 30px;
 }
 

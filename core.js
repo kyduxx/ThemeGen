@@ -1,4 +1,4 @@
-const VERSION = "3.6";
+const VERSION = "3.7";
 
 var APP = {
 	TYPES: ["red", "green", "blue"],
@@ -18,11 +18,7 @@ var CONFIG = {
 	PLUGINS: [1, 1, 1, 0, 0, 0],
 	SELECTED: {
 		1: "img",
-		8: "img",
-		9: "img",
-		10: "img",
-		11: "img",
-		17: "img"
+		14: "img"
 	},
 	THEME: {
 		0: ["Title", "ÆroSpace", "title", "general", "Theme title", accepts = ["texts"], false],
@@ -33,57 +29,53 @@ var CONFIG = {
 		5: ["Idle", "rgb(0 99 156)", "Idle", "status", "Idle status color", accepts = ["rgb"], true],
 		6: ["Unavailable", "rgb(228 15 0)", "Unavailable", "status", "Unavailable status color", accepts = ["rgb"], true],
 		7: ["Offline", "rgb(90 95 100)", "Offline", "status", "Offline status color", accepts = ["rgb"], true],
-		8: ["Playing", "https://goldenlys.github.io/ThemeGen/img/playing.jpg", "Playing", "profile", "Playing profile color", accepts = ["img", "rgb"], true],
-		9: ["Xbox", "https://goldenlys.github.io/ThemeGen/img/xbox.jpg", "Xbox", "profile", "Xbox profile color", accepts = ["img", "rgb"], true],
-		10: ["Spotify", "https://goldenlys.github.io/ThemeGen/img/spotify.jpg", "Spotify", "profile", "Spotify profile color", accepts = ["img", "rgb"], true],
-		11: ["Streaming", "https://goldenlys.github.io/ThemeGen/img/twitch.jpg", "Streaming", "profile", "Streaming profile color", accepts = ["img", "rgb"], true],
-		12: ["Grey", "rgb(77 70 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
-		13: ["Darkgrey", "rgb(18 18 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
-		14: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "vars"], true],
-		15: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
-		16: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
-		17: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img", "logo"], true],
-		18: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["rgb", "vars"], true],
-		19: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
-		20: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
-		21: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
-		22: ["Resize Window Button", "🔵", "Resize", "texts", "Resize window icon", accepts = ["texts", "icons"], false],
-		23: ["Hide Window Button", "⚫", "Hide", "texts", "Hide windows icon", accepts = ["texts", "icons"], false],
-		24: ["Profile Picture Hovered", "Watch me", "ProfilePic", "texts", "Text of an hovered profile picture", accepts = ["texts", "icons"], false],
-		25: ["Unread Icon", "✨", "Unread", "texts", "Unread Icon Text", accepts = ["texts", "icons"], false],
-		26: ["Options Icon", "⚙️", "Options", "texts", "Options Icon", accepts = ["texts", "icons"], false],
-		27: ["Emoji Icon", "🙂", "Emoji", "texts", "Emojis Button", accepts = ["texts", "icons"], false],
-		28: ["Emoji Icon Hovered", "😜", "EmojiHover", "texts", "Hovered Emojis Button", accepts = ["texts", "icons"], false],
-		29: ["Text Channels Icon", "💬", "Channel", "texts", "Text Channel Icon", accepts = ["texts", "icons"], false],
-		30: ["Voice Channels Icon", "🔊", "Voice", "texts", "Voice Channel Icon", accepts = ["texts", "icons"], false],
-		31: ["Community Name", "purpies", "Community", "texts", "Text after the members count in server invites", accepts = ["texts", "icons"], false],
-		32: ["Welcome Message", "✨ Welcome to ELYSIA, designed by Purple Wizard.", "WelcomeMessage", "texts", "Text after the greeting message of a server", accepts = ["texts", "icons"], false],
-		33: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
-		34: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
-		35: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
-		36: ["RGB 1", "rgb(130 0 216)", "C1", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
-		37: ["RGB 2", "rgb(0 225 255)", "C2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
-		38: ["RGB 3", "rgb(0 0 0)", "C3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
-		39: ["RGB 4", "rgb(0 0 0)", "C4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
-		40: ["RGB 5", "rgb(0 0 0)", "C5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
-		41: ["RGB 6", "rgb(0 0 0)", "C6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
-		42: ["RGB 7", "rgb(0 0 0)", "C7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
-		43: ["RGB 8", "rgb(0 0 0)", "C8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
-		44: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
-		45: ["Mute/Unmute Icon", "🎙️", "Micro", "texts", "Microphone Icon", accepts = ["texts", "icons"], false],
-		46: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
-		47: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
-		48: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
-		49: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
-		50: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
-		51: ["Streaming", "rgb(78 0 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
-		52: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
-		53: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["rgb", "vars"], true],
-		54: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
-		55: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
-		56: ["Active Box", "rgb(235 235 235)", "ActiveBox", "menus", "Selected Box background", accepts = ["rgb", "vars"], true],
-		57: ["Announcement Channels Icon", "📣", "Announcement", "texts", "Announcement Channel Icon", accepts = ["texts", "icons"], false],
-		58: ["Stage Channels Icon", "📺", "Stage", "texts", "Stage Channel Icon", accepts = ["texts", "icons"], false],
+		8: ["Streaming", "rgb(78 0 180)", "StreamingColor", "status", "Streaming status color", accepts = ["rgb"], true],
+		9: ["Grey", "rgb(77 70 85)", "grey", "menus", "Main color for menus.", accepts = ["rgb"], true],
+		10: ["Darkgrey", "rgb(18 18 18)", "darkgrey", "menus", "Secondary color for menus.", accepts = ["rgb"], true],
+		11: ["ChatBox", "var(--darkgrey5)", "ChatBox", "menus", "Chat and PM background", accepts = ["rgb", "vars"], true],
+		12: ["Sidebar", "var(--darkgrey5)", "Sidebar", "menus", "Sidebar background", accepts = ["rgb", "vars"], true],
+		13: ["Send Message", "var(--darkgrey)", "SendMessage", "menus", "Send Message bar background", accepts = ["rgb", "vars"], true],
+		14: ["Logo", "https://goldenlys.github.io/ThemeGen/img/ELYSIA.gif", "logo", "general", "PM button / logo icon", accepts = ["img", "logo"], true],
+		15: ["Hover Message", "var(--darkgrey5)", "HoverMessage", "menus", "Hovered Message background", accepts = ["rgb", "vars"], true],
+		16: ["Join Us", "Hey! Wanna have some fun.. Join US !", "JoinUs", "texts", "Title of servers invites", accepts = ["texts", "icons"], false],
+		17: ["Add New Server", "➕ Add a new server", "AddNewServer", "texts", "Title of the 'Add a server' box", accepts = ["texts", "icons"], false],
+		18: ["Close Window Button", "🔴", "Close", "texts", "Close window icon", accepts = ["texts", "icons"], false],
+		19: ["Resize Window Button", "🔵", "Resize", "texts", "Resize window icon", accepts = ["texts", "icons"], false],
+		20: ["Hide Window Button", "⚫", "Hide", "texts", "Hide windows icon", accepts = ["texts", "icons"], false],
+		21: ["Profile Picture Hovered", "Watch me", "ProfilePic", "texts", "Text of an hovered profile picture", accepts = ["texts", "icons"], false],
+		22: ["Unread Icon", "✨", "Unread", "texts", "Unread Icon Text", accepts = ["texts", "icons"], false],
+		23: ["Options Icon", "⚙️", "Options", "texts", "Options Icon", accepts = ["texts", "icons"], false],
+		24: ["Emoji Icon", "🙂", "Emoji", "texts", "Emojis Button", accepts = ["texts", "icons"], false],
+		25: ["Emoji Icon Hovered", "😜", "EmojiHover", "texts", "Hovered Emojis Button", accepts = ["texts", "icons"], false],
+		26: ["Text Channels Icon", "💬", "Channel", "texts", "Text Channel Icon", accepts = ["texts", "icons"], false],
+		27: ["Voice Channels Icon", "🔊", "Voice", "texts", "Voice Channel Icon", accepts = ["texts", "icons"], false],
+		28: ["Community Name", "purpies", "Community", "texts", "Text after the members count in server invites", accepts = ["texts", "icons"], false],
+		29: ["Welcome Message", "✨ Welcome to ELYSIA, designed by Purple Wizard.", "WelcomeMessage", "texts", "Text after the greeting message of a server", accepts = ["texts", "icons"], false],
+		30: ["Theme Watermark", "Made with 💖 by Purple Wizard", "Watermark", "texts", "Watermark under the options", accepts = ["texts", "icons"], false],
+		31: ["Edit Custom Status", "Put another status", "EditStatus", "texts", "Edit Custom Status Text", accepts = ["texts", "icons"], false],
+		32: ["Server Folders", "📁", "Folders", "texts", "Edit closed server folder icon", accepts = ["texts", "icons"], false],
+		33: ["RGB 1", "rgb(130 0 216)", "C1", "rgb", "RGB Color 1 (if you only use this color then the RGB animation will not be enabled)", accepts = ["rgb"], true],
+		34: ["RGB 2", "rgb(0 225 255)", "C2", "rgb", "RGB Color 2", accepts = ["rgb"], true],
+		35: ["RGB 3", "rgb(0 0 0)", "C3", "rgb", "RGB Color 3", accepts = ["rgb"], true],
+		36: ["RGB 4", "rgb(0 0 0)", "C4", "rgb", "RGB Color 4", accepts = ["rgb"], true],
+		37: ["RGB 5", "rgb(0 0 0)", "C5", "rgb", "RGB Color 5", accepts = ["rgb"], true],
+		38: ["RGB 6", "rgb(0 0 0)", "C6", "rgb", "RGB Color 6", accepts = ["rgb"], true],
+		39: ["RGB 7", "rgb(0 0 0)", "C7", "rgb", "RGB Color 7", accepts = ["rgb"], true],
+		40: ["RGB 8", "rgb(0 0 0)", "C8", "rgb", "RGB Color 8", accepts = ["rgb"], true],
+		41: ["RGB 9", "rgb(0 0 0)", "C9", "rgb", "RGB Color 9", accepts = ["rgb"], true],
+		42: ["RGB 10", "rgb(0 0 0)", "C10", "rgb", "RGB Color 10", accepts = ["rgb"], true],
+		43: ["Opened Server Folders", "💠", "FoldersOpen", "texts", "Edit opened server folder icon", accepts = ["texts", "icons"], false],
+		44: ["Mute/Unmute Icon", "🎙️", "Micro", "texts", "Microphone Icon", accepts = ["texts", "icons"], false],
+		45: ["Deaf/Undeafen Icon", "🎧", "Headset", "texts", "Headset Icon", accepts = ["texts", "icons"], false],
+		46: ["Header Background", "var(--darkgrey5)", "TitleBG", "menus", "Title & Horizontal Servers List background", accepts = ["rgb", "vars"], true],
+		47: ["Servers Size", "45px", "ServerSize", "general", "Define custom servers size when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+		48: ["Write a message", "Write a message...", "WriteMessage", "texts", "Write a new message text", accepts = ["texts", "icons"], false],
+		49: ["Listen Along", "Listen Along", "ListenAlong", "texts", "Listen Along on Spotify button text", accepts = ["texts", "icons"], false],
+		50: ["Server Columns", "1", "ServerColumns", "general", "Define the number of custom colums when using the Horizontal Servers List plugin.", accepts = ["texts"], false],
+		51: ["Highlighted", "var(--grey5)", "Highlighted", "menus", "Highlighted text background", accepts = ["rgb", "vars"], true],
+		52: ["Active Box", "rgb(235 235 235)", "ActiveBox", "menus", "Selected Box background", accepts = ["rgb", "vars"], true],
+		53: ["Announcement Channels Icon", "📣", "Announcement", "texts", "Announcement Channel Icon", accepts = ["texts", "icons"], false],
+		54: ["Stage Channels Icon", "📺", "Stage", "texts", "Stage Channel Icon", accepts = ["texts", "icons"], false],
 	}
 };
 
@@ -143,20 +135,20 @@ function GetValue(STYLE) {
 }
 
 function SetValue(STYLE) {
-	if (STYLE != 0 && STYLE != 48 && STYLE != 52 && CONFIG.THEME[STYLE][3] != "texts") {
+	if (STYLE != 0 && STYLE != 47 && STYLE != 50 && CONFIG.THEME[STYLE][3] != "texts") {
 		document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], CONFIG.THEME[STYLE][1]);
 
-		if (STYLE == 1 || STYLE == 8 || STYLE == 9 || STYLE == 10 || STYLE == 11 || STYLE == 17) {
+		if (STYLE == 1 || STYLE == 14) {
 			if (CONFIG.SELECTED[STYLE] === "img" || CONFIG.SELECTED[STYLE] == "logo") {
 				document.body.style.setProperty('--' + CONFIG.THEME[STYLE][2], 'url(' + CONFIG.THEME[STYLE][1] + ')');
 			}
 		}
 
 		if (CONFIG.THEME[STYLE][3] === "menus") {
-			document.body.style.setProperty('--' + CONFIG.THEME[12][2], CONFIG.THEME[12][1]);
-			document.body.style.setProperty('--' + CONFIG.THEME[13][2], CONFIG.THEME[13][1]);
-			var grey5 = CONFIG.THEME[12][1].split(")").join(" / 50%)");
-			var darkgrey5 = CONFIG.THEME[13][1].split(")").join(" / 75%)");
+			document.body.style.setProperty('--' + CONFIG.THEME[9][2], CONFIG.THEME[9][1]);
+			document.body.style.setProperty('--' + CONFIG.THEME[10][2], CONFIG.THEME[10][1]);
+			var grey5 = CONFIG.THEME[9][1].split(")").join(" / 50%)");
+			var darkgrey5 = CONFIG.THEME[10][1].split(")").join(" / 75%)");
 			document.body.style.setProperty('--grey5', grey5);
 			document.body.style.setProperty('--darkgrey5', darkgrey5);
 		}
@@ -178,7 +170,7 @@ function UPDATEUI() {
 			if (rgb != "-1-1-1") {
 				if (CONFIG.THEME[CONFIG.EDITOR.id][5][0] != "fonts" && CONFIG.SELECTED[CONFIG.EDITOR.id] !== "logo") CONFIG.EDITOR.new = "rgb(" + APP.PICKER[0] + " " + APP.PICKER[1] + " " + APP.PICKER[2] + ")";
 			}
-			if (CONFIG.EDITOR.id == 1 || CONFIG.EDITOR.id == 8 || CONFIG.EDITOR.id == 9 || CONFIG.EDITOR.id == 10 || CONFIG.EDITOR.id == 11 || CONFIG.EDITOR.id == 17) {
+			if (CONFIG.EDITOR.id == 1 || CONFIG.EDITOR.id == 14) {
 				if (CONFIG.SELECTED[CONFIG.EDITOR.id] == "img") CONFIG.EDITOR.new = $("#NewURL").val();
 			}
 
@@ -247,9 +239,8 @@ function UPDATEUI() {
 		if (CONFIG.THEME[keys][3] === "general") $("#config1").append(CONTENT);
 		if (CONFIG.THEME[keys][3] === "rgb") $("#config2").append(CONTENT);
 		if (CONFIG.THEME[keys][3] === "status") $("#config3").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "profile") $("#config4").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "menus") $("#config5").append(CONTENT);
-		if (CONFIG.THEME[keys][3] === "texts") $("#config7").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "menus") $("#config4").append(CONTENT);
+		if (CONFIG.THEME[keys][3] === "texts") $("#config5").append(CONTENT);
 	}
 	for (let f in APP.FONTS) {
 		$("#fontsList").append("<div id='font" + f + "' style='font-family:" + APP.FONTS[f] + ";' class='RGBbutton'>" + APP.FONTS[f] + "</div>");
@@ -314,14 +305,14 @@ function UPDATEUI() {
 	});
 
 	$("#logosList .RGBbutton").click(function () {
-		CONFIG.SELECTED[17] = "logo";
+		CONFIG.SELECTED[14] = "logo";
 		CONFIG.EDITOR.new = $(this).children('img').attr('src');
-		SetValue(17);
+		SetValue(14);
 	});
 
 	$(".form .value").click(function () {
 		for (let ID in CONFIG.THEME) {
-			if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 48 && ID != 52) Edit(ID);
+			if (this.id === CONFIG.THEME[ID][2] && CONFIG.THEME[ID][3] != "texts" && ID != 0 && ID != 3 && ID != 47 && ID != 50) Edit(ID);
 		}
 	});
 
@@ -436,7 +427,7 @@ function UPDATEUI() {
 })();
 
 function VerifyType(ID, TYPE) {
-	if (ID == 1 || ID == 8 || ID == 9 || ID == 10 || ID == 11 || ID == 17) {
+	if (ID == 1 || ID == 14) {
 		CONFIG.SELECTED[CONFIG.EDITOR.id] = TYPE;
 	}
 }
@@ -488,7 +479,7 @@ function Result() {
 
 	for (keys = 0; keys < Object.keys(CONFIG.THEME).length; keys++) {
 
-		if (keys === 1 || keys === 8 || keys === 9 || keys === 10 || keys === 11 || keys === 17) {
+		if (keys === 1 || keys === 14) {
 			if (CONFIG.SELECTED[keys] === "img" || CONFIG.SELECTED[keys] === "logo") {
 				$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> url("' + CONFIG.THEME[keys][1] + '");\n<br>');
 			} else {
@@ -500,8 +491,8 @@ function Result() {
 			$("#ResultText").append('<span class="var">--' + CONFIG.THEME[keys][2] + ':</span> ' + CONFIG.THEME[keys][1] + ';\n<br>');
 		}
 	}
-	let grey5 = CONFIG.THEME[12][1].split("rgb(").join("rgb(").split(")").join(" / 50%)");
-	let darkgrey5 = CONFIG.THEME[13][1].split("rgb(").join("rgb(").split(")").join(" / 75%)");
+	let grey5 = CONFIG.THEME[9][1].split("rgb(").join("rgb(").split(")").join(" / 50%)");
+	let darkgrey5 = CONFIG.THEME[10][1].split("rgb(").join("rgb(").split(")").join(" / 75%)");
 	$("#ResultText").append('<span class="var">--grey5:</span> ' + grey5 + ';\n<br>');
 	$("#ResultText").append('<span class="var">--darkgrey5:</span> ' + darkgrey5 + ';\n<br>');
 
@@ -519,7 +510,7 @@ function download(filename, text) {
 }
 
 function ShowMenu(ID) {
-	var MENUS = ["General", "RGB", "Status", "Profile", "Menus", "Add-ons", "Texts"];
+	var MENUS = ["General", "RGB", "Status", "Menus", "Texts", "Add-ons"];
 	for (var i = 0; i < $('#menu').children('div').length; i++) {
 		$("#config" + (i + 1)).hide();
 		$("#btn" + (i + 1)).removeClass("active");
